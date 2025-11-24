@@ -51,4 +51,40 @@ early_data_geo <- geocode(unique_locs_df,
 # rows where latitude is NA
 na_rows <- early_data_geo %>% filter(is.na(latitude) & !is.na(location_string))
 
+# requires: sf, dplyr
+library(sf)
+library(dplyr)
+
+# read local shapefile (download from Natural England or Protected Planet)
+local_nature_reserves <- read_sf("Data/Local_Nature_Reserves_(England)___Natural_England.shp")
+
+
+
+
+# clean your names similarly
+early_data_geo <- early_data_geo %>%
+  mutate(NAME_clean = tolower(trimws(location_string)))
+
+# inner join by cleaned name (or approximate join with stringdist if needed)
+matched <- early_data_geo %>%
+  left_join(parks_sf %>% select(NAME_clean, geometry), by = "NAME_clean")
+
+# compute centroids for matched polygons
+matched_coords <- matched %>%
+  filter(!is.na(geometry)) %>%
+  mutate(cent = st_centroid(geometry)) %>%
+  mutate(coords = purrr::map(cent, st_coordinates)) %>%
+  mutate(longitude = purrr::map_dbl(coords, 1), latitude = purrr::map_dbl(coords, 2)) %>%
+  st_set_geometry(NULL)  # drop geometry if desired
+
+# update main table and provenance
+early_data_geo <- early_data_geo %>%
+  left_join(matched_coords %>% select(label_no, latitude, longitude), by = "label_no") %>%
+  mutate(
+    coordinate_method = case_when(
+      !is.na(latitude) & is.na(coordinate_method) ~ "park_shapefile_centroid",
+      TRUE ~ coordinate_method
+    )
+  )
+
 
