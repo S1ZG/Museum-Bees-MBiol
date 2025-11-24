@@ -3,6 +3,8 @@
 library(tidygeocoder)
 library(dplyr)
 library(tibble)
+library(sf)
+
 
 early_data <- read.csv("Data/24_11_25 UK solitary bee museum specimen measurements - raw data.csv")
 
@@ -51,12 +53,24 @@ early_data_geo <- geocode(unique_locs_df,
 # rows where latitude is NA
 na_rows <- early_data_geo %>% filter(is.na(latitude) & !is.na(location_string))
 
-# requires: sf, dplyr
-library(sf)
-library(dplyr)
+
+
 
 # read local shapefile (download from Natural England or Protected Planet)
 local_nature_reserves <- read_sf("Data/Local_Nature_Reserves_(England)___Natural_England.shp")
+
+
+library(stringr)
+library(fuzzyjoin)
+
+
+
+st_crs(local_nature_reserves)               # see CRS (important)
+names(local_nature_reserves)                # find a human-readable name field (e.g., "NAME", "SiteName")
+# print sample rows
+local_nature_reserves %>% select(1:6) %>% head()
+
+
 
 
 
