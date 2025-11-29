@@ -48,12 +48,19 @@ early_data_geo <- geocode(unique_locs_df,
                           )
 
 
-
-
 # rows where latitude is NA
-na_rows <- early_data_geo %>% filter(is.na(latitude) & !is.na(location_string))
+na_early_data_geo <- early_data_geo %>% filter(is.na(latitude) & !is.na(location_string))
 
 
+# save early_data_geo as a .csv
+write.csv(early_data_geo, "Data/early_data_geocoded.csv", row.names = FALSE)
+
+
+
+
+
+#Attempt to use local nature reserve data
+############
 
 
 # read local shapefile (download from Natural England or Protected Planet)
@@ -65,40 +72,43 @@ library(fuzzyjoin)
 
 
 
-st_crs(local_nature_reserves)               # see CRS (important)
-names(local_nature_reserves)                # find a human-readable name field (e.g., "NAME", "SiteName")
+# st_crs(local_nature_reserves)               # see CRS (important)
+# names(local_nature_reserves)                # find a human-readable name field (e.g., "NAME", "SiteName")
 # print sample rows
 local_nature_reserves %>% select(1:6) %>% head()
 
 
 
 
-
-
-# clean your names similarly
-early_data_geo <- early_data_geo %>%
-  mutate(NAME_clean = tolower(trimws(location_string)))
-
-# inner join by cleaned name (or approximate join with stringdist if needed)
-matched <- early_data_geo %>%
-  left_join(parks_sf %>% select(NAME_clean, geometry), by = "NAME_clean")
-
-# compute centroids for matched polygons
-matched_coords <- matched %>%
-  filter(!is.na(geometry)) %>%
-  mutate(cent = st_centroid(geometry)) %>%
-  mutate(coords = purrr::map(cent, st_coordinates)) %>%
-  mutate(longitude = purrr::map_dbl(coords, 1), latitude = purrr::map_dbl(coords, 2)) %>%
-  st_set_geometry(NULL)  # drop geometry if desired
-
-# update main table and provenance
-early_data_geo <- early_data_geo %>%
-  left_join(matched_coords %>% select(label_no, latitude, longitude), by = "label_no") %>%
+# 1) make cleaned reserve name
+local_nature_reserves <- local_nature_reserves %>%
   mutate(
-    coordinate_method = case_when(
-      !is.na(latitude) & is.na(coordinate_method) ~ "park_shapefile_centroid",
-      TRUE ~ coordinate_method
-    )
+    NAME_clean = tolower(str_squish(NAME))
   )
+
+# 2) make a point-on-surface for each polygon and set that as the active geometry
+#    (this ensures the geometry column contains POINTs, not polygons)
+reserves_pts <- local_nature_reserves %>%
+  mutate(rep_point = st_point_on_surface(geometry)) %>%  # create the point geometry
+  st_set_geometry("rep_point")                           # replace active geometry with the point
+
+
+# 3) transform these point geometries to WGS84
+reserves_pts_wgs84 <- st_transform(reserves_pts, crs = 4326)
+
+# 4) extract lon/lat (one row per feature)
+coords <- st_coordinates(reserves_pts_wgs84)            # will be n x 2 (X, Y)
+reserves_pts_wgs84$longitude <- coords[,1]
+reserves_pts_wgs84$latitude  <- coords[,2]
+
+# 5) keep only desired columns as a plain data.frame for joining
+reserve_points_small <- reserves_pts_wgs84 %>%
+  st_set_geometry(NULL) %>%
+  select(NAME_clean, latitude, longitude)
+
+
+
+
+
 
 
