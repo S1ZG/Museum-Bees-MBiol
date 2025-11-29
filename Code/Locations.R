@@ -56,16 +56,19 @@ na_early_data_geo <- early_data_geo %>% filter(is.na(latitude) & !is.na(location
 write.csv(early_data_geo, "Data/early_data_geocoded.csv", row.names = FALSE)
 
 # I then manually entered the lat long coordinates for the NA columns using google maps
-# Add the lat long back to the original early_data dataframe
+# Add the lat long (locations_lat_long.csv) back to the original early_data dataframe
 
+locations_lat_long <- read.csv("Data/locations_lat_long.csv")
 
+# Merge the lat long back to the early_data dataframe
+early_data_coords <- early_data %>%
+  left_join(locations_lat_long, by = "location_string")
 
 
 # Set up a workflow for when I have updated early_data 
 # To save processing I will add the lat long to the newest dataframe, then isolate the unique locations that do not have a lat long coordinate
 
-
-
+latest_data <- 
 
 
 

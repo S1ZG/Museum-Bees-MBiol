@@ -1,0 +1,676 @@
+﻿label_no,genus,species,sex,year,month,day,country,county,city_town_village,specific_location,HW_mm,intertegular_distance_mm,FW_length_mm,tibia_length_mm,family,ecology,interocular_distance_mm
+IGproject0001,Nomada,sp.,male,1904,4,19,England,Oxfordshire,Oxford,University Parks,2.688,1.908,9.018,2.328,Apidae,kleptoparasite,1.781
+IGproject0002,Nomada,sp.,male,1918,5,2,England,Oxfordshire,Oxford,,2.108,1.338,6.795,1.774,Apidae,kleptoparasite,1.441
+IGproject0003,Nomada,sp.,female,1914,4,28,England,Devon,Bovey Tracey,,2.054,1.329,6.457,1.743,Apidae,kleptoparasite,1.367
+IGproject0004,Nomada,ruficornis,female,1917,5,3,England,Surrey,Guildford,Merrow,2.777,1.779,8.348,2.236,Apidae,kleptoparasite,1.749
+IGproject0005,Nomada,ruficornis,female,1980,6,,England,Oxfordshire,,Bernwood Forest,2.652,1.789,7.628,2.105,Apidae,kleptoparasite,1.661
+IGproject0006,Nomada,ruficornis,male,1915,5,5,England,Surrey,Tadworth,Box Hill,2.435,1.636,7.572,1.875,Apidae,kleptoparasite,1.611
+IGproject0007,Nomada,sp.,female,1912,4,24,England,Oxfordshire,Oxford,,2.615,1.799,8.63,2.373,Apidae,kleptoparasite,1.598
+IGproject0008,Nomada,sp.,female,1908,5,18,England,Greater London,London,Tooting Commons,2.671,1.838,8.827,2.314,Apidae,kleptoparasite,1.649
+IGproject0009,Nomada,sp.,female,1922,5,14,England,Devon,Newton Abbot,,2.269,1.287,7.438,2.018,Apidae,kleptoparasite,1.47
+IGproject0010,Nomada,sp.,male,1924,6,5,England,Devon,Bovey Tracey,,2.078,1.293,6.741,1.643,Apidae,kleptoparasite,1.337
+IGproject0011,Nomada,sp.,female,1911,5,,England,Oxfordshire,Oxford,University Parks,2.569,1.748,8.3,2.357,Apidae,kleptoparasite,1.623
+IGproject0012,Nomada,ruficornis,female,1901,7,14,Wales,Gwynedd,Criccieth,,2.717,1.895,8.34,2.321,Apidae,kleptoparasite,1.722
+IGproject0013,Nomada,ruficornis,female,1919,4,,England,West Yorkshire,Leeds,Roundhay Park,2.493,1.621,7.15,2.077,Apidae,kleptoparasite,1.65
+IGproject0014,Nomada,sp.,female,1915,5,31,England,Devon,Newton Abbot,,2.371,1.533,7.442,2.231,Apidae,kleptoparasite,1.489
+IGproject0015,Nomada,ruficornis,female,1925,5,15,England,Devon,Brixham,,2.582,1.694,8.029,2.186,Apidae,kleptoparasite,1.63
+IGproject0016,Nomada,ruficornis,female,1919,4,21,England,Devon,Bovey Tracey,Chudleigh Knighton Heath,2.192,1.377,6.509,1.803,Apidae,kleptoparasite,1.438
+IGproject0017,Nomada,sp.,female,1921,4,27,England,Devon,Newton Abbot,Bradley Woods,2.313,1.547,7.435,2.119,Apidae,kleptoparasite,1.476
+IGproject0018,Nomada,ruficornis,male,1907,5,19,England,Oxfordshire,Tubney,,2.281,1.525,7.185,1.894,Apidae,kleptoparasite,1.444
+IGproject0019,Nomada,ruficornis,female,1981,5,20,England,Oxfordshire,,Bernwood Forest,2.307,1.443,6.856,1.809,Apidae,kleptoparasite,1.467
+IGproject0020,Nomada,sp.,female,1908,5,17,England,Greater London,London,Tooting Commons,2.729,1.939,8.693,2.375,Apidae,kleptoparasite,1.725
+IGproject0021,Andrena,wilkella,male,1959,5,23,England,Devon,Chudleigh,,2.748,1.685,6.699,1.859,Andrenidae,excavator,1.879
+IGproject0022,Andrena,wilkella,female,1900,6,5,England,Oxfordshire,Oxford,University Parks,3.466,2.246,8.5,2.523,Andrenidae,excavator,2.145
+IGproject0023,Andrena,wilkella,female,1906,5,19,Wales,Bridgend,Porthcawl,,3.419,2.254,8.12,2.776,Andrenidae,excavator,2.174
+IGproject0024,Andrena,wilkella,male,1898,,,England,Gloucestershire,Doddington,,3.314,2.235,8.256,2.337,Andrenidae,excavator,2.171
+IGproject0025,Andrena,wilkella,male,1955,4,13,England,Devon,Bovey Tracey,Bovey Heathfield,2.725,1.772,6.594,1.793,Andrenidae,excavator,1.89
+IGproject0026,Andrena,wilkella,female,1935,6,18,England,Warwickshie,Hatton,,3.409,2.276,7.964,2.718,Andrenidae,excavator,2.142
+IGproject0027,Andrena,wilkella,female,1903,3,24,England,Surrey,Woking,,3.421,2.389,7.71,2.374,Andrenidae,excavator,2.17
+IGproject0028,Andrena,wilkella,male,1900,6,5,England,Oxfordshire,Oxford,University Parks,3.077,1.985,7.618,2.121,Andrenidae,excavator,1.985
+IGproject0029,Andrena,wilkella,female,1905,5,24,England,Oxfordshire,Oxford,University Parks,3.277,2.084,7.946,2.391,Andrenidae,excavator,2.094
+IGproject0030,Andrena,wilkella,male,1954,6,18,England,Devon,Bovey Tracey,Chudleigh Knighton Heath,2.898,1.903,7.268,2.056,Andrenidae,excavator,1.965
+IGproject0031,Andrena,wilkella,female,1900,7,8,England,Oxfordshire,Tubney,,3.497,2.226,8.568,2.635,Andrenidae,excavator,2.274
+IGproject0032,Andrena,wilkella,male,1902,5,25,England,Kent,Faversham,Huntingfield,2.955,1.903,8.009,2.163,Andrenidae,excavator,1.983
+IGproject0033,Andrena,wilkella,male,1977,7,2,England,Oxfordshire,Oxford,Sydlings Copse,3.038,1.845,7.453,2.012,Andrenidae,excavator,2.037
+IGproject0034,Andrena,wilkella,male,1949,5,7,England,Devon,Bovey Tracey,Chudleigh Knighton Heath,2.833,1.936,7.427,2.03,Andrenidae,excavator,1.919
+IGproject0035,Andrena,wilkella,male,1990,5,26,England,Wiltshire,Wroughton,Clouts Wood,3.313,1.965,7.984,2.175,Andrenidae,excavator,2.248
+IGproject0036,Andrena,wilkella,male,1900,5,23,England,Devon,Newton Abbot,,2.957,1.81,7.395,2.092,Andrenidae,excavator,2
+IGproject0037,Andrena,wilkella,female,1905,7,31,England,Kent,Faversham,Huntingfield,3.494,2.341,7.973,2.495,Andrenidae,excavator,2.211
+IGproject0038,Andrena,wilkella,female,1900,6,5,England,Oxfordshire,Oxford,University Parks,3.524,2.291,8.27,2.576,Andrenidae,excavator,2.241
+IGproject0039,Andrena,wilkella,female,1922,7,20,England,Devon,Newton Abbot,,3.227,2.194,7.067,2.227,Andrenidae,excavator,2
+IGproject0040,Andrena,wilkella,female,1900,5,24,England,Oxfordshire,Oxford,University Parks,3.434,2.225,8.227,2.644,Andrenidae,excavator,2.168
+IGproject0041,Andrena,wilkella,female,1910,7,18,England,Devon,Budleigh Salterton,,0.031,1.939,7.038,1.95,Andrenidae,excavator,2.008
+IGproject0042,Andrena,wilkella,male,1904,5,29,England,Greater London,Wimbledon,,2.937,1.879,7.288,2.05,Andrenidae,excavator,1.969
+IGproject0043,Andrena,wilkella,female,1977,6,12,England,Oxfordshire,Hook Norton,,3.529,2.268,8.264,2.656,Andrenidae,excavator,2.251
+IGproject0044,Andrena,wilkella,male,1915,4,20,England,Gloucestershire,Wotton-under-Edge,,2.849,1.745,7.235,1.837,Andrenidae,excavator,1.943
+IGproject0045,Andrena,wilkella,female,1903,6,26,England,Surrey,Chobham,,3.261,2.127,7.532,2.403,Andrenidae,excavator,2.086
+IGproject0046,Hylaeus,communis,female,1904,7,,England,Dorset,Lyme Regis,,1.642,1.318,5.086,1.049,Colletidae,cavity nester,1.091
+IGproject0047,Hylaeus,communis,female,1979,7,12,England,Devon,Newton Abbot,Teign Valley,1.671,1.24,4.948,1.037,Colletidae,cavity nester,1.101
+IGproject0048,Hylaeus,communis,female,1948,7,26,England,Oxfordshire,Coleshill,,1.581,1.191,4.648,0.987,Colletidae,cavity nester,1.038
+IGproject0049,Hylaeus,communis,male,1905,7,8,England,Dorset,Lyme Regis,,1.504,1.152,4.342,0.939,Colletidae,cavity nester,0.953
+IGproject0050,Hylaeus,communis,male,1978,6,16,England,Devon,Diptford,,1.437,1.073,4.011,0.897,Colletidae,cavity nester,0.968
+IGproject0051,Hylaeus,communis,male,1980,6,24,England,Devon,Milton Combe,,1.567,1.244,4.406,0.988,Colletidae,cavity nester,1.02
+IGproject0052,Hylaeus,communis,female,1902,9,6,England,Kent,Faversham,Huntingfield,1.499,1.138,4.476,0.941,Colletidae,cavity nester,0.996
+IGproject0053,Hylaeus,communis,male,1902,8,12,England,Kent,Faversham,Huntingfield,1.592,1.144,4.608,0.986,Colletidae,cavity nester,1.011
+IGproject0054,Hylaeus,communis,female,1969,3,9,England,Hertfordshire,Harpenden,Hatching Green,1.657,1.248,4.919,0.993,Colletidae,cavity nester,1.085
+IGproject0055,Hylaeus,communis,male,2005,7,19,England,Surrey,Richmond,Ham House,1.49,1.154,4.241,0.92,Colletidae,cavity nester,0.95
+IGproject0056,Hylaeus,communis,male,1949,6,7,England,Devon,Axminster,,1.538,1.126,4.444,0.963,Colletidae,cavity nester,0.981
+IGproject0057,Hylaeus,communis,female,1897,7,11,England,Berkshire,Reading,Sulhamstead Park,1.737,1.309,5.222,1.008,Colletidae,cavity nester,1.112
+IGproject0058,Nomada,goodeniana,female,1990,7,18,England,Devon,Salcombe Regis,,3.032,2.048,9.062,2.414,Apidae,kleptoparasite,1.997
+IGproject0059,Nomada,goodeniana,female,1903,5,18,Wales,Gwynedd,Criccieth,,3.222,2.284,9.782,2.835,Apidae,kleptoparasite,2.103
+IGproject0060,Nomada,goodeniana,male,1916,4,22,England,Oxfordshire,Tubney,,2.843,1.916,8.883,2.403,Apidae,kleptoparasite,1.905
+IGproject0061,Nomada,goodeniana,male,1896,,,England,Gloucestershire,Doddington,,3.029,1.985,9.415,2.566,Apidae,kleptoparasite,2.055
+IGproject0062,Nomada,goodeniana,male,1917,5,3,England,Devon,Brixham,,2.314,1.534,7.09,1.983,Apidae,kleptoparasite,1.635
+IGproject0063,Nomada,goodeniana,female,1910,6,1,England,Devon,Littleham,,3.257,2.219,10.096,2.832,Apidae,kleptoparasite,2.183
+IGproject0064,Nomada,goodeniana,female,1928,4,21,England,Devon,Newton Abbot,,3.185,2.372,9.971,2.638,Apidae,kleptoparasite,2.151
+IGproject0065,Nomada,goodeniana,female,1991,4,26,England,Devon,Croyde,,3.347,2.367,10.436,2.807,Apidae,kleptoparasite,2.208
+IGproject0066,Nomada,goodeniana,male,1949,4,18,England,Oxfordshire,Chastleton,,2.36,1.486,7.029,1.959,Apidae,kleptoparasite,1.666
+IGproject0067,Nomada,goodeniana,female,1937,5,28,England,Greater London,Wimbledon,,3.011,2.124,9.116,2.515,Apidae,kleptoparasite,1.958
+IGproject0068,Nomada,goodeniana,female,1954,4,16,England,Devon,Torquay,,3.168,2.243,9.924,2.765,Apidae,kleptoparasite,2.086
+IGproject0069,Nomada,goodeniana,male,1954,4,29,England,Devon,Lustleigh,,2.715,1.755,8.14,2.184,Apidae,kleptoparasite,1.857
+IGproject0070,Nomada,goodeniana,female,1949,4,29,England,Devon,Exeter,,2.962,1.859,8.801,2.482,Apidae,kleptoparasite,2.006
+IGproject0071,Nomada,goodeniana,female,1936,5,27,England,Berkshire,Slough,,2.93,1.906,9.047,2.397,Apidae,kleptoparasite,1.938
+IGproject0072,Nomada,goodeniana,male,1903,5,18,Wales,Gwynedd,Criccieth,,2.774,1.864,8.704,2.284,Apidae,kleptoparasite,1.934
+IGproject0073,Nomada,goodeniana,female,1914,4,20,England,Devon,Budleigh Salterton,,2.936,1.91,8.907,2.471,Apidae,kleptoparasite,1.935
+IGproject0074,Nomada,goodeniana,male,1915,4,30,England,Devon,Brixham,,3.223,2.197,10.305,2.826,Apidae,kleptoparasite,2.215
+IGproject0075,Nomada,goodeniana,male,1902,5,18,England,Kent,Faversham,Huntingfield,2.952,1.963,8.989,2.407,Apidae,kleptoparasite,1.938
+IGproject0076,Nomada,goodeniana,male,1909,5,9,England,Oxfordshire,Oxford,Shotover,2.933,2.01,8.812,2.442,Apidae,kleptoparasite,1.954
+IGproject0077,Nomada,goodeniana,female,1953,8,10,England,Devon,Dawlish,,2.844,1.86,8.422,2.384,Apidae,kleptoparasite,1.879
+IGproject0078,Nomada,goodeniana,female,1910,6,8,England,Devon,Budleigh Salterton,,3.196,2.103,9.852,2.829,Apidae,kleptoparasite,2.114
+IGproject0079,Nomada,goodeniana,male,1900,4,21,England,Surrey,Woking,,3.108,2.203,9.466,2.564,Apidae,kleptoparasite,2.095
+IGproject0080,Nomada,goodeniana,female,1941,6,2,England,Hampshire,Burley,,3.167,2.167,9.681,2.769,Apidae,kleptoparasite,2.034
+IGproject0081,Nomada,goodeniana,female,1900,6,3,England,Oxfordshire,Oxford,Shotover,2.715,1.731,8.141,2.39,Apidae,kleptoparasite,1.853
+IGproject0082,Nomada,goodeniana,female,1983,1,28,England,Berkshire,Slough,Langley,2.705,1.74,8.177,2.325,Apidae,kleptoparasite,1.85
+IGproject0083,Nomada,goodeniana,female,1991,5,22,England,Hampshire,Bramshaw,,2.716,1.763,8.231,2.365,Apidae,kleptoparasite,1.763
+IGproject0084,Nomada,goodeniana,female,1917,5,3,England,Surrey,Guildford,Merrow,2.925,1.973,8.945,2.55,Apidae,kleptoparasite,1.97
+IGproject0085,Nomada,goodeniana,female,1954,4,16,England,Devon,Torquay,,3.161,2.145,9.751,2.706,Apidae,kleptoparasite,2.187
+IGproject0086,Nomada,goodeniana,female,1955,5,20,England,Devon,Dawlish,,3.21,2.232,9.795,2.634,Apidae,kleptoparasite,2.145
+IGproject0087,Nomada,goodeniana,female,1977,6,12,England,Oxfordshire,Hook Norton,,3.011,2.014,9.361,2.579,Apidae,kleptoparasite,2.025
+IGproject0088,Nomada,sp.,female,1916,5,21,England,Devon,Newton Abbot,,2.461,1.63,8.159,2.287,Apidae,kleptoparasite,1.54
+IGproject0089,Nomada,sp.,female,1916,5,22,England,Devon,Bovey Tracey,,2.397,1.509,8.095,2.163,Apidae,kleptoparasite,1.627
+IGproject0090,Lasioglossum,fulvicorne,female,1998,5,21,England,Devon,Salcombe,Coast Path,1.836,1.324,5.315,1.331,Halictidae,excavator,1.15
+IGproject0091,Lasioglossum,fulvicorne,female,1991,6,9,England,Cambridgeshire,Barnack,Barnack Hills and Holes,1.815,1.355,5.386,1.43,Halictidae,excavator,1.143
+IGproject0092,Lasioglossum,fulvicorne,male,1998,7,28,England,Gloucestershire,Wotton-under-Edge,Newark Park,1.79,1.396,5.295,1.221,Halictidae,excavator,1.056
+IGproject0093,Lasioglossum,fulvicorne,female,1956,6,26,England,Dorset,Wimborne,,1.827,1.347,5.357,1.432,Halictidae,excavator,1.126
+IGproject0094,Lasioglossum,fulvicorne,male,1902,8,4,England,Kent,Faversham,Huntingfield,1.731,1.291,5.377,1.195,Halictidae,excavator,1.066
+IGproject0095,Lasioglossum,fulvicorne,male,1968,9,2,England,Bedfordshire,Hitchin,,1.85,1.315,5.44,1.265,Halictidae,excavator,1.141
+IGproject0096,Lasioglossum,fulvicorne,female,1956,9,26,England,Dorset,Wimborne,,1.77,1.305,5.037,1.28,Halictidae,excavator,1.096
+IGproject0097,Lasioglossum,fulvicorne,male,1998,7,28,England,Gloucestershire,Wotton-under-Edge,Newark Park,1.792,1.284,5.254,1.168,Halictidae,excavator,1.051
+IGproject0098,Lasioglossum,fulvicorne,male,1914,8,,England,Gloucestershire,Wotton-under-Edge,,1.86,1.443,5.744,1.276,Halictidae,excavator,1.149
+IGproject0099,Lasioglossum,fulvicorne,male,1899,8,20,England,Worcestershire,Malvern,,1.102,1.314,5.138,1.296,Halictidae,excavator,1.81
+IGproject0100,Lasioglossum,fulvicorne,female,1977,9,13,England,Oxfordshire,Hook Norton,,1.759,1.269,5.155,1.296,Halictidae,excavator,1.088
+IGproject0101,Lasioglossum,fulvicorne,male,1915,7,15,England,Devon,Brixham,,1.787,1.305,5.33,1.241,Halictidae,excavator,1.096
+IGproject0102,Lasioglossum,fulvicorne,male,1968,9,7,England,Bedfordshire,Whipsnade,Bison Hill,1.727,1.222,5.031,1.178,Halictidae,excavator,1.037
+IGproject0103,Lasioglossum,fulvicorne,male,1902,6,8,England,Kent,Faversham,Huntingfield,1.784,1.311,5.297,1.23,Halictidae,excavator,1.094
+IGproject0104,Lasioglossum,fulvicorne,female,1917,5,3,England,Devon,Brixham,,1.925,1.469,5.977,1.472,Halictidae,excavator,1.189
+IGproject0105,Lasioglossum,fulvicorne,male,1919,8,19,England,Worcestershire,Malvern,,1.681,1.228,5.194,1.193,Halictidae,excavator,1.057
+IGproject0106,Lasioglossum,fulvicorne,male,1919,8,19,England,Worcestershire,Malvern,,1.815,1.296,5.372,1.133,Halictidae,excavator,1.107
+IGproject0107,Lasioglossum,fulvicorne,female,2004,9,1,England,Surrey,Seale,,1.818,1.263,5.396,1.359,Halictidae,excavator,1.097
+IGproject0108,Lasioglossum,fulvicorne,female,1974,5,7,England,Oxfordshire,Oxford,Wytham,1.854,1.34,5.52,1.384,Halictidae,excavator,1.134
+IGproject0109,Lasioglossum,fulvicorne,female,1974,5,7,England,Oxfordshire,Oxford,Wytham,1.792,1.298,5.29,1.423,Halictidae,excavator,1.079
+IGproject0110,Lasioglossum,fulvicorne,female,1949,4,17,England,Oxfordshire,Cumnor,,1.757,1.252,5.331,1.372,Halictidae,excavator,1.099
+IGproject0111,Lasioglossum,fulvicorne,male,1988,8,6,England,Wiltshire,Wroughton,Clouts Wood,1.767,1.23,5.442,1.095,Halictidae,excavator,1.057
+IGproject0112,Lasioglossum,fulvicorne,male,1903,7,22,England,Dorset,Lyme Regis,,1.665,1.179,4.918,1.264,Halictidae,excavator,0.996
+IGproject0113,Lasioglossum,fulvicorne,female,1925,5,,England,Sussex,Brighton,Devil's Dyke,1.733,1.269,5.315,1.416,Halictidae,excavator,1.062
+IGproject0114,Lasioglossum,fulvicorne,male,1905,7,10,England,Kent,Faversham,,1.846,1.357,5.683,1.277,Halictidae,excavator,1.114
+IGproject0115,Lasioglossum,fulvicorne,male,1968,9,2,England,Bedfordshire,Hitchin,Pegsdon,1.77,1.301,5.621,1.263,Halictidae,excavator,1.139
+IGproject0116,Lasioglossum,fulvicorne,female,1956,9,26,England,Dorset,Wimborne,,1.801,1.347,5.375,1.401,Halictidae,excavator,1.117
+IGproject0117,Lasioglossum,fulvicorne,male,1904,8,,England,Kent,Faversham,Huntingfield,1.774,1.282,5.147,1.223,Halictidae,excavator,1.067
+IGproject0118,Lasioglossum,fulvicorne,male,1905,9,3,England,Kent,Charing,,1.783,1.276,5.555,1.242,Halictidae,excavator,1.073
+IGproject0119,Lasioglossum,fulvicorne,female,1914,8,18,England,Surrey,Gomshall,,1.814,1.305,5.416,1.505,Halictidae,excavator,1.108
+IGproject0120,Lasioglossum,fulvicorne,female,1905,9,14,England,Kent,Faversham,Huntingfield,1.967,1.366,5.646,1.514,Halictidae,excavator,1.268
+IGproject0121,Lasioglossum,fulvicorne,female,1905,9,10,England,Kent,Faversham,Huntingfield,1.909,1.286,5.475,1.356,Halictidae,excavator,1.267
+IGproject0122,Lasioglossum,fulvicorne,female,1948,8,15,England,Oxfordshire,Oxford,Hinksey,1.857,1.384,5.493,1.437,Halictidae,excavator,1.175
+IGproject0123,Lasioglossum,fulvicorne,male,1905,9,14,England,Kent,Faversham,Huntingfield,1.912,1.42,6.007,1.295,Halictidae,excavator,1.186
+IGproject0124,Lasioglossum,fulvicorne,male,1915,7,15,England,Devon,Brixham,,1.811,1.309,5.357,1.258,Halictidae,excavator,1.111
+IGproject0125,Nomada,ruficornis,male,1904,5,18,England,Greater London,London,Hampstead,2.075,1.294,6.697,1.795,Apidae,kleptoparasite,1.367
+IGproject0126,Nomada,ruficornis,female,1915,5,7,England,Surrey,Cobham,,2.761,1.909,9.264,2.617,Apidae,kleptoparasite,1.722
+IGproject0127,Nomada,ruficornis,female,1915,4,20,England,Devon,Dartmoor,East Dartmoor,2.838,1.949,8.544,2.479,Apidae,kleptoparasite,1.819
+IGproject0128,Nomada,ruficornis,male,1992,4,25,England,Devon,,,2.615,1.899,8.209,1.936,Apidae,kleptoparasite,1.745
+IGproject0129,Nomada,ruficornis,female,1927,5,1,England,Cheshire,Wilmslow,Bollin Valley,2.353,1.59,7.263,2.013,Apidae,kleptoparasite,1.527
+IGproject0130,Nomada,ruficornis,female,1917,5,13,England,Surrey,Cobham,,2.712,1.773,8.264,2.208,Apidae,kleptoparasite,1.739
+IGproject0131,Nomada,ruficornis,male,1953,4,24,England,Devon,Newton Abbot,Teigngrace,2.685,1.869,8.35,2.278,Apidae,kleptoparasite,1.801
+IGproject0132,Nomada,ruficornis,male,1904,5,18,England,Greater London,London,Hampstead,2.297,1.45,7.115,1.823,Apidae,kleptoparasite,1.496
+IGproject0133,Nomada,ruficornis,female,1953,4,24,England,Devon,Newton Abbot,Teigngrace,2.767,1.835,8.638,2.263,Apidae,kleptoparasite,1.742
+IGproject0134,Nomada,ruficornis,male,1904,5,18,England,Greater London,London,Hampstead,2.56,1.817,8.269,2.079,Apidae,kleptoparasite,1.681
+IGproject0135,Nomada,ruficornis,male,1901,5,19,England,Gloucestershire,Horsley,,2.816,1.898,9.399,2.743,Apidae,kleptoparasite,1.727
+IGproject0136,Nomada,ruficornis,female,1902,5,24,England,Hampshire,,New Forest,2.771,1.9,8.399,2.295,Apidae,kleptoparasite,1.731
+IGproject0137,Nomada,ruficornis,male,1929,4,27,England,Dorset,Wimborne,Badbury Rings,2.186,1.533,6.937,1.807,Apidae,kleptoparasite,1.484
+IGproject0138,Nomada,ruficornis,male,1936,5,27,England,Berkshire,Windsor,,1.942,1.182,6.203,1.624,Apidae,kleptoparasite,1.252
+IGproject0139,Nomada,ruficornis,male,1933,5,,England,Oxfordshire,Tubney,,2.108,1.368,6.666,1.742,Apidae,kleptoparasite,1.33
+IGproject0140,Nomada,ruficornis,male,1904,5,15,England,Greater London,Northwood,,1.811,1.065,5.844,1.579,Apidae,kleptoparasite,1.224
+IGproject0141,Nomada,ruficornis,female,1901,7,14,Wales,Gwynedd,Criccieth,,2.832,1.883,8.31,2.469,Apidae,kleptoparasite,1.807
+IGproject0142,Nomada,ruficornis,male,1917,5,31,England,Devon,Brixham,,2.361,1.502,7.182,1.926,Apidae,kleptoparasite,1.542
+IGproject0143,Nomada,ruficornis,male,1900,5,1,England,Dorset,Swanage,,2.387,1.598,7.565,2.022,Apidae,kleptoparasite,1.543
+IGproject0144,Nomada,ruficornis,male,1991,,,England,Northamptonshire,Oundle,Ashton Pond,2.739,1.855,8.332,2.213,Apidae,kleptoparasite,1.78
+IGproject0145,Nomada,ruficornis,female,1911,5,19,England,Oxfordshire,Oxford,,2.593,1.85,8.871,2.312,Apidae,kleptoparasite,1.679
+IGproject0146,Nomada,ruficornis,female,2003,6,13,England,Oxfordshire,Stratton Audley,,2.73,1.82,8.651,2.27,Apidae,kleptoparasite,1.709
+IGproject0147,Nomada,ruficornis,male,1990,5,16,England,Cornwall,Camborne,,2.586,1.778,8.24,2.172,Apidae,kleptoparasite,1.732
+IGproject0148,Nomada,ruficornis,female,1982,5,14,England,Devon,Tavistock,,2.437,1.572,7.559,2.01,Apidae,kleptoparasite,1.563
+IGproject0149,Nomada,ruficornis,male,1976,4,21,England,Devon,Lifton,,2.497,1.746,8.1,2.045,Apidae,kleptoparasite,1.595
+IGproject0150,Nomada,ruficornis,female,1989,5,21,England,Wiltshire,Wroughton,Clouts Wood,2.672,1.802,7.999,2.345,Apidae,kleptoparasite,1.746
+IGproject0151,Nomada,ruficornis,male,1989,5,7,England,Wiltshire,Swindon,Coate Water Country Park,2.576,1.675,8.02,2.041,Apidae,kleptoparasite,1.682
+IGproject0152,Nomada,ruficornis,male,1941,6,4,England,Berkshire,Padworth,,2.648,1.709,8.311,2.233,Apidae,kleptoparasite,1.735
+IGproject0153,Nomada,ruficornis,female,1911,5,13,England,West Yorkshire,Keighley,,2.774,1.902,8.397,2.274,Apidae,kleptoparasite,1.81
+IGproject0154,Nomada,ruficornis,male,1917,5,5,England,Surrey,Tadworth,Box Hill,2.653,1.911,8.324,2.238,Apidae,kleptoparasite,1.773
+IGproject0155,Hylaeus,hyalinatus,male,1904,7,,England,Dorset,Lyme Regis,,1.674,1.226,4.253,1.008,Colletidae,cavity nester,1.103
+IGproject0156,Hylaeus,hyalinatus,male,1904,7,,England,Dorset,Lyme Regis,,1.608,1.116,4.138,0.941,Colletidae,cavity nester,1.078
+IGproject0157,Hylaeus,hyalinatus,male,1972,7,11,England,Cornwall,East Cornwall,,1.624,1.253,4.194,1.036,Colletidae,cavity nester,1.051
+IGproject0158,Hylaeus,hyalinatus,female,1952,8,14,England,Oxfordshire,Tubney,,1.675,1.279,4.507,1.071,Colletidae,cavity nester,1.127
+IGproject0159,Hylaeus,hyalinatus,female,1949,6,30,England,Devon,Plymouth,Plymouth Hoe,1.718,1.334,4.751,1.111,Colletidae,cavity nester,1.128
+IGproject0160,Hylaeus,hyalinatus,female,1939,7,1,England,Dorset,Swanage,South Haven Point,1.55,1.198,4.142,1.018,Colletidae,cavity nester,1.023
+IGproject0161,Hylaeus,hyalinatus,female,1934,6,16,England,Dorset,Swanage,South Haven Point,1.621,1.324,4.492,1.074,Colletidae,cavity nester,1.077
+IGproject0162,Hylaeus,hyalinatus,female,1974,7,1,England,Devon,Saunton,,1.689,1.295,4.37,1.031,Colletidae,cavity nester,1.116
+IGproject0163,Hylaeus,hyalinatus,female,1928,7,17,England,Dorset,Portland,,1.582,1.199,4.345,1.024,Colletidae,cavity nester,1.073
+IGproject0164,Hylaeus,hyalinatus,female,1908,8,14,England,East Sussex,Hellingly,,1.53,1.172,4.18,1.027,Colletidae,cavity nester,1.046
+IGproject0165,Hylaeus,hyalinatus,female,2002,7,28,England,Oxfordshire,Oxford,Shotover,1.758,1.351,4.848,1.085,Colletidae,cavity nester,1.151
+IGproject0166,Hylaeus,hyalinatus,male,1992,6,19,England,Oxfordshire,,Hitchcopse Pit,1.49,1.137,3.945,0.945,Colletidae,cavity nester,0.999
+IGproject0167,Hylaeus,hyalinatus,female,1904,7,9,England,Kent,Walmer,,1.596,1.204,4.398,1.035,Colletidae,cavity nester,1.026
+IGproject0168,Hylaeus,hyalinatus,female,1898,7,,Wales,Gwynedd,Criccieth,,1.648,1.27,4.516,1.004,Colletidae,cavity nester,1.087
+IGproject0169,Hylaeus,hyalinatus,female,1904,7,8,England,Dorset,Lyme Regis,,1.743,1.403,4.714,1.135,Colletidae,cavity nester,1.162
+IGproject0170,Hylaeus,hyalinatus,female,1984,7,13,England,Kent,,Lydd Ranges,1.627,1.252,4.49,1.076,Colletidae,cavity nester,1.078
+IGproject0171,Anthidium,manicatum,male,1901,7,,England,Cornwall,Newquay,,4.546,4.087,11.732,3.824,Megachilidae,cavity nester,2.574
+IGproject0172,Anthidium,manicatum,female,1898,7,,Wales,Gwynedd,Criccieth,,4.115,3.401,9.179,2.756,Megachilidae,cavity nester,2.497
+IGproject0173,Anthidium,manicatum,male,1948,8,5,England,Oxfordshire,Farmoor,,4.483,3.898,11.304,3.562,Megachilidae,cavity nester,2.613
+IGproject0174,Anthidium,manicatum,female,1908,6,27,England,Merseyside,Wallasey,,4.038,3.499,9.087,2.778,Megachilidae,cavity nester,2.454
+IGproject0175,Anthidium,manicatum,male,1914,7,13,England,Surrey,Woking,,4.659,4.139,12.203,3.699,Megachilidae,cavity nester,2.556
+IGproject0176,Anthidium,manicatum,female,1914,7,13,England,Surrey,Woking,,4.093,3.327,8.853,2.505,Megachilidae,cavity nester,2.501
+IGproject0177,Anthidium,manicatum,male,1953,7,27,England,Devon,Torquay,,4.145,3.473,9.686,2.942,Megachilidae,cavity nester,2.33
+IGproject0178,Anthidium,manicatum,female,1915,7,15,England,Devon,Brixham,,4.012,3.55,9.019,2.673,Megachilidae,cavity nester,2.495
+IGproject0179,Anthidium,manicatum,male,1961,7,17,England,Cheshire,Hoylake,,4.422,3.889,11.114,3.413,Megachilidae,cavity nester,2.477
+IGproject0180,Anthidium,manicatum,female,1926,7,,England,Devon,Newton Abbot,,4.138,3.526,9.218,2.795,Megachilidae,cavity nester,2.52
+IGproject0181,Anthidium,manicatum,male,1902,7,,England,Leicestershire,Market Bosworth,,4.527,3.952,10.985,3.58,Megachilidae,cavity nester,2.519
+IGproject0182,Anthidium,manicatum,female,1906,7,16,England,Hampshire,,New Forest,4.1,3.475,9.287,2.838,Megachilidae,cavity nester,2.489
+IGproject0183,Anthidium,manicatum,male,1897,7,18,England,Oxfordshire,Oxford,Shotover,4.311,3.517,10.236,3.559,Megachilidae,cavity nester,2.46
+IGproject0184,Anthidium,manicatum,female,1914,6,17,England,Surrey,Woking,,4.368,3.712,10.076,3.047,Megachilidae,cavity nester,2.692
+IGproject0185,Anthidium,manicatum,male,1897,7,,Wales,Gwynedd,Criccieth,,4.207,3.779,10.59,3.314,Megachilidae,cavity nester,2.393
+IGproject0186,Anthidium,manicatum,female,1989,6,15,England,Cornwall,Saint Austell,Old Inn Cottage,4.029,3.581,8.944,2.712,Megachilidae,cavity nester,2.335
+IGproject0187,Anthidium,manicatum,male,1900,7,16,Wales,Gwynedd,Criccieth,,4.199,3.677,10.022,3.029,Megachilidae,cavity nester,2.349
+IGproject0188,Anthidium,manicatum,female,1954,7,19,England,Devon,Torquay,Manor Garden,3.931,3.258,8.792,2.688,Megachilidae,cavity nester,2.352
+IGproject0189,Anthidium,manicatum,male,1898,7,,Wales,Gwynedd,Criccieth,,4.505,3.812,11.282,3.613,Megachilidae,cavity nester,2.612
+IGproject0190,Anthidium,manicatum,female,1936,8,25,England,Oxfordshire,Oxford,"74 Islip Road, Sunnymead",4.165,3.683,9.299,2.826,Megachilidae,cavity nester,2.533
+IGproject0191,Anthidium,manicatum,male,1897,7,18,England,Oxfordshire,Oxford,Shotover,4.47,3.968,11.554,3.698,Megachilidae,cavity nester,2.59
+IGproject0192,Anthidium,manicatum,female,1998,7,,Wales,Gwynedd,Criccieth,,4.101,3.605,8.931,2.825,Megachilidae,cavity nester,2.477
+IGproject0193,Anthidium,manicatum,male,1908,7,15,England,Oxfordshire,Oxford,Lye Valley,4.248,3.75,10.682,3.254,Megachilidae,cavity nester,2.4
+IGproject0194,Anthidium,manicatum,female,1948,8,22,England,Oxfordshire,Oxford,Hinksey,4.018,3.586,8.963,2.791,Megachilidae,cavity nester,2.482
+IGproject0195,Anthidium,manicatum,male,1936,7,26,England,Oxfordshire,Oxford,Sunnymead,4.2,3.606,10.468,3.131,Megachilidae,cavity nester,2.37
+IGproject0196,Anthidium,manicatum,female,1914,6,20,England,Surrey,Woking,,4.074,3.293,8.741,2.673,Megachilidae,cavity nester,2.444
+IGproject0197,Anthidium,manicatum,male,1897,7,18,England,Oxfordshire,Oxford,Shotover,4.487,3.858,11.692,3.59,Megachilidae,cavity nester,2.519
+IGproject0198,Anthidium,manicatum,female,1914,6,20,England,Surrey,Woking,,3.818,3.185,8.37,2.61,Megachilidae,cavity nester,2.291
+IGproject0199,Anthidium,manicatum,male,1897,7,18,England,Oxfordshire,Oxford,Shotover,4.201,3.695,10.591,3.412,Megachilidae,cavity nester,2.413
+IGproject0200,Anthidium,manicatum,female,1906,7,25,England,Hampshire,,New Forest,4.187,3.488,9.191,2.809,Megachilidae,cavity nester,2.486
+IGproject0201,Sphecodes,geoffrellus,female,1992,6,19,England,Oxfordshire,,Hitchcopse Pit,1.579,1.059,3.859,1.007,Halictidae,kleptoparasite,1.086
+IGproject0202,Sphecodes,geoffrellus,male,1992,7,18,England,Somerset,Weston-super-Mare,Sand Point,1.674,1.144,4.584,1.081,Halictidae,kleptoparasite,1.107
+IGproject0203,Sphecodes,geoffrellus,female,1948,7,2,England,Devon,Lydford,,1.677,1.114,4.447,1.169,Halictidae,kleptoparasite,1.083
+IGproject0204,Sphecodes,geoffrellus,female,1952,8,2,England,Northamptonshire,Aynho,,1.392,0.851,3.927,0.944,Halictidae,kleptoparasite,0.917
+IGproject0205,Sphecodes,geoffrellus,female,1901,7,,England,Cornwall,Newquay,,1.425,0.908,3.886,0.9,Halictidae,kleptoparasite,0.932
+IGproject0206,Sphecodes,geoffrellus,male,1919,8,19,England,Worcestershire,Malvern,,1.465,1.072,4.186,0.937,Halictidae,kleptoparasite,0.971
+IGproject0207,Sphecodes,geoffrellus,male,1900,8,,Wales,Gwynedd,Criccieth,,1.528,1.021,4.246,0.952,Halictidae,kleptoparasite,1.002
+IGproject0208,Sphecodes,geoffrellus,female,1978,6,14,England,Oxfordshire,Abingdon,Dry Sandford Pit,1.625,1.022,4.293,1.03,Halictidae,kleptoparasite,1.005
+IGproject0209,Sphecodes,geoffrellus,male,1904,8,24,England,Surrey,Reigate,,1.459,0.961,3.787,0.942,Halictidae,kleptoparasite,0.96
+IGproject0210,Sphecodes,geoffrellus,female,1992,6,19,England,Oxfordshire,,Hitchcopse Pit,1.782,1.17,4.724,1.148,Halictidae,kleptoparasite,1.182
+IGproject0211,Colletes,succintus,female,1940,8,4,England,Devon,Meavy,,3.424,2.71,8.684,2.339,Colletidae,excavator,
+IGproject0212,Colletes,succintus,male,1937,8,2,England,Dorset,Swanage,,2.965,2.34,7.114,1.932,Colletidae,excavator,
+IGproject0213,Colletes,succintus,male,1953,8,10,England,Devon,Dawlish Warren,,3.128,2.433,7.125,1.929,Colletidae,excavator,
+IGproject0214,Colletes,succintus,male,1906,8,6,England,Surrey,Woking,,2.795,2.168,6.334,1.658,Colletidae,excavator,
+IGproject0215,Colletes,succintus,male,1953,8,12,England,Devon,Bovey Tracey,Bovey Heathfield,3.238,2.605,7.729,2.017,Colletidae,excavator,
+IGproject0216,Colletes,succintus,female,1927,8,25,England,Dorset,Warmwell,Warmwell Heath,3.178,2.599,7.95,2.05,Colletidae,excavator,
+IGproject0217,Colletes,succintus,male,1926,8,25,England,Dorset,Warmwell,Warmwell Heath,2.851,2.184,6.73,1.639,Colletidae,excavator,
+IGproject0218,Colletes,succintus,male,1969,9,4,England,Devon,Brixham,,3.051,2.401,7.343,1.936,Colletidae,excavator,
+IGproject0219,Colletes,succintus,female,1919,8,,England,Devon,South Brent,,3.387,2.804,8.543,2.282,Colletidae,excavator,
+IGproject0220,Colletes,succintus,male,1913,8,5,England,Devon,Bovey Tracey,,3.255,2.461,7.746,2.115,Colletidae,excavator,
+IGproject0221,Colletes,succintus,female,1913,8,13,England,Devon,Bovey Tracey,,3.323,2.732,8.452,2.15,Colletidae,excavator,
+IGproject0222,Colletes,succintus,male,1899,7,,Wales,Conwy,Abergele,,3.23,2.497,7.661,1.988,Colletidae,excavator,
+IGproject0223,Colletes,succintus,male,1953,8,10,England,Devon,Dawlish Warren,,3.071,2.311,7.295,1.9,Colletidae,excavator,
+IGproject0224,Colletes,succintus,female,1927,8,15,England,Dorset,Warmwell,,3.308,2.608,8.184,2.137,Colletidae,excavator,
+IGproject0225,Colletes,succintus,male,1968,8,3,England,Cornwall,Millook,,3.113,2.501,6.938,1.89,Colletidae,excavator,
+IGproject0226,Colletes,succintus,female,1900,,,England,Gloucestershire,Horsley,,3.256,2.543,8.071,2.109,Colletidae,excavator,
+IGproject0227,Colletes,succintus,female,1973,9,15,Wales,Pembrokeshire,St David's,St David's Head,3.708,3.091,9.292,2.429,Colletidae,excavator,
+IGproject0228,Colletes,succintus,male,1927,8,15,England,Dorset,Warmwell,Warmwell Heath,2.734,2.054,6.628,1.687,Colletidae,excavator,
+IGproject0229,Colletes,succintus,male,1934,8,17,England,Dorset,Swanage,South Haven Point,2.965,2.096,6.8,1.791,Colletidae,excavator,
+IGproject0230,Colletes,succintus,male,1934,8,17,England,Dorset,Swanage,South Haven Point,3.024,2.284,7.074,1.933,Colletidae,excavator,
+IGproject0231,Colletes,succintus,male,1933,7,24,England,Dorset,Swanage,"South Haven, S. Boundary",3.086,2.342,7.233,1.901,Colletidae,excavator,
+IGproject0232,Colletes,succintus,female,1875,8,,Wales,Gwynedd,Barmouth,,3.501,2.924,8.631,2.166,Colletidae,excavator,
+IGproject0233,Colletes,succintus,male,1905,7,31,Scotland,Narinshire,Nairn,,3.064,2.142,7.553,1.848,Colletidae,excavator,
+IGproject0234,Colletes,succintus,female,1901,,,England,Hampshire,Lyndhurst,,3.448,3.006,8.373,2.269,Colletidae,excavator,
+IGproject0235,Colletes,succintus,female,1953,8,18,England,Devon,Bovey Tracey,Bovey Heathfield,3.462,2.804,8.427,2.283,Colletidae,excavator,
+IGproject0236,Colletes,succintus,male,1905,8,4,England,Hampshire,,New Forest,2.642,1.887,6.178,1.483,Colletidae,excavator,
+IGproject0237,Colletes,succintus,female,1915,9,3,England,Devon,Bovey Tracey,,3.458,2.773,8.436,2.207,Colletidae,excavator,
+IGproject0238,Colletes,succintus,female,1892,9,,Scotland,Moray,Forres,,3.279,2.638,8.31,2.289,Colletidae,excavator,
+IGproject0239,Colletes,succintus,male,1905,8,14,England,Hampshire,,New Forest,2.952,2.232,7.011,1.798,Colletidae,excavator,
+IGproject0240,Colletes,succintus,male,1909,8,13,England,Hampshire,,New Forest,2.74,2.11,6.235,1.608,Colletidae,excavator,
+IGproject0241,Sphecodes,geoffrellus,male,2011,7,30,England,Oxfordshire,Oxford,Shotover,1.544,1.041,4.223,0.965,Halictidae,kleptoparasite,
+IGproject0242,Sphecodes,geoffrellus,female,1955,8,1,England,Oxfordshire,Abingdon,Cothill,1.545,1.123,4.219,1.053,Halictidae,kleptoparasite,
+IGproject0243,Sphecodes,geoffrellus,male,1989,7,3,England,Wiltshire,Wroughton,Clouts Wood,1.694,1.146,4.543,1.126,Halictidae,kleptoparasite,
+IGproject0244,Sphecodes,geoffrellus,female,1960,7,20,England,Devon,Dawlish,,1.677,1.059,4.487,1.126,Halictidae,kleptoparasite,
+IGproject0245,Sphecodes,geoffrellus,female,1990,8,29,England,Wiltshire,Swindon,Coate Water Country Park,1.379,0.931,3.693,0.906,Halictidae,kleptoparasite,
+IGproject0246,Sphecodes,geoffrellus,female,1901,7,,England,Cornwall,Newquay,,1.438,0.919,3.889,1.009,Halictidae,kleptoparasite,
+IGproject0247,Sphecodes,geoffrellus,female,1905,7,23,England,Hampshire,,New Forest,1.533,1.021,4.136,1.022,Halictidae,kleptoparasite,
+IGproject0248,Sphecodes,geoffrellus,male,1983,8,6,England,Warwickshie,Coventry,Coombe,1.461,0.954,3.858,0.938,Halictidae,kleptoparasite,
+IGproject0249,Sphecodes,geoffrellus,male,1953,8,12,England,Devon,Bovey Tracey,Bovey Heathfield,1.514,1.083,4.215,0.958,Halictidae,kleptoparasite,
+IGproject0250,Sphecodes,geoffrellus,female,1902,9,6,England,Kent,Faversham,Huntingfield,1.667,1.014,4.534,1.114,Halictidae,kleptoparasite,
+IGproject0251,Andrena,chrysosceles,female,1915,6,15,England,Devon,Brixham,,2.978,1.829,8.135,2.275,Andrenidae,excavator,
+IGproject0252,Andrena,chrysosceles,male,1912,5,,England,Hampshire,,New Forest,2.513,1.324,6.822,1.678,Andrenidae,excavator,
+IGproject0253,Andrena,chrysosceles,male,1898,6,2,England,Buckinghamshire,Great Missenden,,2.61,1.531,7.013,1.859,Andrenidae,excavator,
+IGproject0254,Andrena,chrysosceles,female,1902,8,,England,Berkshire,Crowthorne,Wellington College,2.38,1.569,6.624,2.332,Andrenidae,excavator,
+IGproject0255,Andrena,chrysosceles,female,1949,5,14,England,Devon,Woodbury,,2.94,1.864,8.134,2.284,Andrenidae,excavator,
+IGproject0256,Andrena,chrysosceles,male,1949,4,18,England,Oxfordshire,Chastleton,,2.484,1.515,6.265,1.686,Andrenidae,excavator,
+IGproject0257,Andrena,chrysosceles,male,1916,4,29,England,Devon,Newton Abbot,,2.403,1.411,6.552,1.764,Andrenidae,excavator,
+IGproject0258,Andrena,chrysosceles,female,1913,6,10,England,Dorset,Swanage,,2.817,1.778,7.545,2.191,Andrenidae,excavator,
+IGproject0259,Andrena,chrysosceles,female,1913,5,17,England,Devon,Bovey Tracey,,2.762,1.761,7.625,1.966,Andrenidae,excavator,
+IGproject0260,Andrena,chrysosceles,female,1915,5,20,England,Gloucestershire,Wotton-under-Edge,,3.004,1.897,8.482,2.249,Andrenidae,excavator,
+IGproject0261,Andrena,chrysosceles,female,1977,6,22,England,Hampshire,Odiham,,2.832,1.705,7.739,2.16,Andrenidae,excavator,
+IGproject0262,Andrena,chrysosceles,male,1929,5,3,England,Greater London,Wimbledon,,2.513,1.41,6.672,1.729,Andrenidae,excavator,
+IGproject0263,Andrena,chrysosceles,female,1929,6,12,England,Oxfordshire,Oxford,Waterperry Wood,2.649,1.603,7.3,2.058,Andrenidae,excavator,
+IGproject0264,Andrena,chrysosceles,male,1968,6,12,England,Oxfordshire,Oxford,Waterperry Wood,2.337,1.31,6.071,1.632,Andrenidae,excavator,
+IGproject0265,Andrena,chrysosceles,female,1978,5,7,England,Oxfordshire,Oxford,Hinksey,2.931,1.817,7.893,2.268,Andrenidae,excavator,
+IGproject0266,Andrena,chrysosceles,male,1980,5,1,England,Buckinghamshire,Gerrards Cross,,2.913,1.706,7.457,1.987,Andrenidae,excavator,
+IGproject0267,Andrena,chrysosceles,male,1917,4,22,England,Devon,Newton Abbot,,2.503,1.454,6.777,1.746,Andrenidae,excavator,
+IGproject0268,Andrena,chrysosceles,male,1983,5,17,England,Buckinghamshire,Hedgerley,,2.478,1.373,6.362,1.728,Andrenidae,excavator,
+IGproject0269,Andrena,chrysosceles,female,1984,5,9,England,Greater London,London,Devonshire Road,2.774,1.836,7.639,2.123,Andrenidae,excavator,
+IGproject0270,Andrena,chrysosceles,female,1990,5,29,England,Wiltshire,Swindon,Coate Water Country Park,3.044,1.945,8.306,2.321,Andrenidae,excavator,
+IGproject0271,Andrena,chrysosceles,female,1907,6,22,England,Hampshire,,New Forest,3.088,2.007,8.587,2.301,Andrenidae,excavator,
+IGproject0272,Andrena,chrysosceles,female,1904,5,22,England,Hampshire,,New Forest,2.768,1.659,7.557,2.135,Andrenidae,excavator,
+IGproject0273,Andrena,chrysosceles,male,1906,5,19,Wales,Bridgend,Porthcawl,,2.556,1.436,6.687,1.776,Andrenidae,excavator,
+IGproject0274,Andrena,chrysosceles,male,1935,5,3,England,Cambridgeshire,Hardwick,Hardwick Wood,2.782,1.636,7.377,1.953,Andrenidae,excavator,
+IGproject0275,Andrena,chrysosceles,male,1996,4,27,England,Northamptonshire,Marston St Lawrence,,2.534,1.397,6.95,1.814,Andrenidae,excavator,
+IGproject0276,Andrena,chrysosceles,male,1996,4,27,England,Northamptonshire,Marston St Lawrence,,2.467,1.33,6.535,1.719,Andrenidae,excavator,
+IGproject0277,Andrena,chrysosceles,female,1984,5,9,England,Greater London,London,Devonshire Road,3.013,1.882,8.09,2.27,Andrenidae,excavator,
+IGproject0278,Andrena,chrysosceles,male,1996,4,27,England,Northamptonshire,Brackley,,2.681,1.46,7.05,1.948,Andrenidae,excavator,
+IGproject0279,Andrena,chrysosceles,female,1990,5,29,England,Wiltshire,Swindon,Coate Water Country Park,3.097,1.952,8.394,2.26,Andrenidae,excavator,
+IGproject0280,Andrena,chrysosceles,female,1990,5,11,England,Oxfordshire,North Leigh,North Leigh Common,2.377,1.552,7.16,1.958,Andrenidae,excavator,
+IGproject0281,Hylaeus,communis,female,1950,4,2,England,Devon,Topsham,,1.701,1.333,4.966,1.054,Colletidae,cavity nester,
+IGproject0282,Hylaeus,communis,male,1948,7,17,England,Dorset,Witchampton,,1.495,1.046,4.214,0.894,Colletidae,cavity nester,
+IGproject0283,Hylaeus,communis,female,1952,8,22,England,Devon,Dawlish Warren,,1.538,1.116,4.121,0.933,Colletidae,cavity nester,
+IGproject0284,Hylaeus,communis,female,1949,7,9,England,Devon,Exeter,,1.65,1.298,4.978,1.051,Colletidae,cavity nester,
+IGproject0285,Hylaeus,communis,male,1897,7,8,England,Berkshire,Sulhamstead,,1.473,1.088,3.947,0.965,Colletidae,cavity nester,
+IGproject0286,Hylaeus,communis,male,1904,7,,England,Dorset,Lyme Regis,,1.758,1.44,4.82,1.046,Colletidae,cavity nester,
+IGproject0287,Hylaeus,communis,female,1914,6,18,England,Cambridgeshire,Wicken,,1.604,1.277,4.932,1.097,Colletidae,cavity nester,
+IGproject0288,Hylaeus,communis,male,1903,7,23,England,Dorset,Lyme Regis,,1.423,0.99,3.996,0.809,Colletidae,cavity nester,
+IGproject0289,Hylaeus,communis,male,1953,8,12,England,Devon,Bovey Tracey,Bovey Heathfield,1.489,1.108,4.254,0.924,Colletidae,cavity nester,
+IGproject0290,Hylaeus,communis,male,1948,7,17,England,Dorset,Witchampton,,1.561,1.221,4.356,0.984,Colletidae,cavity nester,
+IGproject0291,Hylaeus,communis,male,1976,6,26,England,Devon,Yelverton,Five Oaks,1.566,1.202,4.384,0.928,Colletidae,cavity nester,
+IGproject0292,Hylaeus,communis,male,1977,8,11,England,Devon,Hawkchurch,,1.444,1.083,4.091,0.9,Colletidae,cavity nester,
+IGproject0293,Hylaeus,communis,male,1982,7,5,England,Devon,Tavistock,Whitchurch Down,1.519,1.158,4.406,0.979,Colletidae,cavity nester,
+IGproject0294,Hylaeus,communis,male,1963,6,22,England,Dorset,Weymouth,,1.565,1.21,4.497,0.972,Colletidae,cavity nester,
+IGproject0295,Hylaeus,communis,male,1951,8,14,England,Gloucestershire,Chipping Campden,,1.413,1.057,4.079,0.886,Colletidae,cavity nester,
+IGproject0296,Hylaeus,communis,female,1974,6,,England,Devon,Saunton,,1.609,1.219,4.725,1.021,Colletidae,cavity nester,
+IGproject0297,Hylaeus,communis,female,1977,7,30,England,Devon,,South Devon - Buckland Down,1.649,1.263,4.679,1.03,Colletidae,cavity nester,
+IGproject0298,Hylaeus,communis,male,1974,6,,England,Devon,Saunton,,1.551,1.116,4.397,0.956,Colletidae,cavity nester,
+IGproject0299,Hylaeus,communis,female,1906,7,21,England,Kent,Faversham,,1.584,1.263,4.714,0.948,Colletidae,cavity nester,
+IGproject0300,Hylaeus,communis,female,1954,8,3,England,Dorset,Warmwell,Warmwell Heath,1.708,1.315,5.013,1.076,Colletidae,cavity nester,
+IGproject0301,Hylaeus,communis,female,1902,8,18,England,Kent,Faversham,Huntingfield,1.544,1.202,4.572,0.97,Colletidae,cavity nester,
+IGproject0302,Hylaeus,communis,female,1953,8,12,England,Devon,Bovey Tracey,Bovey Heathfield,1.76,1.368,5.11,1.104,Colletidae,cavity nester,
+IGproject0303,Hylaeus,communis,male,1909,7,12,England,Hampshire,,New Forest,1.475,0.998,3.977,0.909,Colletidae,cavity nester,
+IGproject0304,Hylaeus,communis,female,1974,7,9,England,Devon,Saunton,,1.482,1.124,4.484,0.923,Colletidae,cavity nester,
+IGproject0305,Hylaeus,communis,male,1902,8,18,England,Kent,Faversham,Huntingfield,1.506,1.069,4.219,0.878,Colletidae,cavity nester,
+IGproject0306,Hylaeus,communis,female,1978,7,16,England,Cornwall,North Petherwin,,1.676,1.301,4.879,1.021,Colletidae,cavity nester,
+IGproject0307,Hylaeus,communis,male,1986,7,15,England,Kent,Higham,,1.437,1.11,4.096,0.903,Colletidae,cavity nester,
+IGproject0308,Hylaeus,communis,female,1909,7,15,England,Hampshire,,New Forest,1.528,1.188,4.634,0.97,Colletidae,cavity nester,
+IGproject0309,Hylaeus,communis,female,1909,7,13,England,Hampshire,,New Forest,1.681,1.33,5.002,1.047,Colletidae,cavity nester,
+IGproject0310,Hylaeus,communis,female,1903,7,23,England,Dorset,Lyme Regis,,1.626,1.29,4.753,1.011,Colletidae,cavity nester,
+IGproject0311,Nomada,flava,female,1947,5,11,England,Devon,Sheepstor,,2.576,1.767,8.392,2.263,Apidae,kleptoparasite,
+IGproject0312,Nomada,flava,female,1949,5,1,England,Devon,Sheepstor,,2.416,1.704,7.891,2.08,Apidae,kleptoparasite,
+IGproject0313,Nomada,flava,female,1915,5,17,England,Gloucestershire,Wotton-under-Edge,,2.929,1.995,9.868,2.781,Apidae,kleptoparasite,
+IGproject0314,Nomada,flava,female,1980,5,13,England,Devon,,Fernworthy Reservoir,2.56,1.829,8.387,2.348,Apidae,kleptoparasite,
+IGproject0315,Nomada,flava,male,1977,5,24,England,Devon,Newton Abbot,Holne Wood,2.246,1.444,7.386,2.008,Apidae,kleptoparasite,
+IGproject0316,Nomada,flava,male,1961,5,13,England,Devon,Bovey Tracey,Bovey Heathfield,1.919,1.141,6.348,1.59,Apidae,kleptoparasite,
+IGproject0317,Nomada,flava,female,1916,5,,England,Devon,Paignton,,2.73,1.873,9.219,2.565,Apidae,kleptoparasite,
+IGproject0318,Nomada,flava,female,1921,4,30,England,Devon,Newton Abbot,,2.24,1.438,7.468,2.083,Apidae,kleptoparasite,
+IGproject0319,Nomada,flava,female,1897,5,,Wales,Monmouthshire,Raglan,,2.884,2.03,9.332,2.411,Apidae,kleptoparasite,
+IGproject0320,Nomada,flava,female,1982,4,15,England,Devon,Clapham,Haldon Forest,2.536,1.872,8.508,2.35,Apidae,kleptoparasite,
+IGproject0321,Nomada,flava,female,1946,5,4,England,Devon,Plymouth,"Dewerstone Forest, Near Shaugh Prior",2.399,1.631,7.924,2.32,Apidae,kleptoparasite,
+IGproject0322,Nomada,flava,male,1916,5,,England,Devon,Paignton,,2.404,1.567,7.621,2.111,Apidae,kleptoparasite,
+IGproject0323,Nomada,flava,female,1955,5,22,England,Devon,Torquay,Coast Path,2.82,1.986,9.609,2.728,Apidae,kleptoparasite,
+IGproject0324,Nomada,flava,male,1955,5,29,England,Devon,Bovey Tracey,Bovey Heathfield,2.626,1.861,8.622,2.269,Apidae,kleptoparasite,
+IGproject0325,Nomada,flava,female,1950,5,6,England,Devon,Exeter,Exwick,2.458,1.628,8.068,2.412,Apidae,kleptoparasite,
+IGproject0326,Nomada,flava,female,1950,5,6,England,Devon,Exeter,Exwick,2.289,1.407,7.209,1.881,Apidae,kleptoparasite,
+IGproject0327,Nomada,flava,female,1952,5,10,England,Devon,Newton Abbot,Bradley Woods,2.128,1.313,6.967,1.958,Apidae,kleptoparasite,
+IGproject0328,Nomada,flava,male,1992,5,24,England,Wiltshire,Swindon,Coate Water Country Park,2.468,1.562,7.929,2.141,Apidae,kleptoparasite,
+IGproject0329,Nomada,flava,female,1915,5,7,England,Surrey,Cobham,,2.324,1.569,7.69,2.16,Apidae,kleptoparasite,
+IGproject0330,Nomada,flava,female,1973,6,3,England,Northamptonshire,,Salcey Forest,2.434,1.606,8.017,2.229,Apidae,kleptoparasite,
+IGproject0331,Nomada,flava,male,1948,5,10,England,Devon,Barnstaple,,2.814,1.959,9.039,2.373,Apidae,kleptoparasite,
+IGproject0332,Nomada,flava,male,1949,5,7,England,Devon,Chudleigh,,2.417,1.54,7.725,2.157,Apidae,kleptoparasite,
+IGproject0333,Nomada,flava,male,1950,5,6,England,Devon,Exeter,Exwick,2.891,2.015,9.235,2.518,Apidae,kleptoparasite,
+IGproject0334,Nomada,flava,female,1916,5,,England,Devon,Paignton,,2.66,1.834,9.054,2.589,Apidae,kleptoparasite,
+IGproject0335,Nomada,flava,male,1972,5,14,England,Devon,Lydford,High Down,2.667,1.955,8.611,2.353,Apidae,kleptoparasite,
+IGproject0336,Nomada,flava,male,1949,5,14,England,Devon,Woodbury,,2.441,1.486,7.536,2.051,Apidae,kleptoparasite,
+IGproject0337,Nomada,flava,male,1949,5,2,England,Devon,Instow,,2.916,1.856,9.425,2.499,Apidae,kleptoparasite,
+IGproject0338,Nomada,flava,male,1949,5,7,England,Devon,Chudleigh,,2.845,1.982,9.186,2.531,Apidae,kleptoparasite,
+IGproject0339,Nomada,flava,male,1952,4,26,England,Devon,Sheepstor,Gutter Tor,2.511,1.752,8.071,2.138,Apidae,kleptoparasite,
+IGproject0340,Nomada,flava,male,1921,4,26,England,Devon,Newton Abbot,,2.775,1.749,8.878,2.321,Apidae,kleptoparasite,
+IGproject0341,Andrena,wilkella,female,1910,6,18,England,Devon,Budleigh Salterton,,3.384,2.245,7.848,2.548,Andrenidae,excavator,
+IGproject0342,Andrena,wilkella,male,1910,6,14,England,Devon,Budleigh Salterton,,2.896,1.828,7.377,2.006,Andrenidae,excavator,
+IGproject0343,Andrena,wilkella,male,1922,5,14,England,Devon,Newton Abbot,,3.001,2.005,7.557,2.041,Andrenidae,excavator,
+IGproject0344,Andrena,wilkella,female,1907,5,9,England,Surrey,Oxshott,,3.422,2.344,7.812,2.514,Andrenidae,excavator,
+IGproject0345,Andrena,wilkella,male,1900,5,28,England,Berkshire,Newbury,,3.083,2.036,7.732,2.175,Andrenidae,excavator,
+IGproject0346,Andrena,wilkella,male,1898,6,2,England,Buckinghamshire,Great Missenden,,2.95,1.847,7.546,2.091,Andrenidae,excavator,
+IGproject0347,Andrena,wilkella,female,1915,5,24,England,Devon,Brixham,,3.491,2.257,8.321,2.661,Andrenidae,excavator,
+IGproject0348,Andrena,wilkella,female,1915,5,20,England,Gloucestershire,Wotton-under-Edge,,3.621,2.375,8.266,2.769,Andrenidae,excavator,
+IGproject0349,Andrena,wilkella,female,1910,6,14,England,Devon,Budleigh Salterton,,3.302,2.161,7.79,2.48,Andrenidae,excavator,
+IGproject0350,Andrena,wilkella,female,1908,6,14,England,Greater Manchester,Sale,,3.348,2.151,7.925,2.698,Andrenidae,excavator,
+IGproject0351,Andrena,wilkella,male,1904,5,15,England,Greater London,Northwood,,2.982,1.925,7.512,2.081,Andrenidae,excavator,
+IGproject0352,Andrena,wilkella,male,1900,5,29,England,Hampshire,,New Forest,3.025,1.92,7.764,2.167,Andrenidae,excavator,
+IGproject0353,Andrena,wilkella,female,1900,5,29,England,Berkshire,Newbury,,3.438,2.254,8.13,2.697,Andrenidae,excavator,
+IGproject0354,Andrena,wilkella,male,1904,5,22,England,Hampshire,,New Forest,2.907,1.632,7.256,2.072,Andrenidae,excavator,
+IGproject0355,Andrena,wilkella,female,1953,6,1,England,Oxfordshire,Abingdon,Cothill,3.335,2.1,8.033,2.612,Andrenidae,excavator,
+IGproject0356,Andrena,wilkella,male,1900,5,15,England,Essex,Theydon Bois,,2.876,1.712,7.125,2.049,Andrenidae,excavator,
+IGproject0357,Andrena,wilkella,male,1899,6,,England,Cambridgeshire,Wicken,,2.994,1.879,7.477,2.124,Andrenidae,excavator,
+IGproject0358,Andrena,wilkella,male,1900,5,18,England,Berkshire,Newbury,,2.942,1.787,7.384,2.046,Andrenidae,excavator,
+IGproject0359,Andrena,wilkella,female,1905,5,24,Wales,Gwynedd,Criccieth,,3.538,2.451,8.438,2.8,Andrenidae,excavator,
+IGproject0360,Andrena,wilkella,male,1949,6,7,England,Devon,Exminster,,2.996,1.898,7.395,2.088,Andrenidae,excavator,
+IGproject0361,Andrena,wilkella,female,1915,6,2,England,Devon,Paignton,,3.411,2.174,8.255,2.524,Andrenidae,excavator,
+IGproject0362,Andrena,wilkella,female,1923,6,5,England,Devon,Newton Abbot,,3.416,2.257,8.073,2.517,Andrenidae,excavator,
+IGproject0363,Andrena,wilkella,female,1923,6,15,England,Devon,Newton Abbot,,3.44,2.202,8.124,2.584,Andrenidae,excavator,
+IGproject0364,Andrena,wilkella,female,1896,5,5,England,Wiltshire,Sopworth,,3.21,2.048,7.793,2.475,Andrenidae,excavator,
+IGproject0365,Andrena,wilkella,male,1900,5,28,England,Berkshire,Newbury,,2.991,1.896,7.565,2.091,Andrenidae,excavator,
+IGproject0366,Andrena,wilkella,male,1900,5,25,England,Berkshire,Newbury,,2.834,1.841,7.293,2.015,Andrenidae,excavator,
+IGproject0367,Andrena,wilkella,female,1918,5,,England,Devon,Paignton,,3.32,2.21,8.361,2.477,Andrenidae,excavator,
+IGproject0368,Andrena,wilkella,female,1905,6,22,England,Surrey,Oxshott,,3.396,2.176,7.967,2.486,Andrenidae,excavator,
+IGproject0369,Andrena,wilkella,female,1899,6,,England,Cambridgeshire,Wicken,,3.51,2.322,8.217,2.667,Andrenidae,excavator,
+IGproject0370,Andrena,wilkella,female,1905,6,4,England,Surrey,Chobham,,3.448,2.146,8.211,2.618,Andrenidae,excavator,
+IGproject0371,Andrena,wilkella,female,1904,6,17,England,Surrey,Chobham,,3.353,2.241,8.014,2.624,Andrenidae,excavator,
+IGproject0372,Anthidium,manicatum,female,1946,7,29,England,Greater London,Osterley,,4.309,3.729,10.167,3.087,Megachilidae,cavity nester,
+IGproject0373,Anthidium,manicatum,female,1905,7,15,England,Oxfordshire,Oxford,Lye Valley,3.927,3.302,9.067,2.782,Megachilidae,cavity nester,
+IGproject0374,Anthidium,manicatum,male,1900,7,20,Wales,Gwynedd,Criccieth,,4.407,3.705,11.012,3.491,Megachilidae,cavity nester,
+IGproject0375,Anthidium,manicatum,male,1938,7,29,England,Oxfordshire,Oxford,Sunnymead,4.392,3.506,10.723,3.361,Megachilidae,cavity nester,
+IGproject0376,Anthidium,manicatum,female,1966,6,16,England,Devon,Paignton,,4.242,3.537,9.42,2.942,Megachilidae,cavity nester,
+IGproject0377,Anthidium,manicatum,female,1909,6,,England,Gloucestershire,Wotton-under-Edge,Alderley,4.128,3.397,9.155,2.774,Megachilidae,cavity nester,
+IGproject0378,Anthidium,manicatum,female,1905,7,22,England,Dorset,Lyme Regis,,4.047,3.509,9.149,2.889,Megachilidae,cavity nester,
+IGproject0379,Anthidium,manicatum,male,1952,7,30,England,Northamptonshire,Aynho,,4.712,4.154,11.624,3.776,Megachilidae,cavity nester,
+IGproject0380,Anthidium,manicatum,male,1915,7,25,England,Devon,Dartmoor,East Dartmoor,4.67,4.288,12.267,3.802,Megachilidae,cavity nester,
+IGproject0381,Anthidium,manicatum,male,1904,7,9,England,Hampshire,,New Forest,4.321,3.721,10.444,3.306,Megachilidae,cavity nester,
+IGproject0382,Anthidium,manicatum,female,1898,7,,Wales,Gwynedd,Criccieth,,4.074,3.449,9.005,2.745,Megachilidae,cavity nester,
+IGproject0383,Anthidium,manicatum,male,1897,7,18,England,Oxfordshire,Oxford,Shotover,4.442,3.8,11.711,3.86,Megachilidae,cavity nester,
+IGproject0384,Anthidium,manicatum,female,1907,7,21,England,Hampshire,,New Forest,3.77,3.115,8.28,2.429,Megachilidae,cavity nester,
+IGproject0385,Anthidium,manicatum,male,1897,7,18,England,Oxfordshire,Oxford,Shotover,4.36,3.866,10.791,3.459,Megachilidae,cavity nester,
+IGproject0386,Anthidium,manicatum,male,1897,7,18,England,Oxfordshire,Oxford,Shotover,4.549,3.899,11.597,3.865,Megachilidae,cavity nester,
+IGproject0387,Anthidium,manicatum,male,1950,7,27,England,Northamptonshire,Aynho,,4.246,3.463,9.911,3.022,Megachilidae,cavity nester,
+IGproject0388,Anthidium,manicatum,male,1898,7,,Wales,Gwynedd,Criccieth,,4.543,3.916,11.497,3.54,Megachilidae,cavity nester,
+IGproject0389,Anthidium,manicatum,female,1906,7,20,England,Hampshire,,New Forest,4.178,3.54,9.448,2.802,Megachilidae,cavity nester,
+IGproject0390,Anthidium,manicatum,female,1930,9,10,England,Devon,Newton Abbot,,3.813,3.189,8.536,2.554,Megachilidae,cavity nester,
+IGproject0391,Anthidium,manicatum,female,1977,9,5,England,Oxfordshire,Abingdon,Dry Sandford Pit,4.086,3.384,9.102,2.751,Megachilidae,cavity nester,
+IGproject0392,Anthidium,manicatum,female,1897,7,,Wales,Gwynedd,Criccieth,,4.103,3.463,9.061,2.867,Megachilidae,cavity nester,
+IGproject0393,Anthidium,manicatum,female,1904,7,,England,Devon,Lyme Regis,,4.251,3.596,9.597,3.077,Megachilidae,cavity nester,
+IGproject0394,Anthidium,manicatum,female,1905,7,20,England,Devon,Lyme Regis,,4.123,3.495,8.984,2.866,Megachilidae,cavity nester,
+IGproject0395,Anthidium,manicatum,female,1900,7,7,Wales,Gwynedd,Criccieth,,4.136,3.532,9.245,2.781,Megachilidae,cavity nester,
+IGproject0396,Anthidium,manicatum,female,1914,6,24,England,Devon,Paignton,,4.116,3.434,9.068,2.72,Megachilidae,cavity nester,
+IGproject0397,Anthidium,manicatum,male,1919,8,,England,Surrey,Guildford,,4.651,4.018,11.979,3.863,Megachilidae,cavity nester,
+IGproject0398,Anthidium,manicatum,male,1926,7,,England,Devon,Newton Abbot,,3.825,3.24,8.764,2.892,Megachilidae,cavity nester,
+IGproject0399,Anthidium,manicatum,male,1898,7,,Wales,Gwynedd,Criccieth,,4.537,3.9,11.407,3.609,Megachilidae,cavity nester,
+IGproject0400,Anthidium,manicatum,male,1948,8,1,England,Oxfordshire,Oxford,Hinksey,4.228,3.554,10.311,3.302,Megachilidae,cavity nester,
+IGproject0401,Anthidium,manicatum,male,1900,7,,England,Worcestershire,Kidderminster,Wyre Forest,4.247,3.659,10.322,3.106,Megachilidae,cavity nester,
+IGproject0402,Anthidium,manicatum,male,1916,6,16,England,Devon,Paignton,,4.599,3.844,11.377,3.679,Megachilidae,cavity nester,
+IGproject0403,Anthidium,manicatum,male,1914,7,10,England,Devon,Bovey Tracey,,4.607,3.842,11.268,3.508,Megachilidae,cavity nester,
+IGproject0404,Anthidium,manicatum,male,1902,,,England,Hertfordshire,Berkhamsted,,4.396,3.995,11.201,3.593,Megachilidae,cavity nester,
+IGproject0405,Anthidium,manicatum,male,1926,7,,England,Devon,Newton Abbot,,4.185,3.691,10.746,3.451,Megachilidae,cavity nester,
+IGproject0406,Anthidium,manicatum,male,1910,7,11,England,Oxfordshire,Oxford,Wykeham House (garden),4.381,3.921,10.896,3.365,Megachilidae,cavity nester,
+IGproject0407,Anthidium,manicatum,male,1897,7,,England,Oxfordshire,Oxford,Shotover,4.431,3.732,11.177,3.342,Megachilidae,cavity nester,
+IGproject0408,Anthidium,manicatum,male,1897,7,,England,Oxfordshire,Oxford,Shotover,4.513,3.982,11.366,3.582,Megachilidae,cavity nester,
+IGproject0409,Anthidium,manicatum,male,1897,7,,England,Oxfordshire,Oxford,Shotover,4.218,3.736,10.535,3.326,Megachilidae,cavity nester,
+IGproject0410,Anthidium,manicatum,male,1905,7,15,England,Oxfordshire,Oxford,Lye Valley,4.245,3.824,10.413,3.333,Megachilidae,cavity nester,
+IGproject0411,Anthidium,manicatum,male,1905,7,15,England,Oxfordshire,Oxford,Lye Valley,3.885,3.257,9.226,2.798,Megachilidae,cavity nester,
+IGproject0412,Anthidium,manicatum,male,1897,7,,England,Oxfordshire,Oxford,Shotover,4.566,3.949,11.608,3.947,Megachilidae,cavity nester,
+IGproject0413,Anthidium,manicatum,female,1948,8,1,England,Oxfordshire,Oxford,Hinksey,4.01,3.382,9.262,2.833,Megachilidae,cavity nester,
+IGproject0414,Anthidium,manicatum,female,1929,5,22,England,Devon,Bovey Tracey,,3.982,3.295,9.058,2.792,Megachilidae,cavity nester,
+IGproject0415,Anthidium,manicatum,female,1914,6,20,England,Surrey,Woking,,4.194,3.461,9.354,2.929,Megachilidae,cavity nester,
+IGproject0416,Anthidium,manicatum,female,1914,6,20,England,Surrey,Woking,,4.258,3.556,9.425,2.899,Megachilidae,cavity nester,
+IGproject0417,Anthidium,manicatum,female,1899,6,27,England,Oxfordshire,Oxford,OUMNH,3.983,3.345,8.858,2.846,Megachilidae,cavity nester,
+IGproject0418,Anthidium,manicatum,female,1897,7,18,England,Oxfordshire,Oxford,Shotover,3.988,3.459,8.974,2.797,Megachilidae,cavity nester,
+IGproject0419,Anthidium,manicatum,female,1908,6,,England,Kent,Chattenden,,4.092,3.385,8.712,2.71,Megachilidae,cavity nester,
+IGproject0420,Anthidium,manicatum,female,1902,7,27,England,Oxfordshire,Tubney,Tubney Wood,4.068,3.594,9.253,2.809,Megachilidae,cavity nester,
+IGproject0421,Anthidium,manicatum,female,1984,6,30,England,Greater London,Woolwich,Spray Street,3.507,2.868,7.295,2.22,Megachilidae,cavity nester,
+IGproject0422,Anthidium,manicatum,female,1897,7,18,England,Oxfordshire,Oxford,Shotover,3.961,3.283,8.704,2.724,Megachilidae,cavity nester,
+IGproject0423,Anthidium,manicatum,female,1897,6,22,England,Berkshire,Sulhamstead,,4.203,3.552,9.162,2.847,Megachilidae,cavity nester,
+IGproject0424,Anthidium,manicatum,male,1897,6,22,England,Berkshire,Sulhamstead,,4.196,3.499,10.116,3.172,Apidae,kleptoparasite,
+IGproject0425,Nomada,ruficornis,female,1918,4,,England,Cumbria,Carlisle,,2.42,1.543,7.501,2.026,Apidae,kleptoparasite,
+IGproject0426,Nomada,ruficornis,female,1915,5,21,England,Devon,Brixham,Churston Ferrers,2.772,1.823,8.434,2.369,Apidae,kleptoparasite,
+IGproject0427,Nomada,ruficornis,female,1920,5,25,England,West Yorkshire,Leeds,Meanwood,2.651,1.743,7.959,2.24,Apidae,kleptoparasite,
+IGproject0428,Nomada,ruficornis,female,1915,5,7,England,Devon,Bovey Tracey,,2.812,1.929,8.587,2.415,Apidae,kleptoparasite,
+IGproject0429,Nomada,ruficornis,female,1915,5,7,England,Devon,Bovey Tracey,,2.835,1.884,8.565,2.265,Apidae,kleptoparasite,
+IGproject0430,Nomada,ruficornis,female,1915,5,24,England,South Yorkshire,Sheffield,,2.76,1.817,8.428,2.21,Apidae,kleptoparasite,
+IGproject0431,Nomada,ruficornis,male,1975,5,3,England,Devon,,South Devon - Buckland Down,2.344,1.54,7.277,1.959,Apidae,kleptoparasite,
+IGproject0432,Nomada,ruficornis,female,1982,5,10,England,Devon,Plymouth,Plym Bridge,2.758,1.831,8.377,2.286,Apidae,kleptoparasite,
+IGproject0433,Nomada,ruficornis,male,1978,5,7,England,Devon,Tavistock,Whitchurch Down,2.777,1.83,8.507,2.412,Apidae,kleptoparasite,
+IGproject0434,Nomada,ruficornis,male,1982,5,10,England,Devon,Plymouth,Plym Bridge,2.334,1.428,7.228,1.935,Apidae,kleptoparasite,
+IGproject0435,Nomada,ruficornis,male,1974,4,21,England,Devon,Lifton,,2.772,1.964,8.722,2.311,Apidae,kleptoparasite,
+IGproject0436,Nomada,ruficornis,male,1982,4,20,England,Devon,Dartmoor,Burrator Reservoir,2.304,1.548,7.555,1.915,Apidae,kleptoparasite,
+IGproject0437,Nomada,ruficornis,male,1975,5,6,England,Devon,Tavistock,Whitchurch Down,2.291,1.47,7.229,1.933,Apidae,kleptoparasite,
+IGproject0438,Nomada,ruficornis,male,1918,4,,England,Oxfordshire,Oxford,,2.683,1.901,8.353,2.225,Apidae,kleptoparasite,
+IGproject0439,Nomada,ruficornis,male,1901,4,25,England,Oxfordshire,Oxford,University Parks,2.834,2.06,8.468,2.282,Apidae,kleptoparasite,
+IGproject0440,Nomada,ruficornis,male,1917,5,3,England,Devon,Brixham,,2.393,1.543,7.445,1.973,Apidae,kleptoparasite,
+IGproject0441,Nomada,ruficornis,male,1918,4,,England,Oxfordshire,Oxford,,2.66,1.747,8.188,2.237,Apidae,kleptoparasite,
+IGproject0442,Nomada,ruficornis,male,1914,4,14,England,Devon,Dartmoor,East Dartmoor,2.62,1.779,8.487,2.272,Apidae,kleptoparasite,
+IGproject0443,Nomada,ruficornis,male,1918,4,27,England,Devon,Paignton,,2.575,1.66,7.685,2.032,Apidae,kleptoparasite,
+IGproject0444,Nomada,ruficornis,female,1920,5,15,England,West Yorkshire,Leeds,Roundhay,2.815,1.996,8.539,2.362,Apidae,kleptoparasite,
+IGproject0445,Nomada,ruficornis,male,1901,4,25,England,Oxfordshire,Oxford,University Parks,2.58,1.779,8.063,2.056,Apidae,kleptoparasite,
+IGproject0446,Nomada,ruficornis,male,1935,4,28,England,Dorset,Swanage,South Haven Point,2.642,1.824,7.939,2.146,Apidae,kleptoparasite,
+IGproject0447,Nomada,ruficornis,female,1984,6,8,England,Devon,Tavistock,Whitchurch Down,2.752,1.88,8.652,2.247,Apidae,kleptoparasite,
+IGproject0448,Nomada,ruficornis,male,1901,7,14,Wales,Gwynedd,Criccieth,,2.652,1.778,8.218,2.13,Apidae,kleptoparasite,
+IGproject0449,Nomada,ruficornis,female,1989,5,19,England,Wiltshire,Swindon,Coate Water Country Park,2.788,1.898,8.464,2.269,Apidae,kleptoparasite,
+IGproject0450,Nomada,ruficornis,female,1989,5,19,England,Wiltshire,Swindon,Coate Water Country Park,2.752,1.843,8.603,2.294,Apidae,kleptoparasite,
+IGproject0451,Nomada,ruficornis,female,1976,4,21,England,Devon,Lifton,,2.907,1.918,8.973,2.48,Apidae,kleptoparasite,
+IGproject0452,Nomada,ruficornis,male,1983,5,4,England,Devon,Dartmoor,Leather Tor,2.738,1.827,8.648,2.2,Apidae,kleptoparasite,
+IGproject0453,Nomada,ruficornis,female,1976,5,7,England,Devon,Harford,,2.761,1.808,8.46,2.287,Apidae,kleptoparasite,
+IGproject0454,Nomada,ruficornis,male,1904,5,18,England,Greater London,London,Hampstead,2.46,1.633,7.525,2.035,Apidae,kleptoparasite,
+IGproject0455,Nomada,ruficornis,male,1941,5,17,England,Hampshire,Tadley,Pamber Forest,2.631,1.729,7.858,2.039,Apidae,kleptoparasite,
+IGproject0456,Nomada,ruficornis,female,1953,5,24,England,Devon,Lustleigh,,2.641,1.789,8.026,2.235,Apidae,kleptoparasite,
+IGproject0457,Nomada,ruficornis,male,1954,4,12,England,Devon,Teignbridge,,2.718,1.805,8.442,2.224,Apidae,kleptoparasite,
+IGproject0458,Nomada,ruficornis,female,1921,5,27,England,Hertfordshire,Tring,,2.626,1.774,8.229,2.299,Apidae,kleptoparasite,
+IGproject0459,Nomada,ruficornis,female,1902,5,19,England,Hampshire,,New Forest,2.649,1.773,8.346,2.382,Apidae,kleptoparasite,
+IGproject0460,Nomada,ruficornis,male,1917,5,3,England,Surrey,Guildford,Merrow,2.373,1.573,7.071,1.939,Apidae,kleptoparasite,
+IGproject0461,Nomada,ruficornis,male,1917,5,5,England,Surrey,Tadworth,Box Hill,2.808,1.958,8.498,2.332,Apidae,kleptoparasite,
+IGproject0462,Nomada,ruficornis,female,1931,5,25,England,North Yorkshire,Rainton,,2.568,1.664,7.699,2.152,Apidae,kleptoparasite,
+IGproject0463,Nomada,ruficornis,female,1945,3,25,England,Devon,Lydford,,2.529,1.573,7.65,2.073,Apidae,kleptoparasite,
+IGproject0464,Nomada,ruficornis,male,1925,5,15,England,Devon,Brixham,,2.345,1.561,7.142,1.94,Apidae,kleptoparasite,
+IGproject0465,Nomada,ruficornis,male,1915,4,14,England,Devon,Dartmoor,East Dartmoor,2.723,1.9,8.303,2.291,Apidae,kleptoparasite,
+IGproject0466,Andrena,chrysosceles,female,1899,6,18,England,East Sussex,Polegate,,2.805,1.673,7.764,2.116,Andrenidae,excavator,
+IGproject0467,Andrena,chrysosceles,male,1907,5,23,England,Hampshire,,New Forest,2.969,1.832,8.182,2.32,Andrenidae,excavator,
+IGproject0468,Andrena,chrysosceles,female,1899,5,,Wales,Monmouthshire,Raglan,,2.973,1.815,8.224,2.256,Andrenidae,excavator,
+IGproject0469,Andrena,chrysosceles,female,1913,5,23,England,Dorset,Cerne Abbas,,2.853,1.782,7.849,2.203,Andrenidae,excavator,
+IGproject0470,Andrena,chrysosceles,female,1914,4,,England,Devon,Newton Abbot,,2.968,1.816,8.119,2.184,Andrenidae,excavator,
+IGproject0471,Andrena,chrysosceles,female,1899,5,,Wales,Monmouthshire,Raglan,,2.945,1.822,8.128,2.283,Andrenidae,excavator,
+IGproject0472,Andrena,chrysosceles,female,1899,6,5,England,Cambridgeshire,Sawtry,Monks Wood,2.864,1.851,7.811,2.258,Andrenidae,excavator,
+IGproject0473,Andrena,chrysosceles,male,1923,4,21,England,Devon,Newton Abbot,Bradley Woods,2.54,1.541,6.724,1.777,Andrenidae,excavator,
+IGproject0474,Andrena,chrysosceles,male,1912,5,,England,Hampshire,,New Forest,2.505,1.473,6.712,1.805,Andrenidae,excavator,
+IGproject0475,Andrena,chrysosceles,male,1912,5,,England,Hampshire,,New Forest,2.481,1.461,6.566,1.755,Andrenidae,excavator,
+IGproject0476,Andrena,chrysosceles,female,1899,6,,England,Cambridgeshire,Wicken,,2.785,1.736,7.62,2.152,Andrenidae,excavator,
+IGproject0477,Andrena,chrysosceles,female,1906,5,28,Wales,Bridgend,Porthcawl,,2.824,1.72,7.786,2.26,Andrenidae,excavator,
+IGproject0478,Andrena,chrysosceles,female,1990,5,26,England,Wiltshire,Wroughton,Clouts Wood,3.285,2.098,7.831,2.487,Andrenidae,excavator,
+IGproject0479,Andrena,chrysosceles,male,1990,4,28,England,Wiltshire,Swindon,Coate Water Country Park,2.658,1.447,6.921,1.928,Andrenidae,excavator,
+IGproject0480,Andrena,chrysosceles,male,1990,3,31,England,Wiltshire,Swindon,Coate Water Country Park,2.43,1.382,6.546,1.763,Andrenidae,excavator,
+IGproject0481,Andrena,chrysosceles,male,2004,5,19,England,Surrey,Guildford,Pewley Down,2.461,1.366,6.81,1.78,Andrenidae,excavator,
+IGproject0482,Andrena,chrysosceles,male,2007,4,17,England,Surrey,Godalming,Mare Hill,2.551,1.427,6.773,1.812,Andrenidae,excavator,
+IGproject0483,Andrena,chrysosceles,female,1981,6,29,England,Oxfordshire,Wendlebury,,2.769,1.683,7.341,2.113,Andrenidae,excavator,
+IGproject0484,Andrena,chrysosceles,male,2003,4,5,England,Oxfordshire,Oxford,Shotover,2.556,1.481,6.933,1.785,Andrenidae,excavator,
+IGproject0485,Andrena,chrysosceles,female,2003,4,5,England,Oxfordshire,Oxford,Shotover,2.799,1.782,7.554,2.198,Andrenidae,excavator,
+IGproject0486,Andrena,chrysosceles,female,2007,6,6,England,Surrey,Grayswood,Holmens Grove,2.906,1.873,8.188,2.111,Andrenidae,excavator,
+IGproject0487,Andrena,chrysosceles,female,2002,4,20,England,Oxfordshire,Oxford,Shotover,2.964,1.861,8.011,2.318,Andrenidae,excavator,
+IGproject0488,Andrena,chrysosceles,female,2005,6,21,England,Surrey,Wrecclesham,,3.058,1.849,8.339,2.418,Andrenidae,excavator,
+IGproject0489,Andrena,chrysosceles,female,1926,6,13,England,Greater London,London,South Norwood,2.972,1.775,8.065,2.255,Andrenidae,excavator,
+IGproject0490,Andrena,chrysosceles,male,1984,4,26,England,Greater London,London,Lewisham,2.268,1.279,6.25,1.714,Andrenidae,excavator,
+IGproject0491,Andrena,chrysosceles,male,1984,5,9,England,Greater London,London,Lewisham,2.476,1.442,6.648,1.744,Andrenidae,excavator,
+IGproject0492,Andrena,chrysosceles,male,1996,4,27,England,Northamptonshire,Marston St Lawrence,,2.641,1.488,7.017,1.899,Andrenidae,excavator,
+IGproject0493,Andrena,chrysosceles,male,1996,4,27,England,Northamptonshire,Marston St Lawrence,,2.138,1.206,5.317,1.482,Andrenidae,excavator,
+IGproject0494,Andrena,chrysosceles,male,1996,4,27,England,Northamptonshire,Marston St Lawrence,,2.484,1.332,6.637,1.779,Andrenidae,excavator,
+IGproject0495,Andrena,chrysosceles,male,1996,4,27,England,Northamptonshire,Marston St Lawrence,,2.946,1.682,7.737,2.023,Andrenidae,excavator,
+IGproject0496,Andrena,chrysosceles,male,1996,4,27,England,Northamptonshire,Marston St Lawrence,,2.393,1.291,6.193,1.691,Andrenidae,excavator,
+IGproject0497,Andrena,chrysosceles,male,1996,4,27,England,Northamptonshire,Marston St Lawrence,,2.2,1.23,6.04,1.655,Andrenidae,excavator,
+IGproject0498,Andrena,chrysosceles,male,1996,4,27,England,Northamptonshire,Brackley,,2.412,1.336,6.623,1.738,Andrenidae,excavator,
+IGproject0499,Andrena,chrysosceles,male,1996,4,27,England,Northamptonshire,Brackley,,2.467,1.475,6.675,1.781,Andrenidae,excavator,
+IGproject0500,Andrena,chrysosceles,male,1996,4,27,England,Northamptonshire,Brackley,,2.38,1.364,6.569,1.716,Andrenidae,excavator,
+IGproject0501,Andrena,chrysosceles,female,1901,5,27,England,Kent,Faversham,Huntingfield,2.515,1.497,7.319,1.927,Andrenidae,excavator,
+IGproject0502,Andrena,chrysosceles,female,1901,6,1,England,Kent,Faversham,Huntingfield,2.591,1.593,7.399,2.05,Andrenidae,excavator,
+IGproject0503,Andrena,chrysosceles,female,1901,6,1,England,Kent,Faversham,Huntingfield,2.844,1.702,7.953,2.15,Andrenidae,excavator,
+IGproject0504,Andrena,chrysosceles,female,1901,6,1,England,Kent,Faversham,Huntingfield,2.526,1.546,7.354,2.027,Andrenidae,excavator,
+IGproject0505,Andrena,chrysosceles,female,1901,6,1,England,Kent,Faversham,Huntingfield,2.701,1.718,7.545,2.164,Andrenidae,excavator,
+IGproject0506,Andrena,chrysosceles,female,1900,,,England,Kent,Faversham,,2.859,1.772,7.867,2.213,Andrenidae,excavator,
+IGproject0507,Andrena,chrysosceles,female,1900,3,8,England,Kent,Faversham,Huntingfield,2.861,1.714,7.959,2.19,Andrenidae,excavator,
+IGproject0508,Andrena,chrysosceles,female,1897,,,England,Hampshire,,New Forest,2.887,1.702,8.001,2.235,Andrenidae,excavator,
+IGproject0509,Andrena,chrysosceles,female,1893,,,England,Hampshire,,New Forest,2.817,1.664,7.753,2.214,Andrenidae,excavator,
+IGproject0510,Andrena,chrysosceles,female,1901,5,6,England,Kent,Faversham,,2.545,1.431,7.474,2.026,Andrenidae,excavator,
+IGproject0511,Andrena,chrysosceles,female,1900,,,England,Kent,Faversham,Huntingfield,2.888,1.692,7.808,2.28,Andrenidae,excavator,
+IGproject0512,Andrena,chrysosceles,female,1901,6,2,England,Kent,Faversham,Huntingfield,2.852,1.671,7.713,2.133,Andrenidae,excavator,
+IGproject0513,Hylaeus,communis,female,1948,7,17,England,Dorset,Witchampton,,1.69,1.35,5.013,1.048,Colletidae,cavity nester,
+IGproject0514,Hylaeus,communis,female,1952,8,22,England,Devon,Dawlish Warren,,1.616,1.19,4.419,0.965,Colletidae,cavity nester,
+IGproject0515,Hylaeus,communis,female,1953,8,6,England,Devon,Bovey Tracey,Chudleigh Knighton Heath,1.597,1.223,4.682,1.001,Colletidae,cavity nester,
+IGproject0516,Hylaeus,communis,female,1953,8,6,England,Devon,Bovey Tracey,Chudleigh Knighton Heath,1.69,1.356,5.126,1.07,Colletidae,cavity nester,
+IGproject0517,Hylaeus,communis,female,1949,7,7,England,Devon,Bideford,,1.696,1.32,5.272,1.133,Colletidae,cavity nester,
+IGproject0518,Hylaeus,communis,male,1949,6,18,England,Devon,Ottery Saint Mary,,1.491,1.071,4.291,0.978,Colletidae,cavity nester,
+IGproject0519,Hylaeus,communis,male,1952,7,21,England,Devon,Kenton,,1.598,1.202,4.529,1.015,Colletidae,cavity nester,
+IGproject0520,Hylaeus,communis,female,1962,8,18,England,Dorset,Morden,,1.469,1.139,4.425,0.961,Colletidae,cavity nester,
+IGproject0521,Hylaeus,communis,female,1971,7,11,England,Cornwall,Morwenstow,,1.525,1.145,4.51,0.955,Colletidae,cavity nester,
+IGproject0522,Hylaeus,communis,male,1940,6,19,England,Dorset,Weymouth,,1.402,0.998,4.054,0.907,Colletidae,cavity nester,
+IGproject0523,Hylaeus,communis,male,1928,6,13,England,Dorset,Weymouth,Cranford Ave,1.409,1.044,4.241,0.927,Colletidae,cavity nester,
+IGproject0524,Hylaeus,communis,male,1970,6,21,England,Oxfordshire,Oxford,Holywell Road,1.378,1.008,4.005,0.874,Colletidae,cavity nester,
+IGproject0525,Hylaeus,communis,male,1968,6,23,England,Devon,Paignton,,1.539,1.167,4.336,0.936,Colletidae,cavity nester,
+IGproject0526,Hylaeus,communis,female,1977,9,3,England,Devon,Kelly,,1.661,1.26,4.765,1.03,Colletidae,cavity nester,
+IGproject0527,Hylaeus,communis,female,1981,8,2,England,Devon,Chudleigh,,1.569,1.202,4.659,1.009,Colletidae,cavity nester,
+IGproject0528,Hylaeus,communis,male,1973,7,9,England,Devon,Meavy,,1.462,1.122,4.317,0.905,Colletidae,cavity nester,
+IGproject0529,Hylaeus,communis,female,1962,7,23,England,Devon,Wembury,,1.6,1.244,4.802,1.042,Colletidae,cavity nester,
+IGproject0530,Hylaeus,communis,male,1940,6,19,England,Dorset,Weymouth,,1.358,0.948,3.764,0.857,Colletidae,cavity nester,
+IGproject0531,Hylaeus,communis,female,1937,7,25,England,Dorset,Bexington,,1.666,1.263,5.008,1.046,Colletidae,cavity nester,
+IGproject0532,Hylaeus,communis,female,1939,8,13,England,Dorset,Morden,,1.537,1.221,4.673,1.036,Colletidae,cavity nester,
+IGproject0533,Hylaeus,communis,female,1935,8,9,England,Devon,Braunton,Braunton Burrows,1.629,1.264,4.89,1.075,Colletidae,cavity nester,
+IGproject0534,Hylaeus,communis,female,1935,7,16,England,Devon,Plymouth,Elfordleigh,1.614,1.285,4.789,1.053,Colletidae,cavity nester,
+IGproject0535,Hylaeus,communis,female,1938,8,12,England,Dorset,Chamouth,Charmouth Cliffs,1.613,1.259,4.712,1.024,Colletidae,cavity nester,
+IGproject0536,Hylaeus,communis,female,1935,7,16,England,Devon,Plymouth,Elfordleigh,1.608,1.206,4.662,0.995,Colletidae,cavity nester,
+IGproject0537,Hylaeus,communis,female,1935,8,9,England,Devon,Braunton,Braunton Burrows,1.635,1.268,4.88,1.052,Colletidae,cavity nester,
+IGproject0538,Hylaeus,communis,female,1935,8,9,England,Devon,Braunton,Braunton Burrows,1.729,1.371,5.059,1.147,Colletidae,cavity nester,
+IGproject0539,Hylaeus,communis,female,1939,7,23,England,Dorset,Weymouth,Two Mile Coppice,1.525,1.131,4.403,0.986,Colletidae,cavity nester,
+IGproject0540,Hylaeus,communis,female,1988,8,6,England,Wiltshire,Swindon,,1.528,1.164,4.532,0.973,Colletidae,cavity nester,
+IGproject0541,Hylaeus,communis,female,1984,6,24,England,Kent,Farningham,Farningham Woods,1.471,1.114,4.332,0.961,Colletidae,cavity nester,
+IGproject0542,Hylaeus,communis,female,1984,8,14,England,Greater London,London,Lesnes Abbey Woods,1.716,1.423,5.057,1.146,Colletidae,cavity nester,
+IGproject0543,Nomada,goodeniana,male,1900,4,24,England,Essex,Theydon Bois,,2.593,1.568,8.153,2.22,Apidae,kleptoparasite,
+IGproject0544,Nomada,goodeniana,male,1903,5,18,Wales,Gwynedd,Criccieth,,2.673,1.673,8.172,2.262,Apidae,kleptoparasite,
+IGproject0545,Nomada,goodeniana,male,1900,5,6,England,Essex,Theydon Bois,,2.441,1.559,7.665,2.143,Apidae,kleptoparasite,
+IGproject0546,Nomada,goodeniana,male,1903,7,20,England,Devon,Lyme Regis,,2.649,1.703,8.201,2.313,Apidae,kleptoparasite,
+IGproject0547,Nomada,goodeniana,male,1950,5,12,England,Devon,Woodbury,,2.492,1.535,7.668,2.279,Apidae,kleptoparasite,
+IGproject0548,Nomada,goodeniana,female,1949,4,24,England,Devon,Exeter,,3.108,2.085,9.593,2.786,Apidae,kleptoparasite,
+IGproject0549,Nomada,goodeniana,female,1953,5,8,England,Devon,Chudleigh,,2.77,1.68,8.42,2.376,Apidae,kleptoparasite,
+IGproject0550,Nomada,goodeniana,male,1950,5,13,England,Devon,Dartmoor,Mardon Down,2.734,1.679,8.362,2.315,Apidae,kleptoparasite,
+IGproject0551,Nomada,goodeniana,male,1900,5,16,England,Essex,Theydon Bois,,3.053,2.198,9.636,2.666,Apidae,kleptoparasite,
+IGproject0552,Nomada,goodeniana,male,1900,4,26,England,East Sussex,Polegate,,2.664,1.73,8.214,2.253,Apidae,kleptoparasite,
+IGproject0553,Nomada,goodeniana,female,1903,5,18,Wales,Gwynedd,Criccieth,,3.094,1.948,9.252,2.564,Apidae,kleptoparasite,
+IGproject0554,Nomada,goodeniana,female,1898,5,22,England,Surrey,Godstone,,3.206,2.12,9.706,2.772,Apidae,kleptoparasite,
+IGproject0555,Nomada,goodeniana,male,1900,5,16,England,Essex,Theydon Bois,,3.019,1.966,9.067,2.565,Apidae,kleptoparasite,
+IGproject0556,Nomada,goodeniana,female,1961,4,5,England,Bristol,Bristol,Westbury on Trym,3.075,2.069,9.262,2.76,Apidae,kleptoparasite,
+IGproject0557,Nomada,goodeniana,male,1911,5,13,England,Oxfordshire,Enslow,,2.946,1.94,9.09,2.377,Apidae,kleptoparasite,
+IGproject0558,Nomada,goodeniana,female,1912,5,20,England,Oxfordshire,Wolvercote,,3.075,2.123,9.55,2.82,Apidae,kleptoparasite,
+IGproject0559,Nomada,goodeniana,female,1922,8,17,England,Oxfordshire,Tubney,,3.149,2.139,8.972,2.625,Apidae,kleptoparasite,
+IGproject0560,Nomada,goodeniana,male,1932,5,1,England,Oxfordshire,Wolvercote,,2.8,1.818,9.078,2.385,Apidae,kleptoparasite,
+IGproject0561,Nomada,goodeniana,male,1930,5,4,England,Oxfordshire,Yarnton,,2.544,1.648,8.045,2.074,Apidae,kleptoparasite,
+IGproject0562,Nomada,goodeniana,female,1926,5,21,England,Oxfordshire,Yarnton,,2.905,1.957,9.046,2.686,Apidae,kleptoparasite,
+IGproject0563,Nomada,goodeniana,male,1922,8,14,England,Oxfordshire,Tubney,,2.904,1.779,8.473,2.471,Apidae,kleptoparasite,
+IGproject0564,Nomada,goodeniana,female,1926,4,18,England,Oxfordshire,Tubney,,2.656,1.686,8.078,2.26,Apidae,kleptoparasite,
+IGproject0565,Nomada,goodeniana,female,1927,5,25,England,Oxfordshire,Yarnton,,2.856,1.927,9.057,2.686,Apidae,kleptoparasite,
+IGproject0566,Nomada,goodeniana,female,1936,6,8,England,Oxfordshire,Oxford,Wytham,3.064,2.21,9.647,2.829,Apidae,kleptoparasite,
+IGproject0567,Nomada,goodeniana,male,1930,5,4,England,Oxfordshire,Yarnton,,3.017,2.067,9.268,2.383,Apidae,kleptoparasite,
+IGproject0568,Nomada,goodeniana,female,1910,5,22,England,Oxfordshire,Enslow,,2.908,2.047,8.965,2.584,Apidae,kleptoparasite,
+IGproject0569,Nomada,goodeniana,female,1926,6,6,England,Oxfordshire,Oxford,Waterperry Wood,2.776,1.909,8.539,2.513,Apidae,kleptoparasite,
+IGproject0570,Nomada,goodeniana,male,1930,4,,England,Oxfordshire,Yarnton,,2.94,2.095,9.329,2.567,Apidae,kleptoparasite,
+IGproject0571,Nomada,goodeniana,female,1926,4,18,England,Oxfordshire,Tubney,,2.899,1.885,8.753,2.464,Apidae,kleptoparasite,
+IGproject0572,Nomada,goodeniana,female,1983,6,22,England,Oxfordshire,Ardley,,3.105,2.089,9.685,2.8,Apidae,kleptoparasite,
+IGproject0573,Nomada,goodeniana,male,1997,5,13,England,Kent,Westwood,,2.777,1.81,8.721,2.375,Apidae,kleptoparasite,
+IGproject0574,Nomada,goodeniana,female,1949,5,29,England,Devon,Exeter,,2.999,1.915,8.594,2.603,Apidae,kleptoparasite,
+IGproject0575,Nomada,goodeniana,male,1929,5,19,England,Cambridgeshire,Wicken,,2.731,1.767,8.544,2.444,Apidae,kleptoparasite,
+IGproject0576,Nomada,goodeniana,male,1918,4,27,England,Devon,Paignton,,2.505,1.609,7.672,2.194,Apidae,kleptoparasite,
+IGproject0577,Nomada,goodeniana,male,1918,4,,England,Oxfordshire,Oxford,,2.839,2.063,8.945,2.549,Apidae,kleptoparasite,
+IGproject0578,Nomada,goodeniana,male,1914,4,4,England,Devon,Dawlish Warren,,2.567,1.731,8.044,2.193,Apidae,kleptoparasite,
+IGproject0579,Nomada,goodeniana,male,1930,7,17,England,Devon,Sidmouth,,2.665,1.906,7.941,2.235,Apidae,kleptoparasite,
+IGproject0580,Nomada,goodeniana,male,1918,4,27,England,Devon,Paignton,,2.464,1.553,7.69,2.123,Apidae,kleptoparasite,
+IGproject0581,Colletes,succintus,female,1927,8,15,England,Dorset,Warmwell,Warmwell Heath,3.268,2.661,8.2,2.117,Colletidae,excavator,
+IGproject0582,Colletes,succintus,male,1928,8,31,England,Cornwall,The Lizard,,2.967,2.009,7.219,1.813,Colletidae,excavator,
+IGproject0583,Colletes,succintus,male,1961,8,6,Wales,Gwynedd,Criccieth,,3.106,2.516,7.483,1.942,Colletidae,excavator,
+IGproject0584,Colletes,succintus,male,1989,6,16,England,Cornwall,,Holywell Beach,2.836,1.849,5.866,1.651,Colletidae,excavator,
+IGproject0585,Colletes,succintus,male,1934,8,17,England,Dorset,Swanage,South Haven Point,2.848,1.923,6.356,1.809,Colletidae,excavator,
+IGproject0586,Colletes,succintus,male,1971,8,20,England,Devon,South Brent,Shipley Bridge,3.197,2.564,7.62,1.997,Colletidae,excavator,
+IGproject0587,Colletes,succintus,female,1975,7,30,England,Devon,Throwleigh,Shilstone Tor,3.491,2.804,8.744,2.288,Colletidae,excavator,
+IGproject0588,Colletes,succintus,female,1972,9,20,England,Devon,Belstone,,3.625,3.038,8.971,2.363,Colletidae,excavator,
+IGproject0589,Colletes,succintus,male,1934,8,17,England,Dorset,Swanage,South Haven Point,3.393,2.556,7.866,2.062,Colletidae,excavator,
+IGproject0590,Colletes,succintus,female,1934,9,8,England,Dorset,Swanage,South Haven Point,3.236,2.526,7.77,2.16,Colletidae,excavator,
+IGproject0591,Colletes,succintus,male,1907,8,28,England,Dorset,Bournemouth,,3.139,2.401,7.593,2.023,Colletidae,excavator,
+IGproject0592,Colletes,succintus,female,1914,8,10,England,Devon,Bovey Tracey,,3.368,2.76,8.734,2.249,Colletidae,excavator,
+IGproject0593,Colletes,succintus,female,1919,8,,England,Devon,Dartmoor,,3.492,2.814,8.67,2.29,Colletidae,excavator,
+IGproject0594,Colletes,succintus,female,1917,8,9,England,Cumbria,Port Carlisle,,3.508,2.898,8.802,2.484,Colletidae,excavator,
+IGproject0595,Colletes,succintus,male,1917,8,9,England,Cumbria,Port Carlisle,,3.072,2.272,7.274,2.023,Colletidae,excavator,
+IGproject0596,Colletes,succintus,male,1900,7,31,England,Surrey,Oxshott,,2.892,2.143,6.829,1.746,Colletidae,excavator,
+IGproject0597,Colletes,succintus,female,1934,9,8,England,Dorset,Swanage,South Haven Point,3.178,2.541,7.77,2.119,Colletidae,excavator,
+IGproject0598,Colletes,succintus,female,1914,8,10,England,Devon,Bovey Tracey,,3.134,2.394,7.784,2.084,Colletidae,excavator,
+IGproject0599,Colletes,succintus,female,1939,8,15,England,Devon,Meavy,,3.315,2.576,8.234,2.263,Colletidae,excavator,
+IGproject0600,Colletes,succintus,female,1968,9,2,England,Devon,Mary Tavy,,3.412,2.729,8.275,2.318,Colletidae,excavator,
+IGproject0601,Colletes,succintus,male,1937,8,2,England,Dorset,Swanage,South Haven Point,3.095,2.345,7.06,1.966,Colletidae,excavator,
+IGproject0602,Colletes,succintus,male,1937,8,2,England,Dorset,Swanage,South Haven Point,3.117,2.36,7.359,1.964,Colletidae,excavator,
+IGproject0603,Colletes,succintus,male,1981,8,11,England,Devon,Dartmoor,Burrator Reservoir,2.954,2.337,6.644,1.806,Colletidae,excavator,
+IGproject0604,Colletes,succintus,male,1935,8,31,England,Dorset,Swanage,South Haven Point,2.925,1.996,6.767,1.823,Colletidae,excavator,
+IGproject0605,Colletes,succintus,male,1933,7,24,England,Dorset,Swanage,South Haven Point,3.051,2.218,7.201,1.918,Colletidae,excavator,
+IGproject0606,Colletes,succintus,female,1936,8,31,England,Dorset,Warmwell,Warmwell Heath,3.186,2.554,8.083,2.139,Colletidae,excavator,
+IGproject0607,Colletes,succintus,male,1928,8,31,England,Cornwall,The Lizard,,3.122,2.429,7.4,1.939,Colletidae,excavator,
+IGproject0608,Colletes,succintus,female,1988,7,20,Wales,Pembrokeshire,Stackpole,,3.407,2.337,7.018,2.102,Colletidae,excavator,
+IGproject0609,Colletes,succintus,female,1926,8,,England,Dorset,Warmwell,Warmwell Heath,3.133,2.453,7.786,2.085,Colletidae,excavator,
+IGproject0610,Colletes,succintus,male,1962,8,20,England,Norfolk,Thetford,Ringmere,3.025,2.4,7.312,1.945,Colletidae,excavator,
+IGproject0611,Colletes,succintus,male,1979,8,28,England,Devon,Lydford,,3.163,2.48,7.38,1.925,Colletidae,excavator,
+IGproject0612,Colletes,succintus,male,1935,7,27,England,Dorset,Swanage,South Haven Point,2.901,2.159,6.905,1.847,Colletidae,excavator,
+IGproject0613,Colletes,succintus,male,1927,8,17,England,Dorset,Moreton,,3.09,2.324,6.997,1.879,Colletidae,excavator,
+IGproject0614,Colletes,succintus,male,1927,8,17,England,Dorset,Moreton,,2.951,2.172,6.691,1.738,Colletidae,excavator,
+IGproject0615,Colletes,succintus,female,1920,7,,England,Devon,Chudleigh,,3.467,2.803,9.111,2.446,Colletidae,excavator,
+IGproject0616,Colletes,succintus,female,1973,9,17,Wales,Pembrokeshire,St David's,St David's Head,3.587,2.927,9.119,2.479,Colletidae,excavator,
+IGproject0617,Colletes,succintus,male,1953,8,10,England,Devon,Dawlish Warren,,2.94,2.13,6.946,1.826,Colletidae,excavator,
+IGproject0618,Colletes,succintus,male,1977,8,13,England,Suffolk,Lakenheath,,2.954,2.228,6.674,1.77,Colletidae,excavator,
+IGproject0619,Colletes,succintus,male,1953,8,10,England,Devon,Dawlish Warren,,3.002,2.129,7.072,1.913,Colletidae,excavator,
+IGproject0620,Colletes,succintus,female,1917,9,22,England,Oxfordshire,Tubney,,3.337,2.548,8.145,2.197,Colletidae,excavator,
+IGproject0621,Colletes,succintus,male,1945,9,7,England,Devon,Lydford,,3.038,2.378,7.246,1.908,Colletidae,excavator,
+IGproject0622,Colletes,succintus,female,1927,8,,England,Devon,Bovey Tracey,,3.411,2.797,8.436,2.168,Colletidae,excavator,
+IGproject0623,Colletes,succintus,male,2001,7,26,England,Oxfordshire,Oxford,Shotover,2.839,2.004,6.693,1.769,Colletidae,excavator,
+IGproject0624,Colletes,succintus,male,2007,9,6,England,Surrey,Frensham,,2.988,2.131,7.044,1.853,Colletidae,excavator,
+IGproject0625,Colletes,succintus,male,1989,7,11,England,Cornwall,Crackington Haven,,2.957,2.118,6.724,1.837,Colletidae,excavator,
+IGproject0626,Colletes,succintus,female,2006,8,17,England,Surrey,,Witley and Milford Commons,3.377,2.306,8.284,2.244,Colletidae,excavator,
+IGproject0627,Colletes,succintus,male,1906,8,13,England,Suffolk,,Tuddenham Fen,3.026,2.195,7.028,1.846,Colletidae,excavator,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
