@@ -90,4 +90,32 @@ latest_data_coords <- latest_data %>%
 # Isolate rows without lat long coordinates
 na_latest_data_coords <- latest_data_coords %>% filter(is.na(latitude))
 
+# Extract unique locations without lat long coordinates
+latest_na_unique_locs <- unique(na_latest_data_coords$location_string)
+latest_na_unique_locs_df <- tibble(location_string = latest_na_unique_locs)
+
+# Geocode the new unique locations without lat long coordinates
+latest_geo <- geocode(latest_na_unique_locs_df,
+                      address = "location_string",
+                      method = 'osm',
+                      lat = latitude,
+                      long = longitude
+                      )
+
+# Add the new geocoded locations to locations_lat_long
+locations_lat_long <- bind_rows(locations_lat_long, latest_geo)
+
+# Save the updated locations_lat_long
+write.csv(locations_lat_long, "Data/locations_lat_long.csv", row.names = FALSE)
+
+# Manually add lat long for remaining NAs 
+
+# Finally, merge the updated locations_lat_long back to latest_data
+
+locations_lat_long <- read.csv("Data/locations_lat_long.csv")
+latest_data_coords <- latest_data %>%
+  left_join(locations_lat_long, by = "location_string")
+
+
+
 
