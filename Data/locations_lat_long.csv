@@ -1,4 +1,4 @@
-"location_string","latitude","longitude"
+location_string,latitude,longitude
 "74 Islip Road, Sunnymead, Oxford, Oxfordshire, England",51.7844434,-1.2616549
 "Abergele, Conwy, Wales",53.2840692,-3.5810655
 "Alderley, Wotton-under-Edge, Gloucestershire, England",51.615194,-2.332701286
@@ -114,7 +114,6 @@
 "Lydd Ranges, Kent, England",50.9298725,0.8684773
 "Lydford, Devon, England",50.6459989,-4.0827936
 "Lye Valley, Oxford, Oxfordshire, England",51.7455776,-1.2056501
-"Lyme Regis, Devon, England",50.7104525,-2.9769065
 "Lyme Regis, Dorset, England",50.7252897,-2.934559
 "Lyndhurst, Hampshire, England",50.8727657,-1.5748436
 "Malvern, Worcestershire, England",52.1159559,-2.3258985
@@ -231,11 +230,11 @@
 "The Lizard, Cornwall, England",49.9602035,-5.2021162
 "Holywell Beach, Cornwall, England",50.3935678,-5.1460548
 "Shipley Bridge, South Brent, Devon, England",50.4508303,-3.8593753
-"Shilstone Tor, Throwleigh, Devon, England",NA,NA
+"Shilstone Tor, Throwleigh, Devon, England",50.69539973,-3.900621165
 "Belstone, Devon, England",50.7251852,-3.9570494
 "Bournemouth, Dorset, England",50.8346583,-2.1412149
 "Dartmoor, Devon, England",50.5657349,-3.9009713
-"Port Carlisle, Cumbria, England",NA,NA
+"Port Carlisle, Cumbria, England",54.94599961,-3.183912362
 "Mary Tavy, Devon, England",50.5995789,-4.1107209
 "Stackpole, Pembrokeshire, Wales",51.6304465,-4.9147282
 "Ringmere, Thetford, Norfolk, England",52.4563431,0.8082252
@@ -243,9 +242,5 @@
 "Lakenheath, Suffolk, England",52.4175635,0.5180418
 "Frensham, Surrey, England",51.1598756,-0.7774027
 "Crackington Haven, Cornwall, England",50.7403071,-4.6319668
-"Witley and Milford Commons, Surrey, England",NA,NA
-"Tuddenham Fen, Suffolk, England",NA,NA
-"Shilstone Tor, Throwleigh, Devon, England",NA,NA
-"Port Carlisle, Cumbria, England",NA,NA
-"Witley and Milford Commons, Surrey, England",NA,NA
-"Tuddenham Fen, Suffolk, England",NA,NA
+"Witley and Milford Commons, Surrey, England",51.15672477,-0.667927939
+"Tuddenham Fen, Suffolk, England",52.33137083,0.542032024
