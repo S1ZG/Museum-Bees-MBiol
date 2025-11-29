@@ -1,4 +1,4 @@
-﻿location_string,latitude,longitude
+"location_string","latitude","longitude"
 "74 Islip Road, Sunnymead, Oxford, Oxfordshire, England",51.7844434,-1.2616549
 "Abergele, Conwy, Wales",53.2840692,-3.5810655
 "Alderley, Wotton-under-Edge, Gloucestershire, England",51.615194,-2.332701286
@@ -225,3 +225,27 @@
 "Wyre Forest, Kidderminster, Worcestershire, England",52.396247,-2.2469773
 "Wytham, Oxford, Oxfordshire, England",51.7535169,-1.2131856
 "Yarnton, Oxfordshire, England",51.8046148,-1.308937
+"Ardley, Oxfordshire, England",51.9428336,-1.2117153
+"Westwood, Kent, England",51.3611657,1.3945309
+"Sidmouth, Devon, England",50.6790033,-3.237657
+"The Lizard, Cornwall, England",49.9602035,-5.2021162
+"Holywell Beach, Cornwall, England",50.3935678,-5.1460548
+"Shipley Bridge, South Brent, Devon, England",50.4508303,-3.8593753
+"Shilstone Tor, Throwleigh, Devon, England",NA,NA
+"Belstone, Devon, England",50.7251852,-3.9570494
+"Bournemouth, Dorset, England",50.8346583,-2.1412149
+"Dartmoor, Devon, England",50.5657349,-3.9009713
+"Port Carlisle, Cumbria, England",NA,NA
+"Mary Tavy, Devon, England",50.5995789,-4.1107209
+"Stackpole, Pembrokeshire, Wales",51.6304465,-4.9147282
+"Ringmere, Thetford, Norfolk, England",52.4563431,0.8082252
+"Moreton, Dorset, England",50.7006001,-2.2916836
+"Lakenheath, Suffolk, England",52.4175635,0.5180418
+"Frensham, Surrey, England",51.1598756,-0.7774027
+"Crackington Haven, Cornwall, England",50.7403071,-4.6319668
+"Witley and Milford Commons, Surrey, England",NA,NA
+"Tuddenham Fen, Suffolk, England",NA,NA
+"Shilstone Tor, Throwleigh, Devon, England",NA,NA
+"Port Carlisle, Cumbria, England",NA,NA
+"Witley and Milford Commons, Surrey, England",NA,NA
+"Tuddenham Fen, Suffolk, England",NA,NA
