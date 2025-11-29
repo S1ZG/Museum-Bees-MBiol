@@ -116,6 +116,9 @@ locations_lat_long <- read.csv("Data/locations_lat_long.csv")
 latest_data_coords <- latest_data %>%
   left_join(locations_lat_long, by = "location_string")
 
+# Save the final latest_data_coords with lat long
+# This is for 29th November 2025
+write.csv(latest_data_coords, "Data/29_11_25_data_with_coordinates.csv", row.names = FALSE)
 
 
 
