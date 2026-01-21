@@ -6,17 +6,16 @@ library(tidyverse)
 library(sf)
 library(terra)
 library(tidyterra)
-library(exactectractr)
+library(exactextractr)
 
 
 # Read in measurement data with geocoded locations
 
 
 
-# To see if vice county resolution is sufficient, check the differences between monthly means for different counties
-# If they are small enough, we can use vice county means
-
 # Get temperature data
+# Look at mean vs min and max temperatures? - assess which I should use
+
 
 
 
