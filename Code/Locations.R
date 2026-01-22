@@ -68,7 +68,7 @@ early_data_coords <- early_data %>%
 # Set up a workflow for when I have updated early_data 
 # To save processing I will add the lat long to the newest dataframe, then isolate the unique locations that do not have a lat long coordinate
 
-latest_data <- read.csv("Data/28_11_25 UK solitary bee museum specimen measurements - raw data.csv")
+latest_data <- read.csv("Data/22_01_26_bees_raw.csv")
 
 # Remove empty rows based on label_no
 latest_data <- latest_data[!is.na(latest_data$label_no) & latest_data$label_no != "", ]
@@ -118,7 +118,8 @@ latest_data_coords <- latest_data %>%
 
 # Save the final latest_data_coords with lat long
 # This is for 29th November 2025
-write.csv(latest_data_coords, "Data/29_11_25_data_with_coordinates.csv", row.names = FALSE)
+#write.csv(latest_data_coords, "Data/29_11_25_data_with_coordinates.csv", row.names = FALSE)
 
+#write.csv(latest_data_coords, "Data/22_01_26_data_with_coordinates.csv", row.names = FALSE)
 
 
