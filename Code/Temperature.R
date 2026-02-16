@@ -11,12 +11,17 @@ library(exactextractr)
 
 # Read in measurement data with geocoded locations
 
+latlong_data_practice <- read.csv("Data/22_01_26_data_with_coordinates.csv")
 
 
 # Get temperature data
-# Look at mean vs min and max temperatures? - assess which I should use
+# Looking at both monthly mean air temperature (tas) and monthly maximum air temperature (tasmax)
+
+# Monthly mean air temperature (tas)
 
 
+## ChangeNamesToTimes
+List_Rasters2<- map(List_Rasters, function(RS){names(RS)<-  paste0('MONTH_', time(RS));return(RS)})
 
 
 
