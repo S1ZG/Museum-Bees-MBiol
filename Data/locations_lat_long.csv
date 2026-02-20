@@ -1,342 +1,419 @@
 location_string,latitude,longitude
-"74 Islip Road, Sunnymead, Oxford, Oxfordshire, England",51.7844434,-1.2616549
-"Abergele, Conwy, Wales",53.2840692,-3.5810655
-"Alderley, Wotton-under-Edge, Gloucestershire, England",51.615194,-2.332701286
-"Ashton Pond, Oundle, Northamptonshire, England",52.47975966,-0.452349151
-"Axminster, Devon, England",50.7820966,-2.9979915
-"Aynho, Northamptonshire, England",51.9948605,-1.2520728
-"Badbury Rings, Wimborne, Dorset, England",50.82687682,-2.052082813
-"Barmouth, Gwynedd, Wales",52.7210389,-4.0535692
-"Barnack Hills and Holes, Barnack, Cambridgeshire, England",52.62910152,-0.412116287
-"Barnstaple, Devon, England",51.0804057,-4.0600467
-"Berkhamsted, Hertfordshire, England",51.7607271,-0.5652554
-"Bernwood Forest, Oxfordshire, England",51.80063858,-1.114713435
-"Bexington, Dorset, England",50.6802203,-2.6614154
-"Bideford, Devon, England",51.0181448,-4.2064223
-"Bison Hill, Whipsnade, Bedfordshire, England",51.854781,-0.5482012
-"Bollin Valley, Wilmslow, Cheshire, England",53.3299342,-2.2281098
-"Bovey Heathfield, Bovey Tracey, Devon, England",50.5778633,-3.6644648
-"Bovey Tracey, Devon, England",50.6046632,-3.6856762
-"Box Hill, Tadworth, Surrey, England",51.2543699,-0.2776725
-"Brackley, Northamptonshire, England",52.0278975,-1.1484657
-"Bradley Woods, Newton Abbot, Devon, England",50.525335,-3.627007989
-"Bramshaw, Hampshire, England",50.9407584,-1.617454
-"Braunton Burrows, Braunton, Devon, England",51.0930822,-4.2087025
-"Brixham, Devon, England",50.3952404,-3.514544
-"Budleigh Salterton, Devon, England",50.6310504,-3.3299844
-"Burley, Hampshire, England",50.8266,-1.70164
-"Burrator Reservoir, Dartmoor, Devon, England",50.49923423,-4.040083663
+"Lizard, Cornwall, England",49.9588849,-5.2063788
+"The Lizard, Cornwall, England",49.9602035,-5.2021162
+"Coverack, Cornwall, England",50.0224895,-5.0971985
+"Goonhilly Downs, Lizard, Cornwall, England",50.05001835,-5.200067979
+"St Anthony, Cornwall, England",50.0834774,-5.3107622
+"Prawle Point, Devon, England",50.2025,-3.7212
 "Camborne, Cornwall, England",50.2138828,-5.2990347
-"Carlisle, Cumbria, England",54.89388457,-2.93695408
-"Cerne Abbas, Dorset, England",50.8079558,-2.4793386
-"Charing, Kent, England",51.2142039,0.7886033
-"Charmouth Cliffs, Chamouth, Dorset, England",50.7390555,-2.90104243
-"Chastleton, Oxfordshire, England",51.9599665,-1.6409204
-"Chattenden, Kent, England",51.2849241,0.5329214
-"Chipping Campden, Gloucestershire, England",52.0496652,-1.7813927
-"Chobham, Surrey, England",51.3477705,-0.6010128
-"Chudleigh Knighton Heath, Bovey Tracey, Devon, England",50.58100978,-3.64619059
-"Chudleigh, Devon, England",50.6156543,-3.5869448
-"Churston Ferrers, Brixham, Devon, England",50.3945707,-3.565572
-"Clouts Wood, Wroughton, Wiltshire, England",51.51489206,-1.804044057
 "Coast Path, Salcombe, Devon, England",50.2375257,-3.769493274
-"Coast Path, Torquay, Devon, England",50.46942104,-3.493802538
-"Coate Water Country Park, Swindon, Wiltshire, England",51.53925894,-1.74822582
-"Cobham, Surrey, England",51.3300079,-0.4120821
-"Coleshill, Oxfordshire, England",51.6427615,-1.659708
-"Coombe, Coventry, Warwickshie, England",52.41011936,-1.407566014
-"Cothill, Abingdon, Oxfordshire, England",51.69591033,-1.3292552
-"Cranford Ave, Weymouth, Dorset, England",50.6234113,-2.4511577
-"Criccieth, Gwynedd, Wales",52.9206106,-4.2332414
-"Croyde, Devon, England",51.1303398,-4.2215393
-"Cumnor, Oxfordshire, England",51.7349255,-1.3331621
-"Dawlish Warren, Devon, England",50.5986475,-3.4437159
-"Dawlish, Devon, England",50.5797391,-3.468931
-"Devil's Dyke, Brighton, Sussex, England",50.8849935,-0.2123306
-"Devon, England",50.7241405,-3.6607788
-"Devonshire Road, London, Greater London, England",51.500887,-0.3132598
-"Dewerstone Forest, Near Shaugh Prior, Plymouth, Devon, England",50.45504038,-4.059848681
-"Diptford, Devon, England",50.3840452,-3.7629722
-"Doddington, Gloucestershire, England",51.52041869,-2.365360538
-"Dry Sandford Pit, Abingdon, Oxfordshire, England",51.69478825,-1.32635399
-"East Cornwall, Cornwall, England",50.5041841,-4.2790642
-"East Dartmoor, Dartmoor, Devon, England",50.486085,-3.9856305
-"Elfordleigh, Plymouth, Devon, England",50.4069908,-4.0491626
-"Enslow, Oxfordshire, England",51.860764,-1.303454
-"Exeter, Devon, England",50.7256138,-3.5269209
-"Exminster, Devon, England",50.6785394,-3.4955657
-"Exwick, Exeter, Devon, England",50.7321721,-3.5501132
-"Farmoor, Oxfordshire, England",51.7600964,-1.3487839
-"Farningham Woods, Farningham, Kent, England",51.3916478,0.2121137
-"Faversham, Kent, England",51.3158434,0.8911283
-"Fernworthy Reservoir, Devon, England",50.6408514,-3.8883035
-"Five Oaks, Yelverton, Devon, England",50.4934281,-4.085997565
-"Forres, Moray, Scotland",57.609864,-3.613215
-"Gerrards Cross, Buckinghamshire, England",51.5878131,-0.5537126
-"Godstone, Surrey, England",51.221863,-0.0565382
-"Gomshall, Surrey, England",51.2192418,-0.4422487
-"Great Missenden, Buckinghamshire, England",51.7046508,-0.7086592
-"Guildford, Surrey, England",51.2356068,-0.5732063
-"Gutter Tor, Sheepstor, Devon, England",50.4883193,-4.0047507
-"Haldon Forest, Clapham, Devon, England",50.6703299,-3.565771
-"Ham House, Richmond, Surrey, England",51.44419259,-0.313872304
-"Hampstead, London, Greater London, England",51.55653,-0.1783011
-"Hardwick Wood, Hardwick, Cambridgeshire, England",52.2002801,-0.0205034
-"Harford, Devon, England",50.4188928,-3.9179257
-"Hatching Green, Harpenden, Hertfordshire, England",51.8034314,-0.3580286
-"Hatton, Warwickshie, England",52.30064811,-1.646222116
-"Hawkchurch, Devon, England",50.800438,-2.9354622
-"Hedgerley, Buckinghamshire, England",51.5763466,-0.6040853
-"Hellingly, East Sussex, England",50.895456,0.2499944
-"High Down, Lydford, Devon, England",50.64381702,-4.112981204
-"Higham, Kent, England",51.4310457,0.4709558
-"Hinksey, Oxford, Oxfordshire, England",51.7363525,-1.2575581
-"Hitchcopse Pit, Oxfordshire, England",51.69442627,-1.347413049
-"Hitchin, Bedfordshire, England",52.0085422,-0.3034
-"Holmens Grove, Grayswood, Surrey, England",51.10405232,-0.691504886
-"Holne Wood, Newton Abbot, Devon, England",50.52062012,-3.836495937
-"Holywell Road, Oxford, Oxfordshire, England",51.7482606,-1.2781435
-"Hook Norton, Oxfordshire, England",51.9939848,-1.4822644
-"Horsley, Gloucestershire, England",51.6780946,-2.2329134
-"Hoylake, Cheshire, England",53.3931186,-3.176757221
-"Huntingfield, Faversham, Kent, England",51.25792226,0.822018012
-"Instow, Devon, England",51.0564265,-4.1694841
-"Keighley, West Yorkshire, England",53.8684021,-1.9020456
-"Kelly, Devon, England",50.6140691,-4.2571527
-"Kenton, Devon, England",50.6341028,-3.4920314
-"Langley, Slough, Berkshire, England",51.507818,-0.5409049
-"Leather Tor, Dartmoor, Devon, England",50.51314752,-4.028640519
-"Lesnes Abbey Woods, London, Greater London, England",51.4859646,0.1341078
-"Lewisham, London, Greater London, England",51.4624292,-0.0101787
-"Lifton, Devon, England",50.6429503,-4.2988119
-"Littleham, Devon, England",50.9930461,-4.2236852
-"Lustleigh, Devon, England",50.6228301,-3.7304463
-"Lydd Ranges, Kent, England",50.9298725,0.8684773
-"Lydford, Devon, England",50.6459989,-4.0827936
-"Lye Valley, Oxford, Oxfordshire, England",51.7455776,-1.2056501
-"Lyme Regis, Dorset, England",50.7252897,-2.934559
-"Lyndhurst, Hampshire, England",50.8727657,-1.5748436
-"Malvern, Worcestershire, England",52.1159559,-2.3258985
-"Manor Garden, Torquay, Devon, England",50.4611174,-3.507932
-"Mardon Down, Dartmoor, Devon, England",50.67620946,-3.744863051
-"Mare Hill, Godalming, Surrey, England",51.15338723,-0.662571471
-"Market Bosworth, Leicestershire, England",52.6217051,-1.4149268
-"Marston St Lawrence, Northamptonshire, England",52.0766064,-1.2171139
-"Meanwood, Leeds, West Yorkshire, England",53.8281685,-1.5682466
-"Meavy, Devon, England",50.4796082,-4.0590464
-"Merrow, Guildford, Surrey, England",51.2443481,-0.5335147
-"Millook, Cornwall, England",50.7710435,-4.5756142
-"Milton Combe, Devon, England",50.4745875,-4.131055
-"Monks Wood, Sawtry, Cambridgeshire, England",52.4055181,-0.2396955
-"Morden, Dorset, England",50.7627893,-2.1325452
-"Morwenstow, Cornwall, England",50.9031662,-4.524249
-"Nairn, Narinshire, Scotland",57.58733776,-3.864928973
-"New Forest, Hampshire, England",50.8557268,-1.5956844
-"Newark Park, Wotton-under-Edge, Gloucestershire, England",51.6363693,-2.3176907
-"Newbury, Berkshire, England",51.4020243,-1.3242212
-"Newquay, Cornwall, England",50.4134414,-5.0848836
-"Newton Abbot, Devon, England",50.5296441,-3.6112097
-"North Leigh Common, North Leigh, Oxfordshire, England",51.8203059,-1.4197065
-"North Petherwin, Cornwall, England",50.6931922,-4.4613253
-"Northwood, Greater London, England",51.6051713,-0.4205812
-"Odiham, Hampshire, England",51.2496285,-0.9346917
 "Old Inn Cottage, Saint Austell, Cornwall, England",50.29371098,-4.780971796
-"Osterley, Greater London, England",51.4815507,-0.3518348
-"Ottery Saint Mary, Devon, England",50.75134852,-3.280071864
-"OUMNH, Oxford, Oxfordshire, England",51.75883255,-1.255506952
-"Oxford, Oxfordshire, England",51.7520131,-1.2578499
-"Oxshott, Surrey, England",51.3361004,-0.3625418
-"Padworth, Berkshire, England",51.3916205,-1.1187515
-"Paignton, Devon, England",50.4377018,-3.5632704
-"Pamber Forest, Tadley, Hampshire, England",51.3445805,-1.1172286
-"Pegsdon, Hitchin, Bedfordshire, England",51.96253534,-0.36842034
-"Pewley Down, Guildford, Surrey, England",51.230904,-0.557229
-"Plym Bridge, Plymouth, Devon, England",50.40595042,-4.077171658
+"Goonvrea, Cornwall, England",50.3027624,-5.2177565
+"Bigbury, Devon, England",50.3042614,-3.8750478
+"Rame, Cornwall, England",50.3223827,-4.2122729
+"Wembury, Devon, England",50.3287157,-4.0840935
+"Polkerris, Cornwall, England",50.3381927,-4.6810647
+"Coleton Fishacre, Dartmouth, Devon, England",50.3470983,-3.5343188
+"Dartmouth, Devon, England",50.3514839,-3.583844
+"Looe, Cornwall, England",50.3522702,-4.454196
+"West Looe, Looe, Cornwall, England",50.3531094,-4.4583049
+"St Blazey, Cornwall, England",50.3630055,-4.7156518
 "Plymouth Hoe, Plymouth, Devon, England",50.36584396,-4.142166636
-"Polegate, East Sussex, England",50.8276836,0.2446652
-"Porthcawl, Bridgend, Wales",51.4795563,-3.7040704
-"Portland, Dorset, England",50.5672516,-2.4472529
-"Raglan, Monmouthshire, Wales",51.7650543,-2.8540602
-"Rainton, North Yorkshire, England",54.1715744,-1.4343499
-"Reigate, Surrey, England",51.2376557,-0.2057067
-"Roundhay Park, Leeds, West Yorkshire, England",53.8393511,-1.4978422
-"Roundhay, Leeds, West Yorkshire, England",53.8439954,-1.507852
-"Salcey Forest, Northamptonshire, England",52.154843,-0.8391565
-"Salcombe Regis, Devon, England",50.6935703,-3.2066743
-"Sale, Greater Manchester, England",53.4244939,-2.318415
-"Sand Point, Weston-super-Mare, Somerset, England",51.3659434,-2.9342983
-"Saunton, Devon, England",51.1167185,-4.2093963
-"Seale, Surrey, England",51.2223512,-0.7187413
-"Sheepstor, Devon, England",50.4908765,-4.0318718
-"Sheffield, South Yorkshire, England",53.3806626,-1.4702278
-"Shotover, Oxford, Oxfordshire, England",51.7561128,-1.1551229
-"Slough, Berkshire, England",51.512103,-0.591276
-"Sopworth, Wiltshire, England",51.5806236,-2.2507317
+"Diptford, Devon, England",50.3840452,-3.7629722
+"Holywell Beach, Cornwall, England",50.3935678,-5.1460548
+"Churston Ferrers, Brixham, Devon, England",50.3945707,-3.565572
+"Brixham, Devon, England",50.3952404,-3.514544
+"Plym Bridge, Plymouth, Devon, England",50.40595042,-4.077171658
+"Elfordleigh, Plymouth, Devon, England",50.4069908,-4.0491626
+"Boconnoc, Cornwall, England",50.4076376,-4.597743
+"Newquay, Cornwall, England",50.4134414,-5.0848836
+"Harford, Devon, England",50.4188928,-3.9179257
+"Plymouth, Devon, England",50.4323453,-3.7065512
+"Paignton, Devon, England",50.4377018,-3.5632704
 "South Brent, Devon, England",50.4427744,-3.847493
+"Shipley Bridge, South Brent, Devon, England",50.4508303,-3.8593753
+"Shaugh Bridge, Plymouth, Devon, England",50.45393915,-4.067759274
+"Dewerstone Forest, Near Shaugh Prior, Plymouth, Devon, England",50.45504038,-4.059848681
+"Dewerstone, Devon, England",50.4566379,-4.0611944
+"Manor Garden, Torquay, Devon, England",50.4611174,-3.507932
+"123 Abbey Road, Torquay, Devon, England",50.465228,-3.5279
+"Torquay, Devon, England",50.4652392,-3.5211361
+"Coast Path, Torquay, Devon, England",50.46942104,-3.493802538
+"Milton Combe, Devon, England",50.4745875,-4.131055
+"Meavy, Devon, England",50.4796082,-4.0590464
+"Buckland Monachorum, Devon, England",50.4848244,-4.1221901
+"East Dartmoor, Dartmoor, Devon, England",50.486085,-3.9856305
+"Gutter Tor, Sheepstor, Devon, England",50.4883193,-4.0047507
+"Sheepstor, Devon, England",50.4908765,-4.0318718
+"Yelverton, Devon, England",50.4929419,-4.0846742
+"Five Oaks, Yelverton, Devon, England",50.4934281,-4.085997565
+"Burrator Reservoir, Dartmoor, Devon, England",50.49923423,-4.040083663
+"East Cornwall, Cornwall, England",50.5041841,-4.2790642
+"Leather Tor, Dartmoor, Devon, England",50.51314752,-4.028640519
+"Holne Wood, Newton Abbot, Devon, England",50.52062012,-3.836495937
+"Bradley Woods, Newton Abbot, Devon, England",50.525335,-3.627007989
+"Newton Abbot, Devon, England",50.5296441,-3.6112097
+"Hexworthy, Dartmoor, Devon, England",50.5379971,-3.8990284
+"Whitchurch Down, Tavistock, Devon, England",50.5427342,-4.1150225
 "South Devon - Buckland Down, Devon, England",50.54448152,-3.807963495
-"South Haven Point, Swanage, Dorset, England",50.6787269,-1.94390688
+"Tavistock, Devon, England",50.5496154,-4.1446358
+"Teigngrace, Newton Abbot, Devon, England",50.55245864,-3.624364846
+"Dartmoor, Devon, England",50.5657349,-3.9009713
+"Portland, Dorset, England",50.5672516,-2.4472529
+"Bovey Heathfield, Bovey Tracey, Devon, England",50.5778633,-3.6644648
+"Dawlish, Devon, England",50.5797391,-3.468931
+"Chudleigh Knighton Heath, Bovey Tracey, Devon, England",50.58100978,-3.64619059
+"Ugbrooke, Chudleigh, Devon, England",50.5914631,-3.5899397
+"Yarner Wood, Newton Abbot, Devon, England",50.59576339,-3.725632682
+"Dawlish Warren, Devon, England",50.5986475,-3.4437159
+"Mary Tavy, Devon, England",50.5995789,-4.1107209
+"Bovey Tracey, Devon, England",50.6046632,-3.6856762
+"Swanage, Dorset, England",50.6086976,-1.9571971
+"Weymouth, Dorset, England",50.6096257,-2.4543424
 "South Haven, S. Boundary, Swanage, Dorset, England",50.61205076,-1.957719924
+"Teignbridge, Devon, England",50.6125551,-3.6559493
+"Kelly, Devon, England",50.6140691,-4.2571527
+"Teign Valley, Newton Abbot, Devon, England",50.61515132,-3.623629783
+"Chudleigh, Devon, England",50.6156543,-3.5869448
+"Radipole Lake, Weymouth, Dorset, England",50.6222916,-2.4616947
+"Lustleigh, Devon, England",50.6228301,-3.7304463
+"Cranford Ave, Weymouth, Dorset, England",50.6234113,-2.4511577
+"Tregardock Beach, Cornwall, England",50.6240515,-4.770595
+"Trusham, Devon, England",50.6260489,-3.6285152
+"Budleigh Salterton, Devon, England",50.6310504,-3.3299844
+"Kenton, Devon, England",50.6341028,-3.4920314
+"Two Mile Coppice, Weymouth, Dorset, England",50.6386572,-2.4610685
+"Fernworthy Reservoir, Devon, England",50.6408514,-3.8883035
+"Lifton, Devon, England",50.6429503,-4.2988119
+"High Down, Lydford, Devon, England",50.64381702,-4.112981204
+"Lydford, Devon, England",50.6459989,-4.0827936
+"Tintagel, Cornwall, England",50.6642063,-4.7526181
+"Haldon Forest, Clapham, Devon, England",50.6703299,-3.565771
+"Rocky Valley, Trethevy, Cornwall, England",50.6732613,-4.7293504
+"Warmwell, Dorset, England",50.6749172,-2.3553494
+"Woodbury, Devon, England",50.6759768,-3.4061001
+"Mardon Down, Dartmoor, Devon, England",50.67620946,-3.744863051
+"Abbotsbury Hillfort, Abbotsbury, Dorset, England",50.67704479,-2.629853948
+"Exminster, Devon, England",50.6785394,-3.4955657
+"South Haven Point, Swanage, Dorset, England",50.6787269,-1.94390688
+"Sidmouth, Devon, England",50.6790033,-3.237657
+"Bexington, Dorset, England",50.6802203,-2.6614154
+"Warmwell Heath, Warmwell, Dorset, England",50.68094,-2.35113
+"Topsham, Devon, England",50.6850732,-3.4658063
+"North Petherwin, Cornwall, England",50.6931922,-4.4613253
+"Salcombe Regis, Devon, England",50.6935703,-3.2066743
+"Shilstone Tor, Throwleigh, Devon, England",50.69539973,-3.900621165
+"Branscombe, Devon, England",50.6999699,-3.1553418
+"Moreton, Dorset, England",50.7006001,-2.2916836
+"Seaton, Devon, England",50.7045566,-3.0705105
+"Dorchester, Dorset, England",50.7132064,-2.4371229
+"Devon, England",50.7241405,-3.6607788
+"Belstone, Devon, England",50.7251852,-3.9570494
+"Lyme Regis, Dorset, England",50.7252897,-2.934559
+"Exeter, Devon, England",50.7256138,-3.5269209
+"Exwick, Exeter, Devon, England",50.7321721,-3.5501132
+"Charmouth Cliffs, Chamouth, Dorset, England",50.7390555,-2.90104243
+"Crackington Haven, Cornwall, England",50.7403071,-4.6319668
+"Yellowham Wood, Dorchester, Dorset, England",50.74223361,-2.378909966
+"Yellowham Wood, Dorset, England",50.74223361,-2.378909966
+"Ottery Saint Mary, Devon, England",50.75134852,-3.280071864
+"Taw Green, Okehampton, Devon, England",50.75636386,-3.90926962
+"Morden, Dorset, England",50.7627893,-2.1325452
+"Millook, Cornwall, England",50.7710435,-4.5756142
+"Powerstock Common, Dorset, England",50.7743059,-2.643853
+"Axminster, Devon, England",50.7820966,-2.9979915
+"Wimborne, Dorset, England",50.7995189,-1.987339
+"Hawkchurch, Devon, England",50.800438,-2.9354622
+"Cerne Abbas, Dorset, England",50.8079558,-2.4793386
+"Badbury, Dorset, England",50.8262977,-2.0523555
+"Burley, Hampshire, England",50.8266,-1.70164
+"Badbury Rings, Wimborne, Dorset, England",50.82687682,-2.052082813
+"Polegate, East Sussex, England",50.8276836,0.2446652
+"Bude, Cornwall, England",50.8290532,-4.5447261
+"Pevensey, Sussex, England",50.8318123,0.3415459
+"Bournemouth, Dorset, England",50.8346583,-2.1412149
+"Bickleigh, Devon, England",50.8427425,-3.502667
+"Arundel, West Sussex, England",50.8545384,-0.5648163
+"New Forest, Hampshire, England",50.8557268,-1.5956844
+"Witchampton, Dorset, England",50.8579978,-2.0168718
+"Lyndhurst, Hampshire, England",50.8727657,-1.5748436
+"Devil's Dyke, Brighton, Sussex, England",50.8849935,-0.2123306
+"Hellingly, East Sussex, England",50.895456,0.2499944
+"Morwenstow, Cornwall, England",50.9031662,-4.524249
+"Lydd Ranges, Kent, England",50.9298725,0.8684773
+"Bramshaw, Hampshire, England",50.9407584,-1.617454
+"Old Winchester Hill, Hampshire, England",50.9808962,-1.0887924
+"Littleham, Devon, England",50.9930461,-4.2236852
+"Hartland Quay, Devon, England",50.994881,-4.534609
+"Hartland Cliffs, Devon, England",51.00707424,-4.529508417
+"Bideford, Devon, England",51.0181448,-4.2064223
+"Instow, Devon, England",51.0564265,-4.1694841
+"Barnstaple, Devon, England",51.0804057,-4.0600467
+"Woolme Forest, Hampshire, England",51.08585472,-0.865868539
+"Braunton Burrows, Braunton, Devon, England",51.0930822,-4.2087025
+"Holmens Grove, Grayswood, Surrey, England",51.10405232,-0.691504886
+"Holmen's Grove, Surrey, England",51.1161894,-0.683967
+"Saunton, Devon, England",51.1167185,-4.2093963
+"Headley, Hampshire, England",51.11925764,-0.827247927
+"Croyde, Devon, England",51.1303398,-4.2215393
+"Withial Combe, Somerset, England",51.1349333,-2.615262032
+"Leckford, Hampshire, England",51.1373322,-1.4651968
+"Arlington Court, Arlington, Devon, England",51.1472177,-3.9871786
+"Mare Hill, Godalming, Surrey, England",51.15338723,-0.662571471
+"Winford, Devon, England",51.1549684,-3.9858806
+"Witley and Milford Commons, Surrey, England",51.15672477,-0.667927939
+"Frensham, Surrey, England",51.1598756,-0.7774027
+"Milford, Surrey, England",51.163179,-0.6368939
+"Postlebury Wood, Somerset, England",51.1848412,-2.3722059
+"Wrecclesham, Surrey, England",51.1979493,-0.8159703
+"Minehead, Somerset, England",51.2057511,-3.4783542
+"Walmer, Kent, England",51.2068884,1.3999154
+"Kent, England",51.2070749,0.7210362
+"Andover, Hampshire, England",51.2078275,-1.479355
+"Charing, Kent, England",51.2142039,0.7886033
+"Gomshall, Surrey, England",51.2192418,-0.4422487
+"Godstone, Surrey, England",51.221863,-0.0565382
+"Seale, Surrey, England",51.2223512,-0.7187413
+"Deal, Kent, England",51.2239544,1.4027344
+"White Down, Surrey, England",51.2271473,-0.4095533
+"Lynmouth, Devon, England",51.2307788,-3.83105
+"Pewley Down, Guildford, Surrey, England",51.230904,-0.557229
+"Guildford, Surrey, England",51.2356068,-0.5732063
+"Reigate Heath, Reigate, Surrey, England",51.2367777,-0.2347536
+"Reigate, Surrey, England",51.2376557,-0.2057067
+"Redhill, Surrey, England",51.2404691,-0.1682816
+"Merrow, Guildford, Surrey, England",51.2443481,-0.5335147
+"Rodney Stoke, Somerset, England",51.2479877,-2.7369072
+"Odiham, Hampshire, England",51.2496285,-0.9346917
+"Box Hill, Tadworth, Surrey, England",51.2543699,-0.2776725
+"Draycott, Somerset, England",51.2556653,-2.7509388
+"Huntingfield, Faversham, Kent, England",51.25792226,0.822018012
+"Juniper Hall, Dorking, Surrey, England",51.2615107,-0.3208984
+"Oidham Common, Hampshire, England",51.26878407,-0.92177797
+"Surrey, England",51.2715316,-0.3414524
+"Doddington, Kent, England",51.2792113,0.7717749
+"Caterham, Surrey, England",51.2822001,-0.077248
+"Chattenden, Kent, England",51.2849241,0.5329214
+"Blean, Kent, England",51.3092258,1.0414003
+"Aylesford, Kent, England",51.3093091,0.4867332
+"Wrotham, Kent, England",51.3104474,0.302978
+"Stickledown, Woking, Surrey, England",51.3126804,-0.5650899
+"Faversham, Kent, England",51.3158434,0.8911283
+"Wisley Common, Wisley, Surrey, England",51.3176878,-0.4575655
+"Woking, Surrey, England",51.3201891,-0.5564726
+"Pegwell Bay, Kent, England",51.322807,1.3785755
+"Cobham, Surrey, England",51.3300079,-0.4120821
+"Oxshott, Surrey, England",51.3361004,-0.3625418
+"Selsdon Wood, London, Greater London, England",51.3381888,-0.0452476
+"Purley, London, Greater London, England",51.3388112,-0.1158589
+"Pamber Forest, Tadley, Hampshire, England",51.3445805,-1.1172286
+"Chobham, Surrey, England",51.3477705,-0.6010128
+"Wimbledon, Surrey, England",51.3525629,-0.7252222
+"Halling, Kent, England",51.354593,0.4440944
+"Meopham, Kent, England",51.360162,0.3639312
+"Whitstable, Kent, England",51.3606286,1.0240626
+"Keston, Greater London, England",51.3609685,0.0290762
+"Westwood, Kent, England",51.3611657,1.3945309
+"Wellington College, Crowthorne, Berkshire, England",51.3624135,-0.8080941
+"Sand Point, Weston-super-Mare, Somerset, England",51.3659434,-2.9342983
+"Chatham, Kent, England",51.3731494,0.5502202
+"Fawkham, Kent, England",51.3762035,0.2811518
+"Bath, Somerset, England",51.3813864,-2.3596963
+"Chobham Common, Chobham, Surrey, England",51.3821634,-0.6073194
+"Winford, Somerset, England",51.3822376,-2.6606443
+"Walton-on-Thames, Surrey, England",51.3856837,-0.419814
+"Padworth, Berkshire, England",51.3916205,-1.1187515
+"Farningham Woods, Farningham, Kent, England",51.3916478,0.2121137
+"Cobham, Kent, England",51.3949326,0.4141599
 "South Norwood, London, Greater London, England",51.3980951,-0.0768216
+"Newbury, Berkshire, England",51.4020243,-1.3242212
+"Sulhamstead, Berkshire, England",51.4140897,-1.0929427
+"Sulhamstead Park, Reading, Berkshire, England",51.41681285,-1.09530783
+"Darenth, Kent, England",51.4204344,0.2510385
+"Wimbledon, Greater London, England",51.4214787,-0.2064027
+"Wimbledon, London, Greater London, England",51.4214787,-0.2064027
+"Higham, Kent, England",51.4310457,0.4709558
+"Chalk, Kent, England",51.4321057,0.3993639
+"Tooting Commons, London, Greater London, England",51.43400203,-0.144318326
+"Calcot, Berkshire, England",51.441795,-1.0520249
+"Gravesend, Kent, England",51.4424747,0.3694468
+"Ham House, Richmond, Surrey, England",51.44419259,-0.313872304
+"Dartford, Kent, England",51.4443059,0.21807
+"Troopers Hill, Bristol, Bristol, England",51.4561856,-2.5353019
+"Reading, Berkshire, England",51.4564242,-0.9700664
+"Chippenham, Wiltshire, England",51.4587621,-2.1159032
+"Lewisham, London, Greater London, England",51.4624292,-0.0101787
+"Porthcawl, Bridgend, Wales",51.4795563,-3.7040704
+"Osterley, Greater London, England",51.4815507,-0.3518348
+"Cardiff, Cardiff, Wales",51.4816546,-3.1791934
+"Windsor, Berkshire, England",51.4837886,-0.6040419
+"Lesnes Abbey Woods, London, Greater London, England",51.4859646,0.1341078
 "Spray Street, Woolwich, Greater London, England",51.4904779,0.0697472
+"Bovney Lock, Buckinghamshire, England",51.4910955,-0.640906352
+"Coombe Dingle, Bristol, Bristol, England",51.4921891,-2.6400554
+"Westbury on Trym, Bristol, Bristol, England",51.4936347,-2.6179454
+"Devonshire Road, London, Greater London, England",51.500887,-0.3132598
+"Langley, Slough, Berkshire, England",51.507818,-0.5409049
+"Slough, Berkshire, England",51.512103,-0.591276
+"Clouts Wood, Wroughton, Wiltshire, England",51.51489206,-1.804044057
+"London, Greater London, England",51.5156177,-0.0919983
+"Dodington, Gloucestershire, England",51.5188343,-2.362419
+"Burnham, Buckinghamshire, England",51.5362073,-0.6571411
+"Coate Water Country Park, Swindon, Wiltshire, England",51.53925894,-1.74822582
+"Moulsford, Oxfordshire, England",51.551939,-1.1496589
+"Hampstead, London, Greater London, England",51.55653,-0.1783011
+"Farnham Common, Buckinghamshire, England",51.5591604,-0.6128141
+"Hedgerley, Buckinghamshire, England",51.5763466,-0.6040853
+"Sopworth, Wiltshire, England",51.5806236,-2.2507317
+"Gerrards Cross, Buckinghamshire, England",51.5878131,-0.5537126
+"Wood Green, London, Greater London, England",51.5972054,-0.1099585
+"Northwood, Greater London, England",51.6051713,-0.4205812
+"Swindon, Wiltshire, England",51.6057801,-1.841922
+"Alderley, Wotton-under-Edge, Gloucestershire, England",51.615194,-2.332701286
+"Mill Hill, London, Greater London, England",51.6154423,-0.2330675
+"Flisteridge Wood, Wiltshire, England",51.6230108,-2.0098256
+"Stackpole, Pembrokeshire, Wales",51.6304465,-4.9147282
+"Newark Park, Wotton-under-Edge, Gloucestershire, England",51.6363693,-2.3176907
+"Wotton-under-Edge, Gloucestershire, England",51.6378241,-2.3547251
+"Shellingford, Oxfordshire, England",51.6405767,-1.5428033
+"Cricklade, Wiltshire, England",51.6414188,-1.8579414
+"Coleshill, Oxfordshire, England",51.6427615,-1.659708
+"Coombe, Gloucestershire, England",51.6440161,-2.3365089
+"Bald Hill, Oxfordshire, England",51.6507671,-0.9557044
+"Theydon Bois, Essex, England",51.6717759,0.1033213
+"Horsley, Gloucestershire, England",51.6780946,-2.2329134
+"Tubney, Oxfordshire, England",51.6852443,-1.3699399
+"Aston Rowant, Oxfordshire, England",51.6853033,-0.9489914
+"Hitchcopse Pit, Oxfordshire, England",51.69442627,-1.347413049
+"Dry Sandford Pit, Abingdon, Oxfordshire, England",51.69478825,-1.32635399
+"Cothill, Abingdon, Oxfordshire, England",51.69591033,-1.3292552
+"Tubney Wood, Tubney, Oxfordshire, England",51.6982536,-1.3620453
+"Great Missenden, Buckinghamshire, England",51.7046508,-0.7086592
+"Boars Hill, Oxfordshire, England",51.7160588,-1.2910167
+"Bagley Wood, Oxfordshire, England",51.7173159,-1.2605268
+"Cumnor, Oxfordshire, England",51.7349255,-1.3331621
+"Hinksey, Oxford, Oxfordshire, England",51.7363525,-1.2575581
+"Lye Valley, Oxford, Oxfordshire, England",51.7455776,-1.2056501
+"30 Cope Close, Oxford, Oxfordshire, England",51.74787238,-1.298262636
+"Holywell Road, Oxford, Oxfordshire, England",51.7482606,-1.2781435
+"Stanton Harcourt, Oxfordshire, England",51.7514273,-1.3921381
+"Oxford, Oxfordshire, England",51.7520131,-1.2578499
+"Wytham, Oxford, Oxfordshire, England",51.7535169,-1.2131856
+"Shotover, Oxford, Oxfordshire, England",51.7561128,-1.1551229
+"Hill End, Cumnor, Oxfordshire, England",51.756618,-1.3254981
+"OUMNH, Oxford, Oxfordshire, England",51.75883255,-1.255506952
+"Farmoor, Oxfordshire, England",51.7600964,-1.3487839
+"10 Stile Road, Oxford, Oxfordshire, England",51.7601077,-1.2087056
+"Berkhamsted, Hertfordshire, England",51.7607271,-0.5652554
+"University Parks, Oxford, Oxfordshire, England",51.7623666,-1.2544132
+"Wykeham House (garden), Oxford, Oxfordshire, England",51.76345691,-1.260193951
+"Raglan, Monmouthshire, Wales",51.7650543,-2.8540602
+"Wolfson College, Oxford, Oxfordshire, England",51.7711141,-1.2543347
+"Bull Banks Lake, Stroud, Gloucestershire, England",51.7754872,-2.0801017
+"Waterperry Wood, Oxford, Oxfordshire, England",51.77601288,-1.127008027
+"Cogges, Oxfordshire, England",51.78139,-1.4715776
+"Eynsham, Oxfordshire, England",51.7815319,-1.3826102
+"Sydlings Copse, Oxford, Oxfordshire, England",51.78219916,-1.192042059
+"Sunnymead, Oxford, Oxfordshire, England",51.7838335,-1.2642666
+"74 Islip Road, Sunnymead, Oxford, Oxfordshire, England",51.7844434,-1.2616549
+"Wolvercote, Oxfordshire, England",51.7849516,-1.2862119
+"Tring, Hertfordshire, England",51.7940357,-0.6609205
+"Bernwood Forest, Oxfordshire, England",51.80063858,-1.114713435
+"Hatching Green, Harpenden, Hertfordshire, England",51.8034314,-0.3580286
+"Woodeaton, Oxfordshire, England",51.8039678,-1.2239366
+"Yarnton, Oxfordshire, England",51.8046148,-1.308937
+"North Leigh Common, North Leigh, Oxfordshire, England",51.8203059,-1.4197065
+"Oxfordshire, England",51.833333,-1.25
+"Gustard Wood, Hertfordshire, England",51.8337966,-0.2991411
+"Buckinghamshire, England",51.840894,-0.8998074
+"Roch Castle, Roch, Pembrokeshire, Wales",51.8491504,-5.0790126
+"Bison Hill, Whipsnade, Bedfordshire, England",51.854781,-0.5482012
+"Enslow, Oxfordshire, England",51.860764,-1.303454
+"Wendlebury, Oxfordshire, England",51.872327,-1.186175
 "St David's Head, St David's, Pembrokeshire, Wales",51.9030217,-5.3127212
 "Stratton Audley, Oxfordshire, England",51.9336182,-1.109515
-"Sulhamstead Park, Reading, Berkshire, England",51.41681285,-1.09530783
-"Sulhamstead, Berkshire, England",51.4140897,-1.0929427
-"Sunnymead, Oxford, Oxfordshire, England",51.7838335,-1.2642666
-"Swanage, Dorset, England",50.6086976,-1.9571971
-"Swindon, Wiltshire, England",51.6057801,-1.841922
-"Sydlings Copse, Oxford, Oxfordshire, England",51.78219916,-1.192042059
-"Tavistock, Devon, England",50.5496154,-4.1446358
-"Teign Valley, Newton Abbot, Devon, England",50.61515132,-3.623629783
-"Teignbridge, Devon, England",50.6125551,-3.6559493
-"Teigngrace, Newton Abbot, Devon, England",50.55245864,-3.624364846
-"Theydon Bois, Essex, England",51.6717759,0.1033213
-"Tooting Commons, London, Greater London, England",51.43400203,-0.144318326
-"Topsham, Devon, England",50.6850732,-3.4658063
-"Torquay, Devon, England",50.4652392,-3.5211361
-"Tring, Hertfordshire, England",51.7940357,-0.6609205
-"Tubney Wood, Tubney, Oxfordshire, England",51.6982536,-1.3620453
-"Tubney, Oxfordshire, England",51.6852443,-1.3699399
-"Two Mile Coppice, Weymouth, Dorset, England",50.6386572,-2.4610685
-"University Parks, Oxford, Oxfordshire, England",51.7623666,-1.2544132
-"Wallasey, Merseyside, England",53.42722649,-3.067881383
-"Walmer, Kent, England",51.2068884,1.3999154
-"Warmwell Heath, Warmwell, Dorset, England",50.68094,-2.35113
-"Warmwell, Dorset, England",50.6749172,-2.3553494
-"Waterperry Wood, Oxford, Oxfordshire, England",51.77601288,-1.127008027
-"Wellington College, Crowthorne, Berkshire, England",51.3624135,-0.8080941
-"Wembury, Devon, England",50.3287157,-4.0840935
-"Wendlebury, Oxfordshire, England",51.872327,-1.186175
-"Westbury on Trym, Bristol, Bristol, England",51.4936347,-2.6179454
-"Weymouth, Dorset, England",50.6096257,-2.4543424
-"Whitchurch Down, Tavistock, Devon, England",50.5427342,-4.1150225
-"Wicken, Cambridgeshire, England",52.3126328,0.2994755
-"Wimbledon, Greater London, England",51.4214787,-0.2064027
-"Wimborne, Dorset, England",50.7995189,-1.987339
-"Windsor, Berkshire, England",51.4837886,-0.6040419
-"Witchampton, Dorset, England",50.8579978,-2.0168718
-"Woking, Surrey, England",51.3201891,-0.5564726
-"Wolvercote, Oxfordshire, England",51.7849516,-1.2862119
-"Woodbury, Devon, England",50.6759768,-3.4061001
-"Wotton-under-Edge, Gloucestershire, England",51.6378241,-2.3547251
-"Wrecclesham, Surrey, England",51.1979493,-0.8159703
-"Wykeham House (garden), Oxford, Oxfordshire, England",51.76345691,-1.260193951
-"Wyre Forest, Kidderminster, Worcestershire, England",52.396247,-2.2469773
-"Wytham, Oxford, Oxfordshire, England",51.7535169,-1.2131856
-"Yarnton, Oxfordshire, England",51.8046148,-1.308937
 "Ardley, Oxfordshire, England",51.9428336,-1.2117153
-"Westwood, Kent, England",51.3611657,1.3945309
-"Sidmouth, Devon, England",50.6790033,-3.237657
-"The Lizard, Cornwall, England",49.9602035,-5.2021162
-"Holywell Beach, Cornwall, England",50.3935678,-5.1460548
-"Shipley Bridge, South Brent, Devon, England",50.4508303,-3.8593753
-"Shilstone Tor, Throwleigh, Devon, England",50.69539973,-3.900621165
-"Belstone, Devon, England",50.7251852,-3.9570494
-"Bournemouth, Dorset, England",50.8346583,-2.1412149
-"Dartmoor, Devon, England",50.5657349,-3.9009713
-"Port Carlisle, Cumbria, England",54.94599961,-3.183912362
-"Mary Tavy, Devon, England",50.5995789,-4.1107209
-"Stackpole, Pembrokeshire, Wales",51.6304465,-4.9147282
-"Ringmere, Thetford, Norfolk, England",52.4563431,0.8082252
-"Moreton, Dorset, England",50.7006001,-2.2916836
-"Lakenheath, Suffolk, England",52.4175635,0.5180418
-"Frensham, Surrey, England",51.1598756,-0.7774027
-"Crackington Haven, Cornwall, England",50.7403071,-4.6319668
-"Witley and Milford Commons, Surrey, England",51.15672477,-0.667927939
-"Tuddenham Fen, Suffolk, England",52.33137083,0.542032024
-"Doddington, Kent, England",51.2792113,0.7717749
-"Radipole Lake, Weymouth, Dorset, England",50.6222916,-2.4616947
-"West Looe, Looe, Cornwall, England",50.3531094,-4.4583049
-"Plymouth, Devon, England",50.4323453,-3.7065512
-"St Blazey, Cornwall, England",50.3630055,-4.7156518
-"Abbotsbury Hillfort, Abbotsbury, Dorset, England",50.67704479,-2.629853948
-"Tintagel, Cornwall, England",50.6642063,-4.7526181
-"Minehead, Somerset, England",51.2057511,-3.4783542
-"Rame, Cornwall, England",50.3223827,-4.2122729
-"Looe, Cornwall, England",50.3522702,-4.454196
-"Pevensey, Sussex, England",50.8318123,0.3415459
-"Chippenham, Wiltshire, England",51.4587621,-2.1159032
-"123 Abbey Road, Torquay, Devon, England",50.465228,-3.5279
-"30 Cope Close, Oxford, Oxfordshire, England",51.74787238,-1.298262636
-"Rocky Valley, Trethevy, Cornwall, England",50.6732613,-4.7293504
-"Loch Sween, Argyll and Bute, Scotland",55.9835849,-5.6317791
-"Wimbledon, London, Greater London, England",51.4214787,-0.2064027
-"Trusham, Devon, England",50.6260489,-3.6285152
-"Dovedale, Peak Distict, Staffordshire, England",53.06663409,-1.783354532
-"Draycott, Somerset, England",51.2556653,-2.7509388
-"Harbury, Warwickshie, England",52.23694424,-1.457095592
-"Purley, London, Greater London, England",51.3388112,-0.1158589
-"Ynys Llanddwyn, Gwynedd, Wales",53.14000714,-4.409892831
-"Juniper Hall, Dorking, Surrey, England",51.2615107,-0.3208984
-"Rugby, Warwickshie, England",52.3697958,-1.263870764
-"Ashton Wold, Oundle, Northamptonshire, England",52.48037933,-0.410800547
-"Yellowham Wood, Dorchester, Dorset, England",50.74223361,-2.378909966
-"Buckland Monachorum, Devon, England",50.4848244,-4.1221901
-"Bickleigh, Devon, England",50.8427425,-3.502667
-"Barton Mills, Suffolk, England",52.3335174,0.5200357
-"Hartland Cliffs, Devon, England",51.00707424,-4.529508417
-"Yelverton, Devon, England",50.4929419,-4.0846742
-"Taw Green, Okehampton, Devon, England",50.75636386,-3.90926962
-"Woodhouse Eaves, Leicestershire, England",52.7244478,-1.2170181
-"Goonhilly Downs, Lizard, Cornwall, England",50.05001835,-5.200067979
-"Goonvrea, Cornwall, England",50.3027624,-5.2177565
-"Gravesend, Kent, England",51.4424747,0.3694468
-"Andover, Hampshire, England",51.2078275,-1.479355
-"Pegwell Bay, Kent, England",51.322807,1.3785755
-"Chalk, Kent, England",51.4321057,0.3993639
-"Chatham, Kent, England",51.3731494,0.5502202
-"Wood Green, London, Greater London, England",51.5972054,-0.1099585
-"Redhill, Surrey, England",51.2404691,-0.1682816
-"Meopham, Kent, England",51.360162,0.3639312
-"Cobham, Kent, England",51.3949326,0.4141599
-"Old Winchester Hill, Hampshire, England",50.9808962,-1.0887924
-"Newmillerdam Country Park, West Yorkshire, England",53.6311758,-1.4951474
-"Shropshire, England",52.6523394,-2.6435641
-"Wrotham, Kent, England",51.3104474,0.302978
-"Dartford, Kent, England",51.4443059,0.21807
-"Woolme Forest, Hampshire, England",51.08585472,-0.865868539
-"Troopers Hill, Bristol, Bristol, England",51.4561856,-2.5353019
-"Wisley Common, Wisley, Surrey, England",51.3176878,-0.4575655
-"Chobham Common, Chobham, Surrey, England",51.3821634,-0.6073194
+"Colne Engaine, Essex, England",51.943631,0.6898019
+"Chastleton, Oxfordshire, England",51.9599665,-1.6409204
+"Pegsdon, Hitchin, Bedfordshire, England",51.96253534,-0.36842034
+"Hardwick, Oxfordshire, England",51.9626874,-1.161546
+"Abbey Dore, Herefordshire, England",51.9687761,-2.8967553
+"Eldersfield, Worcestershire, England",51.9790388,-2.2907413
+"Tewkesbury, Gloucestershire, England",51.9937857,-2.1549574
+"Hook Norton, Oxfordshire, England",51.9939848,-1.4822644
+"Aynho, Northamptonshire, England",51.9948605,-1.2520728
+"Hitchin, Bedfordshire, England",52.0085422,-0.3034
+"Brackley, Northamptonshire, England",52.0278975,-1.1484657
+"Newbottle, Northamptonshire, England",52.0280967,-1.2372692
+"Chipping Campden, Gloucestershire, England",52.0496652,-1.7813927
 "Cusop Dingle, Hereford, Herefordshire, England",52.06468868,-3.110952188
-"Whitstable, Kent, England",51.3606286,1.0240626
-"Bigbury, Devon, England",50.3042614,-3.8750478
-"Yarner Wood, Newton Abbot, Devon, England",50.59576339,-3.725632682
-"Branscombe, Devon, England",50.6999699,-3.1553418
-"Bovney Lock, Buckinghamshire, England",51.4910955,-0.640906352
-"Oidham Common, Hampshire, England",51.26878407,-0.92177797
-"Leckford, Hampshire, England",51.1373322,-1.4651968
-"Withial Combe, Somerset, England",51.1349333,-2.615262032
-"Bald Hill, Oxfordshire, England",51.6507671,-0.9557044
-"Rodney Stoke, Somerset, England",51.2479877,-2.7369072
-"Postlebury Wood, Somerset, England",51.1848412,-2.3722059
-"Yellowham Wood, Dorset, England",50.74223361,-2.378909966
-"Powerstock Common, Dorset, England",50.7743059,-2.643853
-"Mill Hill, London, Greater London, England",51.6154423,-0.2330675
-"Darenth, Kent, England",51.4204344,0.2510385
-"Buckinghamshire, England",51.840894,-0.8998074
-"King's Lynn, Norfolk, England",52.7538673,0.3954774
-"Burnham, Buckinghamshire, England",51.5362073,-0.6571411
-"Keston, Greater London, England",51.3609685,0.0290762
-"Moulsford, Oxfordshire, England",51.551939,-1.1496589
-"White Down, Surrey, England",51.2271473,-0.4095533
-"Fawkham, Kent, England",51.3762035,0.2811518
-"Halling, Kent, England",51.354593,0.4440944
-"Tregardock Beach, Cornwall, England",50.6240515,-4.770595
-"Lizard, Cornwall, England",49.9588849,-5.2063788
-"Milford, Surrey, England",51.163179,-0.6368939
-"Dorchester, Dorset, England",50.7132064,-2.4371229
-"Sleddale Beck, Noth Yorkshire, England",54.48524892,-1.02487434
-"Knowle, West Midlands, England",52.3932659,-1.738959
-"Wimbledon, Surrey, England",51.3525629,-0.7252222
-"Dewerstone, Devon, England",50.4566379,-4.0611944
-"Hexworthy, Dartmoor, Devon, England",50.5379971,-3.8990284
-"Ugbrooke, Chudleigh, Devon, England",50.5914631,-3.5899397
-"Wolfson College, Oxford, Oxfordshire, England",51.7711141,-1.2543347
-"Conwy, Gwynedd, Wales",53.2882223,-3.9786546
-"Eynsham, Oxfordshire, England",51.7815319,-1.3826102
+"Marston St Lawrence, Northamptonshire, England",52.0766064,-1.2171139
+"Duxford, Cambridgeshire, England",52.0947808,0.1583392
+"Malvern, Worcestershire, England",52.1159559,-2.3258985
+"Salcey Forest, Northamptonshire, England",52.154843,-0.8391565
+"Hardwick Wood, Hardwick, Cambridgeshire, England",52.2002801,-0.0205034
+"Cambridge, Cambridgeshire, England",52.2055314,0.1186637
+"Harbury, Warwickshie, England",52.23694424,-1.457095592
 "Porters Mill, Droitwich, Worcestershire, England",52.24610873,-2.202578135
-"Hill End, Cumnor, Oxfordshire, England",51.756618,-1.3254981
-"Coombe Dingle, Bristol, Bristol, England",51.4921891,-2.6400554
-"Shaugh Bridge, Plymouth, Devon, England",50.45393915,-4.067759274
-"Headley, Hampshire, England",51.11925764,-0.827247927
+"Westleton, Suffolk, England",52.2649819,1.5753945
+"Hatton, Warwickshie, England",52.30064811,-1.646222116
+"Wicken Fen, Wicken, Cambridgeshire, England",52.306969,0.2771551
+"Wicken, Cambridgeshire, England",52.3126328,0.2994755
+"Tuddenham Fen, Suffolk, England",52.33137083,0.542032024
+"Barton Mills, Suffolk, England",52.3335174,0.5200357
+"Rugby, Warwickshie, England",52.3697958,-1.263870764
+"Knowle, West Midlands, England",52.3932659,-1.738959
+"Wyre Forest, Kidderminster, Worcestershire, England",52.396247,-2.2469773
+"Monks Wood, Sawtry, Cambridgeshire, England",52.4055181,-0.2396955
+"Coombe, Coventry, Warwickshie, England",52.41011936,-1.407566014
+"Lakenheath, Suffolk, England",52.4175635,0.5180418
+"Ringmere, Thetford, Norfolk, England",52.4563431,0.8082252
+"Ashton Pond, Oundle, Northamptonshire, England",52.47975966,-0.452349151
+"Ashton Wold, Oundle, Northamptonshire, England",52.48037933,-0.410800547
+"Oundle, Northamptonshire, England",52.4808725,-0.4674161
+"Market Bosworth, Leicestershire, England",52.6217051,-1.4149268
+"Barnack Hills and Holes, Barnack, Cambridgeshire, England",52.62910152,-0.412116287
+"Shropshire, England",52.6523394,-2.6435641
+"Horning, Norfolk, England",52.7004507,1.4898384
+"Wroxham, Norfolk, England",52.7065382,1.4036015
+"Barmouth, Gwynedd, Wales",52.7210389,-4.0535692
+"Woodhouse Eaves, Leicestershire, England",52.7244478,-1.2170181
+"King's Lynn, Norfolk, England",52.7538673,0.3954774
+"Criccieth, Gwynedd, Wales",52.9206106,-4.2332414
+"Dovedale, Peak Distict, Staffordshire, England",53.06663409,-1.783354532
+"Ynys Llanddwyn, Gwynedd, Wales",53.14000714,-4.409892831
+"Delamere, Cheshire, England",53.2288345,-2.6665302
+"Abergele, Conwy, Wales",53.2840692,-3.5810655
+"Conwy, Gwynedd, Wales",53.2882223,-3.9786546
+"Unstone, Derbyshire, England",53.2907058,-1.4416131
+"Dronfield, Derbyshire, England",53.3019998,-1.4752184
+"Llandudno, Conwy, Wales",53.322475,-3.8243251
+"Bollin Valley, Wilmslow, Cheshire, England",53.3299342,-2.2281098
+"Sheffield, South Yorkshire, England",53.3806626,-1.4702278
+"Hoylake, Cheshire, England",53.3931186,-3.176757221
+"Sale, Greater Manchester, England",53.4244939,-2.318415
+"Wallasey, Merseyside, England",53.42722649,-3.067881383
+"Newmillerdam Country Park, West Yorkshire, England",53.6311758,-1.4951474
+"Meanwood, Leeds, West Yorkshire, England",53.8281685,-1.5682466
+"Roundhay Park, Leeds, West Yorkshire, England",53.8393511,-1.4978422
+"Roundhay, Leeds, West Yorkshire, England",53.8439954,-1.507852
+"Keighley, West Yorkshire, England",53.8684021,-1.9020456
+"Rainton, North Yorkshire, England",54.1715744,-1.4343499
+"Sleddale Beck, Noth Yorkshire, England",54.48524892,-1.02487434
+"Carlisle, Cumbria, England",54.89388457,-2.93695408
+"Port Carlisle, Cumbria, England",54.94599961,-3.183912362
+"Loch Sween, Argyll and Bute, Scotland",55.9835849,-5.6317791
+"Nairn, Narinshire, Scotland",57.58733776,-3.864928973
+"Forres, Moray, Scotland",57.609864,-3.613215
+"Baddesley Clinton, Warwickshie, England",52.3438345029698,-1.70876026147646
+"Chynalls Point, Lizard, Cornwall, England",50.0166779472111,-5.09445905719391
+"Cox Tor, Dartmoor, Devon, England",50.5683291760623,-4.07729781546477
+"Hellingly Country Park, Devon, England",50.8859861573075,0.265271768068106
+"Lashford Lane Fen, Oxfordshire, England",51.7071363566528,-1.32412141373241
+"Lowland Point, Coverack, Cornwall, England",50.0359689958882,-5.07475249046829
+"Oakerswood, Dorchester, Dorset, England",50.7194665480804,-2.26824060455479
+"Penden Heath, Kent, England",51.2881179984429,0.531168422127853
+"Rothamsted Lodge, Harpenden, Hertfordshire, England",51.8057548582966,-0.359084169802568
+"Stone Wood, Shadoxhurst, Kent, England",51.0968144773676,0.805585225754693
+"Whelford Pool, Fairford, Gloucestershire, England",51.694107533767,-1.7511177170549
+"Wilden, Bedfordshire, England",52.1845848369493,-0.400442834229729
