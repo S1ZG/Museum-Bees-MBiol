@@ -1,10 +1,10 @@
 location_string,latitude,longitude
-"Lizard, Cornwall, England",49.9588849,-5.2063788
-"The Lizard, Cornwall, England",49.9602035,-5.2021162
+"Lizard, Cornwall, England",50.02964889,-5.195961501
+"The Lizard, Cornwall, England",50.02964889,-5.195961501
 "Coverack, Cornwall, England",50.0224895,-5.0971985
 "Goonhilly Downs, Lizard, Cornwall, England",50.05001835,-5.200067979
 "St Anthony, Cornwall, England",50.0834774,-5.3107622
-"Prawle Point, Devon, England",50.2025,-3.7212
+"Prawle Point, Devon, England",50.29001117,-3.719882932
 "Camborne, Cornwall, England",50.2138828,-5.2990347
 "Coast Path, Salcombe, Devon, England",50.2375257,-3.769493274
 "Old Inn Cottage, Saint Austell, Cornwall, England",50.29371098,-4.780971796
@@ -405,15 +405,15 @@ location_string,latitude,longitude
 "Loch Sween, Argyll and Bute, Scotland",55.9835849,-5.6317791
 "Nairn, Narinshire, Scotland",57.58733776,-3.864928973
 "Forres, Moray, Scotland",57.609864,-3.613215
-"Baddesley Clinton, Warwickshie, England",52.3438345029698,-1.70876026147646
-"Chynalls Point, Lizard, Cornwall, England",50.0166779472111,-5.09445905719391
-"Cox Tor, Dartmoor, Devon, England",50.5683291760623,-4.07729781546477
-"Hellingly Country Park, Devon, England",50.8859861573075,0.265271768068106
-"Lashford Lane Fen, Oxfordshire, England",51.7071363566528,-1.32412141373241
-"Lowland Point, Coverack, Cornwall, England",50.0359689958882,-5.07475249046829
-"Oakerswood, Dorchester, Dorset, England",50.7194665480804,-2.26824060455479
-"Penden Heath, Kent, England",51.2881179984429,0.531168422127853
-"Rothamsted Lodge, Harpenden, Hertfordshire, England",51.8057548582966,-0.359084169802568
-"Stone Wood, Shadoxhurst, Kent, England",51.0968144773676,0.805585225754693
-"Whelford Pool, Fairford, Gloucestershire, England",51.694107533767,-1.7511177170549
-"Wilden, Bedfordshire, England",52.1845848369493,-0.400442834229729
+"Baddesley Clinton, Warwickshie, England",52.3438345,-1.708760261
+"Chynalls Point, Lizard, Cornwall, England",50.01667795,-5.094459057
+"Cox Tor, Dartmoor, Devon, England",50.56832918,-4.077297815
+"Hellingly Country Park, Devon, England",50.88598616,0.265271768
+"Lashford Lane Fen, Oxfordshire, England",51.70713636,-1.324121414
+"Lowland Point, Coverack, Cornwall, England",50.035969,-5.07475249
+"Oakerswood, Dorchester, Dorset, England",50.71946655,-2.268240605
+"Penden Heath, Kent, England",51.288118,0.531168422
+"Rothamsted Lodge, Harpenden, Hertfordshire, England",51.80575486,-0.35908417
+"Stone Wood, Shadoxhurst, Kent, England",51.09681448,0.805585226
+"Whelford Pool, Fairford, Gloucestershire, England",51.69410753,-1.751117717
+"Wilden, Bedfordshire, England",52.18458484,-0.400442834
