@@ -58,7 +58,7 @@ write.csv(early_data_geo, "Data/early_data_geocoded.csv", row.names = FALSE)
 # I then manually entered the lat long coordinates for the NA columns using google maps
 # Add the lat long (locations_lat_long.csv) back to the original early_data dataframe
 
-locations_lat_long <- read.csv("Data/locations_lat_long.csv")
+locations_lat_long <- read.csv("Data/Reference tables/locations_lat_long.csv")
 
 # Merge the lat long back to the early_data dataframe
 early_data_coords <- early_data %>%
@@ -106,13 +106,13 @@ latest_geo <- geocode(latest_na_unique_locs_df,
 locations_lat_long <- bind_rows(locations_lat_long, latest_geo)
 
 # Save the updated locations_lat_long
-write.csv(locations_lat_long, "Data/locations_lat_long.csv", row.names = FALSE)
+write.csv(locations_lat_long, "Data/Reference tables/locations_lat_long.csv", row.names = FALSE)
 
 # Manually add lat long for remaining NAs 
 
 # Finally, merge the updated locations_lat_long back to latest_data
 
-locations_lat_long_updated <- read.csv("Data/locations_lat_long.csv")
+locations_lat_long_updated <- read.csv("Data/Reference tables/locations_lat_long.csv")
 latest_data_coords <- latest_data %>%
   left_join(locations_lat_long_updated, by = "location_string")
 

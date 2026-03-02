@@ -23,7 +23,7 @@ bees <- bees[bees$label_no != "IGproject0232", ]
 
 # Read in species flight period table
 
-flight_periods <- read.csv("Data/flight_periods_table.csv")
+flight_periods <- read.csv("Data/Reference tables/flight_periods_table.csv")
 flight_periods <- tibble(flight_periods)
 
 
@@ -167,6 +167,45 @@ for(k in unique_keys){
   bees_meta$max_preflight_monthly_max[rows] <- apply(vals_max, 1, max, na.rm = TRUE)
 }
 
+
+# Add temps
+bees_with_temps <- bees %>%
+  bind_cols(bees_meta %>% select(mean_preflight_temp, sd_preflight_temp, max_preflight_monthly_mean, max_preflight_monthly_max))
+
+
+# Save as .csv
+#write.csv(bees_with_temps, "Data/26_02_26_bees_with_temps.csv", row.names = FALSE)
+
+
+# What is the correlation of collection year (year) and temperature (mean_preflight_temp)
+cor(bees_with_temps$year, bees_with_temps$mean_preflight_temp, use = "complete.obs")
+
+#Plot collection year (year) against mean_preflight_temp (need to account for species / flight periods)
+# Add species in colour
+
+library(ggplot2)
+
+ggplot(bees_with_temps) +
+  geom_point(aes(x = year, y = mean_preflight_temp, color = full_name)) +
+  geom_smooth(aes(x = year, y = mean_preflight_temp), method = "lm", se = FALSE, color = "black") +
+  labs(title = "Collection Year vs Mean Pre-flight Temperature",
+       x = "Collection Year",
+       y = "Mean Pre-flight Temperature (°C)",
+       color = "Species") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+
+
+ggplot(bees_with_temps) +
+  geom_point(aes(x = year, y = max_preflight_monthly_max, color = full_name)) +
+  geom_smooth(aes(x = year, y = max_preflight_monthly_max), method = "lm", se = FALSE, color = "black") +
+  labs(title = "Collection Year vs Max Pre-flight Temperature",
+       x = "Collection Year",
+       y = "Max Pre-flight Temperature (°C)",
+       color = "Species") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
 
 
 
