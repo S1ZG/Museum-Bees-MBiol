@@ -129,8 +129,8 @@ bees_meta$period_key <- map_chr(bees_meta$layer_idx_vec, ~paste(.x, collapse = "
 bees_meta <- bees_meta %>%
   mutate(mean_preflight_temp = NA_real_,   # mean flight period temp (tas)
          sd_preflight_temp  = NA_real_,   # SD of the temps across the pre-flight period (tas)
-         max_preflight_monthly_mean = NA_real_, # The hottest monthly mean temp (tas)
-         max_preflight_monthly_max = NA_real_) # The maximum temp within the whole preflight period (tasmax)
+         max_preflight_monthly_mean = NA_real_, # The mean temp (tas) of the hottest month in the flight period 
+         max_preflight_temp = NA_real_) # The maximum temp within the whole preflight period (tasmax)
 
 
 # Create a grouped extraction loop
@@ -164,28 +164,33 @@ for(k in unique_keys){
   bees_meta$mean_preflight_temp[rows] <- rowMeans(vals_mean, na.rm = TRUE)
   bees_meta$sd_preflight_temp[rows]   <- apply(vals_mean, 1, sd, na.rm = TRUE)
   bees_meta$max_preflight_monthly_mean[rows] <- apply(vals_mean, 1, max, na.rm = TRUE)
-  bees_meta$max_preflight_monthly_max[rows] <- apply(vals_max, 1, max, na.rm = TRUE)
+  bees_meta$max_preflight_temp[rows] <- apply(vals_max, 1, max, na.rm = TRUE)
 }
 
 
 # Add temps
-bees_with_temps <- bees %>%
-  bind_cols(bees_meta %>% select(mean_preflight_temp, sd_preflight_temp, max_preflight_monthly_mean, max_preflight_monthly_max))
+bees_temps <- bees %>%
+  bind_cols(bees_meta %>% select(mean_preflight_temp, sd_preflight_temp, max_preflight_monthly_mean, max_preflight_temp))
 
 
 # Save as .csv
-#write.csv(bees_with_temps, "Data/26_02_26_bees_with_temps.csv", row.names = FALSE)
+#write.csv(bees_temps, "Data/26_02_26_bees_temps.csv", row.names = FALSE)
 
 
-# What is the correlation of collection year (year) and temperature (mean_preflight_temp)
-cor(bees_with_temps$year, bees_with_temps$mean_preflight_temp, use = "complete.obs")
+# Test correlation of collection year (year) and temperature (mean_preflight_temp)
+# Mean temp
+cor(bees_temps$year, bees_temps$mean_preflight_temp, use = "complete.obs")
+# Max temp
+cor(bees_temps$year, bees_temps$max_preflight_temp, use = "complete.obs")
+
 
 #Plot collection year (year) against mean_preflight_temp (need to account for species / flight periods)
 # Add species in colour
 
 library(ggplot2)
 
-ggplot(bees_with_temps) +
+# Mean
+ggplot(bees_temps) +
   geom_point(aes(x = year, y = mean_preflight_temp, color = full_name)) +
   geom_smooth(aes(x = year, y = mean_preflight_temp), method = "lm", se = FALSE, color = "black") +
   labs(title = "Collection Year vs Mean Pre-flight Temperature",
@@ -196,16 +201,22 @@ ggplot(bees_with_temps) +
   theme(legend.position = "bottom")
 
 
-
-ggplot(bees_with_temps) +
-  geom_point(aes(x = year, y = max_preflight_monthly_max, color = full_name)) +
-  geom_smooth(aes(x = year, y = max_preflight_monthly_max), method = "lm", se = FALSE, color = "black") +
+# And max
+ggplot(bees_temps) +
+  geom_point(aes(x = year, y = max_preflight_temp, color = full_name)) +
+  geom_smooth(aes(x = year, y = max_preflight_temp), method = "lm", se = FALSE, color = "black") +
   labs(title = "Collection Year vs Max Pre-flight Temperature",
        x = "Collection Year",
        y = "Max Pre-flight Temperature (°C)",
        color = "Species") +
   theme_minimal() +
   theme(legend.position = "bottom")
+
+
+# Test correlation of mean preflight temp and max preflight temp
+cor(bees_temps$mean_preflight_temp, bees_temps$max_preflight_temp, use = "complete.obs")
+
+
 
 
 
