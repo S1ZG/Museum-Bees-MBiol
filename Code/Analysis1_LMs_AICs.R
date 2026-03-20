@@ -4,21 +4,25 @@
 library(ggplot2)
 
 
-bees <- read.csv("Data/26_02_26_bees_with_temps.csv")
+bees_temps <- read_csv(here("Data/17_03_26_bees_temps_5km.csv"))
+# May want to remove sp 99, very small head measurement, need to check, and 232 (1873), no others are that early to compare to
+bees_temps <- bees_temps[bees_temps$label_no != "IGproject0099" & bees_temps$label_no != "IGproject0232", ]
 
-# Log transform measurements
-bees$log_HW  <- log(bees$HW_mm)
-bees$log_ITD <- log(bees$intertegular_distance_mm)
-bees$log_tibia <- log(bees$tibia_length_mm)
-bees$log_FW <- log(bees$FW_length_mm)
+
+# Shorten measurement names
+bees_temps <- bees_temps %>%
+  rename(
+    HW = HW_mm,
+    ITD = intertegular_distance_mm,
+    FW = FW_length_mm,
+    tibia = tibia_length_mm
+  )
+
 
 # Rescale year
-bees$year_rescaled <- (bees$year - 1800) / 100
+bees_temps$year_rescaled <- (bees_temps$year - 1800) / 100
 # Scaled to "centuries since 1800" to improve model stability
 
-
-# Convert sex into a factor
-bees$sex <- as.factor(bees$sex)
 
 
 
