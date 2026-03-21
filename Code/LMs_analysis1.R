@@ -37,6 +37,7 @@ bees_temps$year_rescaled <- (bees_temps$year - 1800) / 100
 # Scaled to "centuries since 1800" to improve model stability
 
 
+<<<<<<< HEAD
 # Check for collinearity between latitude and temp
 cor(bees_temps$latitude, bees_temps$mean_preflight_temp)
 # -0.09594196 - very weak
@@ -52,12 +53,21 @@ summary(model1)
 # Maybe good for Q1
 library(lme4)
 model2 <- lmer(log_ITD ~ year_rescaled + mean_preflight_temp + sex + latitude +
+=======
+model1 <- lm(log_ITD ~ year_rescaled + mean_preflight_temp + sex + sp, data = bees_temps)
+
+summary(model1)
+
+library(lme4)
+model2 <- lmer(log_ITD ~ year_rescaled + mean_preflight_temp + sex +
+>>>>>>> 28a62317178e20382e6036db8f52d91c3fe16464
                  (1 | sp),
                data = bees_temps)
 
 summary(model2)
 
 
+<<<<<<< HEAD
 # With ecology, for Q2
 # Set ecology reference level
 bees_temps$ecology <- as.factor(bees_temps$ecology)
@@ -70,6 +80,8 @@ model3 <- lmer(log_ITD ~ year_rescaled * ecology +
                data = bees_temps)
 
 summary(model3)
+=======
+>>>>>>> 28a62317178e20382e6036db8f52d91c3fe16464
 
 
 
