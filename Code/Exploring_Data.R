@@ -1,19 +1,11 @@
 
 library(ggplot2)
+library(dplyr)
 
 
 # Read in the dataset
 
-bees_explore <- read.csv("Data/17_03_26_bees_temps_5km.csv")
-
-# Create a column for full name by merging genus and species
-#bees$full_name <- paste(bees$genus, bees$species)
-
-# Remove the only genus level Nomada specimens
-#bees <- bees[bees$full_name != "Nomada sp.", ]
-
-# May want to remove sp 99, very small head measurement, need to check, and 232 (1873), no others are that early to compare to
-bees_explore <- bees_explore[bees_explore$label_no != "IGproject0099" & bees_explore$label_no != "IGproject0232", ]
+bees_explore <- read.csv("Data/14_04_26_bees_temps_5km.csv")
 
 
 # Shorten measurement names
@@ -26,7 +18,6 @@ bees_explore <- bees_explore %>%
   )
 
 
-
 # Plot the number of bee specimens measured from each year
 
 ggplot(bees_explore, aes(x = year)) +
@@ -36,6 +27,21 @@ ggplot(bees_explore, aes(x = year)) +
   xlab("Year Collected") +
   ylab("Number of Specimens")
 
+
+# Plot the number of specimens of each sex for each species
+ggplot(bees_explore, aes(x = full_name, fill = sex)) +
+  geom_bar(position = "dodge") +
+  labs(
+    title = "Number of Specimens by Sex per Species",
+    x = "Species",
+    y = "Number of Specimens",
+    fill = "Sex"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
 
 # Visualise the data with each measurement over time
 

@@ -12,20 +12,18 @@ library(purrr)
 
 
 # Read in measurement data with geocoded locations
-
 bees <- read.csv("Data/25_02_26_data_with_coordinates.csv")
 # Create a column for full name by merging genus and species
 bees$full_name <- paste(bees$genus, bees$species)
 # Remove rows with "Nomada sp." as full name, 
 bees <- bees[bees$full_name != "Nomada sp.", ]
-# Remove row with label_no "IGproject0232" - date is out of range
-bees <- bees[bees$label_no != "IGproject0232", ]
+# Remove sp 99 - very small head measurement, and 232 (1873) - no others are that early to compare to, need to double check both specimens
+bees <- bees[bees$label_no != "IGproject0099" & bees$label_no != "IGproject0232", ]
+
 
 # Read in species flight period table
-
 flight_periods <- read.csv("Data/Reference tables/flight_periods_table.csv")
 flight_periods <- tibble(flight_periods)
-
 
 
 # Get temperature data
@@ -173,21 +171,26 @@ bees_temps_5km <- bees %>%
   bind_cols(bees_meta %>% select(mean_preflight_temp, sd_preflight_temp, max_preflight_monthly_mean, max_preflight_temp))
 
 
+# Take out all specimens with a latitude over 54
+bees_temps_5km <- bees_temps_5km[bees_temps_5km$latitude <= 54, ]
+
 # Save as .csv
-#write.csv(bees_temps, "Data/17_03_26_bees_temps_5km.csv", row.names = FALSE)
+#write.csv(bees_temps_5km, "Data/14_04_26_bees_temps_5km.csv", row.names = FALSE)
 
 
 # Test correlation of collection year (year) and temperature (mean_preflight_temp)
 # Mean temp
 cor(bees_temps_5km$year, bees_temps_5km$mean_preflight_temp, use = "complete.obs")
-# 17/3/16 0.06492892
+# 17/3/26 0.06492892
+# 14/4/26 0.08901542
 # Max temp
 cor(bees_temps_5km$year, bees_temps_5km$max_preflight_temp, use = "complete.obs")
-# 17/3/16 -0.004652274
+# 17/3/26 -0.004652274
+# 14/4/26 0.04266989
+
 
 #Plot collection year (year) against mean_preflight_temp (need to account for species / flight periods)
 # Add species in colour
-
 
 library(ggplot2)
 
@@ -218,52 +221,7 @@ ggplot(bees_temps_5km, aes(x = year, y = max_preflight_temp, color = full_name))
 
 # Test correlation of mean preflight temp and max preflight temp
 cor(bees_temps_5km$mean_preflight_temp, bees_temps_5km$max_preflight_temp, use = "complete.obs")
-#17/3/26 0.7137533
+# 17/3/26 0.7137533
+# 14/4/26 0.7116694
 
 
-
-
-
-
-
-
-
-# Exclude Colletes succintus from the dataset
-
-bees_minus_succintus <- bees_temps_5km %>%
-  filter(full_name != "Colletes succintus")
-  
-cor(bees_minus_succintus$year, bees_minus_succintus$mean_preflight_temp, use = "complete.obs")
-#17/3/26 0.09160941
-cor(bees_minus_succintus$year, bees_minus_succintus$max_preflight_temp, use = "complete.obs")
-#17/3/26 0.05263783
-
-
-
-
-# Exclude just specimens from specific location 'Sleddale Beck'
-bees_minus_sleddale <- bees_temps_5km %>%
-  filter(specific_location != "Sleddale Beck")
-
-# Mean
-ggplot(bees_minus_sleddale, aes(x = year, y = mean_preflight_temp, color = full_name)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Collection Year vs Mean Pre-flight Temperature",
-       x = "Collection Year",
-       y = "Mean Pre-flight Temperature (°C)",
-       color = "Species") +
-  theme_minimal() +
-  theme(legend.position = "bottom")
-
-
-# And max
-ggplot(bees_minus_sleddale, aes(x = year, y = max_preflight_temp, color = full_name)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Collection Year vs Max Pre-flight Temperature",
-       x = "Collection Year",
-       y = "Max Pre-flight Temperature (°C)",
-       color = "Species") +
-  theme_minimal() +
-  theme(legend.position = "bottom")
