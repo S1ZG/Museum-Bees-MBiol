@@ -18,6 +18,23 @@ bees_explore <- bees_explore %>%
   )
 
 
+# Set species order so they are organised by ecology and consistent across plots
+species_order <- c(
+  "Megachile centuncularis",
+  "Hylaeus hyalinatus",
+  "Hylaeus communis",
+  "Anthidium manicatum",
+  "Lasioglossum fulvicorne",
+  "Colletes succintus",
+  "Andrena wilkella",
+  "Andrena chrysosceles",
+  "Sphecodes geoffrellus",
+  "Nomada ruficornis",
+  "Nomada goodeniana",
+  "Nomada flava"
+)
+bees_explore$full_name <- factor(bees_explore$full_name, levels = species_order)
+
 # Plot the number of bee specimens measured from each year
 
 ggplot(bees_explore, aes(x = year)) +

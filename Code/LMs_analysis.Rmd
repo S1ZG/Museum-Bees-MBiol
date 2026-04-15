@@ -1,0 +1,53 @@
+---
+title: "LMs_analysis1"
+author: '1075140'
+date: "2026-03-25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+#install.packages("ggh4x")
+library(ggh4x)
+library(here)
+```
+
+
+
+#### Load in data
+
+```{r loading data}
+# Load in data
+bees_temps <- read.csv(here("Data/14_04_26_bees_temps_5km.csv"))
+```
+
+### Set up
+```{r}
+# Log transform measurements
+bees_temps <- bees_temps %>%
+  mutate(
+    log_ITD = log(intertegular_distance_mm),
+    log_HW  = log(HW_mm),
+    log_FW = log(FW_length_mm),
+    log_tibia = log(tibia_length_mm)
+  )
+
+# Rescale year
+bees_temps$year_rescaled <- (bees_temps$year - 1800) / 100
+# Scaled to "centuries since 1800" to improve model stability
+
+# Check for collinearity between latitude and temp
+cor(bees_temps$latitude, bees_temps$mean_preflight_temp)
+```
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

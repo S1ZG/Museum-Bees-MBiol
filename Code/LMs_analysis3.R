@@ -11,6 +11,7 @@ library(here)
 # Load in data
 bees_temps <- read.csv(here("Data/14_04_26_bees_temps_5km.csv"))
 
+# Set up
 # Log transform measurements
 bees_temps <- bees_temps %>%
   mutate(
@@ -20,14 +21,192 @@ bees_temps <- bees_temps %>%
     log_tibia = log(tibia_length_mm)
   )
 
-
 # Rescale year
 bees_temps$year_rescaled <- (bees_temps$year - 1800) / 100
 # Scaled to "centuries since 1800" to improve model stability
 
+
+
 # Check for collinearity between latitude and temp
 cor(bees_temps$latitude, bees_temps$mean_preflight_temp)
 # -0.01543477 - very weak
+
+
+
+# Plots
+# (AI assistance in producing this)
+
+# Set species order so they are organised by ecology and consistent across plots
+species_order <- c(
+  "Megachile centuncularis",
+  "Hylaeus hyalinatus",
+  "Hylaeus communis",
+  "Anthidium manicatum",
+  "Lasioglossum fulvicorne",
+  "Colletes succintus",
+  "Andrena wilkella",
+  "Andrena chrysosceles",
+  "Sphecodes geoffrellus",
+  "Nomada ruficornis",
+  "Nomada goodeniana",
+  "Nomada flava"
+)
+bees_temps$full_name <- factor(bees_temps$full_name, levels = species_order)
+
+# Function for plots where I can set the window size:
+make_species_plot <- function(df, xvar, yvar, x_span, y_span) {
+  species_levels <- levels(factor(df$full_name))
+  
+  x_scales <- lapply(species_levels, function(sp) {
+    d <- df %>% filter(full_name == sp)
+    xmid <- mean(d[[xvar]], na.rm = TRUE)
+    scale_x_continuous(limits = c(xmid - x_span / 2, xmid + x_span / 2))
+  })
+  
+  y_scales <- lapply(species_levels, function(sp) {
+    d <- df %>% filter(full_name == sp)
+    ymid <- mean(d[[yvar]], na.rm = TRUE)
+    
+    ymin <- ymid - y_span / 2
+    ymax <- ymid + y_span / 2
+    
+    scale_y_continuous(
+      limits = c(ymin, ymax),
+      breaks = seq(
+        floor(ymin / 0.2) * 0.2,
+        ceiling(ymax / 0.2) * 0.2,
+        by = 0.2
+      )
+    )
+  })
+  
+  ggplot(df, aes(x = .data[[xvar]], y = .data[[yvar]], colour = sex)) +
+    geom_point(alpha = 0.6, size = 1.5) +
+    geom_smooth(method = "lm", se = FALSE) +
+    facet_wrap(~ full_name, scales = "free") +
+    ggh4x::facetted_pos_scales(
+      x = x_scales,
+      y = y_scales
+    ) +
+    labs(
+      x = xvar,
+      y = yvar,
+      colour = "Sex"
+    ) +
+    theme_minimal(base_size = 11)
+}
+
+# Mean temp and ITD
+make_species_plot(
+  df = bees_temps,
+  xvar = "mean_preflight_temp",
+  yvar = "log_ITD",
+  x_span = 6,
+  y_span = 0.7
+)+
+  labs(
+    title = "Effect of temperature on body size",
+    x = "Mean pre-flight temperature (°C)",
+    y = "log(Intertegular distance)"
+  )
+
+
+# Max temp and ITD
+#make_species_plot(
+#  df = bees_temps,
+#  xvar = "max_preflight_temp",
+#  yvar = "log_ITD",
+#  x_span = 12,
+#  y_span = 0.8
+#)
+
+
+
+
+
+# Function for year plot (set scale for x-axis)
+make_species_plot_year_centered <- function(df, xvar, yvar, x_span, y_span, year_center = 1.5) {
+  species_levels <- levels(factor(df$full_name))
+  
+  x_scales <- lapply(species_levels, function(sp) {
+    d <- df %>% filter(full_name == sp)
+    
+    if (xvar == "year_rescaled") {
+      xmid <- year_center
+    } else {
+      xmid <- mean(d[[xvar]], na.rm = TRUE)
+    }
+    
+    xmin <- xmid - x_span / 2
+    xmax <- xmid + x_span / 2
+    
+    if (xvar == "year_rescaled") {
+      scale_x_continuous(
+        limits = c(xmin, xmax),
+        breaks = seq(
+          floor(xmin / 0.5) * 0.5,
+          ceiling(xmax / 0.5) * 0.5,
+          by = 0.5
+        ),
+        labels = function(x) round(x * 100 + 1800)
+      )
+    } else {
+      scale_x_continuous(
+        limits = c(xmin, xmax)
+      )
+    }
+  })
+  
+  y_scales <- lapply(species_levels, function(sp) {
+    d <- df %>% filter(full_name == sp)
+    ymid <- mean(d[[yvar]], na.rm = TRUE)
+    
+    ymin <- ymid - y_span / 2
+    ymax <- ymid + y_span / 2
+    
+    scale_y_continuous(
+      limits = c(ymin, ymax),
+      breaks = seq(
+        floor(ymin / 0.2) * 0.2,
+        ceiling(ymax / 0.2) * 0.2,
+        by = 0.2
+      )
+    )
+  })
+  
+  ggplot(df, aes(x = .data[[xvar]], y = .data[[yvar]], colour = sex)) +
+    geom_point(alpha = 0.6, size = 1.5) +
+    geom_smooth(method = "lm", se = FALSE) +
+    facet_wrap(~ full_name, scales = "free") +
+    ggh4x::facetted_pos_scales(
+      x = x_scales,
+      y = y_scales
+    ) +
+    labs(
+      x = xvar,
+      y = yvar,
+      colour = "Sex"
+    ) +
+    theme_minimal(base_size = 11)
+}
+
+# Plot for Year and ITD
+make_species_plot_year_centered(
+  df = bees_temps,
+  xvar = "year_rescaled",
+  yvar = "log_ITD",
+  x_span = 1.5,
+  y_span = 0.8
+) +
+  labs(
+    title = "Effect of year on body size",
+    x = "Year",
+    y = "log(Intertegular distance)"
+  )
+
+
+
+
 
 
 
@@ -72,149 +251,7 @@ aic_results
 
 
 
-#
-#
 
-library(forcats)
-library(broom)
-
-# Plot coefficients grouped by ecology
-
-# Create look-up table for each species' ecology
-species_eco <- bees_temps %>%
-  distinct(full_name, ecology) %>%
-  arrange(ecology, full_name)
-
-# coefficient table
-coef_table <- bind_rows(lapply(species_list, function(sp) {
-  tidy(models_interactions[[sp]]) %>%
-    mutate(species = sp)
-})) %>%
-  left_join(species_eco, by = c("species" = "full_name"))
-
-# Order species within ecology
-species_order <- species_eco %>%
-  arrange(ecology, full_name) %>%
-  pull(full_name)
-
-coef_table <- coef_table %>%
-  mutate(
-    species = factor(species, levels = species_order),
-    ecology = factor(ecology)
-  )
-
-# PLOT: Mean preflight temperature effect by species, grouped by ecology
-coef_table %>%
-  filter(term == "mean_preflight_temp") %>%
-  ggplot(aes(x = estimate, y = species)) +
-  geom_vline(xintercept = 0, linetype = 2, colour = "grey60") +
-  geom_point() +
-  geom_errorbarh(aes(xmin = estimate - std.error,
-                     xmax = estimate + std.error),
-                 height = 0.2) +
-  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
-  theme_minimal() +
-  labs(x = "Effect of temperature on log(ITD)", y = NULL)
-
-# PLOT: Sex difference in temperature slopes by species, grouped by ecology
-coef_table %>%
-  filter(term == "sexmale:mean_preflight_temp") %>%
-  ggplot(aes(x = estimate, y = species)) +
-  geom_vline(xintercept = 0, linetype = 2, colour = "grey60") +
-  geom_point() +
-  geom_errorbarh(aes(xmin = estimate - std.error,
-                     xmax = estimate + std.error),
-                 height = 0.2) +
-  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
-  theme_minimal() +
-  labs(x = "Difference in temperature slopes between sexes", y = NULL)
-
-
-#
-#
-#
-#
-
-# Plot male and female slopes separately
-
-library(purrr)
-library(emmeans)
-library(forcats)
-
-# Extract sex-specific temperature slopes from each species model
-temp_slopes <- map_dfr(names(models_main), function(sp) {
-  mod <- models_main[[sp]]
-  
-  eco <- bees_temps %>%
-    filter(full_name == sp) %>%
-    pull(ecology) %>%
-    unique() %>%
-    as.character()
-  
-  slopes <- summary(
-    emtrends(mod, specs = ~ sex, var = "mean_preflight_temp"),
-    infer = c(TRUE, TRUE)
-  )
-  
-  slopes %>%
-    as.data.frame() %>%
-    mutate(
-      species = sp,
-      ecology = eco
-    )
-})
-
-# optional: order species
-temp_slopes <- temp_slopes %>%
-  mutate(
-    species = fct_relevel(species, species_list),
-    sex = factor(sex, levels = c("female", "male"))
-  )
-
-# plot sex-specific slopes, grouped by ecology
-ggplot(temp_slopes,
-       aes(x = mean_preflight_temp.trend, y = species, color = sex)) +
-  geom_vline(xintercept = 0, linetype = 2, linewidth = 0.5, colour = "grey60") +
-  geom_errorbarh(
-    aes(xmin = lower.CL, xmax = upper.CL),
-    position = position_dodge(width = 0.55),
-    height = 0.18,
-    linewidth = 0.7
-  ) +
-  geom_point(
-    position = position_dodge(width = 0.55),
-    size = 2.4
-  ) +
-  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
-  labs(
-    x = "Effect of temperature on log(ITD)",
-    y = NULL,
-    color = "Sex"
-  ) +
-  theme_minimal(base_size = 11) +
-  theme(
-    panel.grid.major.y = element_blank(),
-    strip.text.y = element_text(angle = 0),
-    legend.position = "bottom"
-  )
-
-
-
-
-
-
-
-
-
-
-
-
-#
-#
-#
-#
-#
-#
 # Using emmeans instead of tidy?
 
 library(tidyverse)
@@ -360,68 +397,45 @@ ggplot(temp_sex, aes(x = mean_preflight_temp.trend, y = species, color = sex)) +
 
 
 
-# Plots
-
-# Plot function to set window size for each plot:
-# (AI assistance in producing this)
-make_species_plot <- function(df, xvar, yvar, x_span, y_span) {
-  species_levels <- levels(factor(df$full_name))
-  
-  x_scales <- lapply(species_levels, function(sp) {
-    d <- df %>% filter(full_name == sp)
-    xmid <- mean(d[[xvar]], na.rm = TRUE)
-    scale_x_continuous(limits = c(xmid - x_span / 2, xmid + x_span / 2))
-  })
-  
-  y_scales <- lapply(species_levels, function(sp) {
-    d <- df %>% filter(full_name == sp)
-    ymid <- mean(d[[yvar]], na.rm = TRUE)
-    scale_y_continuous(limits = c(ymid - y_span / 2, ymid + y_span / 2))
-  })
-  
-  ggplot(df, aes(x = .data[[xvar]], y = .data[[yvar]], colour = sex)) +
-    geom_point(alpha = 0.6, size = 1.5) +
-    geom_smooth(method = "lm", se = FALSE) +
-    facet_wrap(~ full_name, scales = "free") +
-    ggh4x::facetted_pos_scales(
-      x = x_scales,
-      y = y_scales
-    ) +
-    labs(
-      x = xvar,
-      y = yvar,
-      colour = "Sex"
-    ) +
-    theme_minimal(base_size = 11)
-}
-
-# Temp and ITD
-make_species_plot(
-  df = bees_temps,
-  xvar = "mean_preflight_temp",
-  yvar = "log_ITD",
-  x_span = 6,
-  y_span = 0.7
-)
-
-# Year and ITD
-make_species_plot(
-  df = bees_temps,
-  xvar = "year_rescaled",
-  yvar = "log_ITD",
-  x_span = 1.65,
-  y_span = 0.8
-)
 
 
-# Temp and ITD
-make_species_plot(
-  df = bees_temps,
-  xvar = "max_preflight_temp",
-  yvar = "log_ITD",
-  x_span = 12,
-  y_span = 0.8
-)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -456,3 +470,12 @@ ggplot(bees_temps, aes(x = log_ITD, y = log_tibia, color = ecology)) +
 
 
 
+m <- lm(log_ITD ~ log_HW * mean_preflight_temp, data = df_sp)
+
+m
+
+
+m0 <- lm(log_ITD ~ log_HW, data = df_sp)
+df_sp$allom_resid <- resid(m0)
+
+lm(allom_resid ~ mean_preflight_temp, data = df_sp)
