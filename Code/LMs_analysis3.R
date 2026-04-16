@@ -26,7 +26,6 @@ bees_temps$year_rescaled <- (bees_temps$year - 1800) / 100
 # Scaled to "centuries since 1800" to improve model stability
 
 
-
 # Check for collinearity between latitude and temp
 cor(bees_temps$latitude, bees_temps$mean_preflight_temp)
 # -0.01543477 - very weak
@@ -119,8 +118,6 @@ make_species_plot(
 #  x_span = 12,
 #  y_span = 0.8
 #)
-
-
 
 
 
@@ -252,7 +249,7 @@ aic_results
 
 
 
-# Using emmeans instead of tidy?
+# Using emmeans to plot the effect of mean temperature on logITD
 
 library(tidyverse)
 library(emmeans)
@@ -393,7 +390,83 @@ ggplot(temp_sex, aes(x = mean_preflight_temp.trend, y = species, color = sex)) +
 
 
 
+# Same but for year and logITD
 
+
+# ----------------------------
+# Helper: extract emtrends slopes
+# ----------------------------
+extract_trends_var <- function(model_list, species_eco, species_list, specs_formula, var_name) {
+  imap_dfr(model_list, function(mod, sp) {
+    emtrends(mod, specs = specs_formula, var = var_name, infer = c(TRUE, TRUE)) %>%
+      as.data.frame() %>%
+      mutate(species = sp)
+  }) %>%
+    left_join(species_eco, by = c("species" = "full_name")) %>%
+    mutate(
+      species = factor(species, levels = species_list),
+      ecology = factor(ecology)
+    )
+}
+
+# ----------------------------
+# 1) Pooled year slope per species
+# ----------------------------
+year_main <- extract_trends_var(
+  model_list = models_main,
+  species_eco = species_eco,
+  species_list = species_list,
+  specs_formula = ~ 1,
+  var_name = "year_rescaled"
+)
+
+ggplot(year_main, aes(x = year_rescaled.trend, y = species)) +
+  geom_vline(xintercept = 0, linetype = 2, colour = "grey60") +
+  geom_point() +
+  geom_errorbarh(
+    aes(xmin = lower.CL, xmax = upper.CL),
+    height = 0.2
+  ) +
+  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
+  theme_minimal() +
+  labs(x = "Effect of year on log(ITD)", y = NULL)
+
+# ----------------------------
+# 2) Sex-specific year slopes per species
+# ----------------------------
+year_sex <- extract_trends_var(
+  model_list = models_interactions,
+  species_eco = species_eco,
+  species_list = species_list,
+  specs_formula = ~ sex,
+  var_name = "year_rescaled"
+) %>%
+  mutate(sex = factor(sex, levels = c("female", "male")))
+
+ggplot(year_sex, aes(x = year_rescaled.trend, y = species, color = sex)) +
+  geom_vline(xintercept = 0, linetype = 2, linewidth = 0.5, colour = "grey60") +
+  geom_errorbarh(
+    aes(xmin = lower.CL, xmax = upper.CL),
+    position = position_dodge(width = 0.55),
+    height = 0.18,
+    linewidth = 0.7
+  ) +
+  geom_point(
+    position = position_dodge(width = 0.55),
+    size = 2.4
+  ) +
+  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
+  labs(
+    x = "Effect of year on log(ITD)",
+    y = NULL,
+    color = "Sex"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    panel.grid.major.y = element_blank(),
+    strip.text.y = element_text(angle = 0),
+    legend.position = "bottom"
+  )
 
 
 
