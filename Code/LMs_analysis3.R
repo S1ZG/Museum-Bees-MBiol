@@ -6,6 +6,9 @@ library(dplyr)
 #install.packages("ggh4x")
 library(ggh4x)
 library(here)
+library(tidyverse)
+library(emmeans)
+library(forcats)
 
 
 # Load in data
@@ -251,68 +254,8 @@ aic_results
 
 # Using emmeans to plot the effect of mean temperature on logITD
 
-library(tidyverse)
-library(emmeans)
-library(forcats)
-library(here)
 
-# ----------------------------
-# Data prep
-# ----------------------------
-bees_temps <- read.csv(here("Data/17_03_26_bees_temps_5km.csv")) %>%
-  filter(
-    label_no != "IGproject0099",
-    label_no != "IGproject0232",
-    latitude <= 54
-  ) %>%
-  mutate(
-    sex = factor(sex),
-    ecology = factor(ecology),
-    full_name = factor(full_name),
-    year_rescaled = (year - 1800) / 100
-  ) %>%
-  rename(
-    HW = HW_mm,
-    ITD = intertegular_distance_mm,
-    FW = FW_length_mm,
-    tibia = tibia_length_mm
-  ) %>%
-  mutate(
-    log_ITD = log(ITD),
-    log_HW  = log(HW),
-    log_FW  = log(FW),
-    log_tibia = log(tibia)
-  )
-
-species_eco <- bees_temps %>%
-  distinct(full_name, ecology) %>%
-  arrange(ecology, full_name)
-
-species_list <- species_eco$full_name
-
-# ----------------------------
-# Fit models
-# ----------------------------
-models_main <- list()
-models_interactions <- list()
-
-for (sp in species_list) {
-  df_sp <- bees_temps %>% filter(full_name == sp)
-  
-  models_main[[sp]] <- lm(
-    log_ITD ~ sex + mean_preflight_temp + year_rescaled + latitude,
-    data = df_sp
-  )
-  
-  models_interactions[[sp]] <- lm(
-    log_ITD ~ sex * mean_preflight_temp + sex * year_rescaled + latitude,
-    data = df_sp
-  )
-}
-
-# ----------------------------
 # Helper: extract emtrends slopes
-# ----------------------------
 extract_trends <- function(model_list, species_eco, species_list, specs_formula) {
   imap_dfr(model_list, function(mod, sp) {
     emtrends(mod, specs = specs_formula, var = "mean_preflight_temp", infer = c(TRUE, TRUE)) %>%
@@ -326,10 +269,8 @@ extract_trends <- function(model_list, species_eco, species_list, specs_formula)
     )
 }
 
-# ----------------------------
 # 1) Pooled temperature slope per species
 #    (from the non-interaction model)
-# ----------------------------
 temp_main <- extract_trends(
   model_list = models_main,
   species_eco = species_eco,
@@ -347,6 +288,49 @@ ggplot(temp_main, aes(x = mean_preflight_temp.trend, y = species)) +
   facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
   theme_minimal() +
   labs(x = "Effect of temperature on log(ITD)", y = NULL)
+
+
+# Helper: extract emtrends slopes
+extract_trends <- function(model_list, species_eco, species_list, specs_formula,
+                           weights = "proportional") {
+  imap_dfr(model_list, function(mod, sp) {
+    emtrends(
+      mod,
+      specs = specs_formula,
+      var = "mean_preflight_temp",
+      infer = c(TRUE, TRUE),
+      weights = weights
+    ) %>%
+      as.data.frame() %>%
+      mutate(species = sp)
+  }) %>%
+    left_join(species_eco, by = c("species" = "full_name")) %>%
+    mutate(
+      species = factor(species, levels = species_list),
+      ecology = factor(ecology)
+    )
+}
+
+# Overall temperature slope per species, but from the sex-dependent model
+temp_overall <- extract_trends(
+  model_list = models_interactions,
+  species_eco = species_eco,
+  species_list = species_list,
+  specs_formula = ~ 1,
+  weights = "proportional"   # or "equal" if you want female + male averaged equally
+)
+
+ggplot(temp_overall, aes(x = mean_preflight_temp.trend, y = species)) +
+  geom_vline(xintercept = 0, linetype = 2, colour = "grey60") +
+  geom_point() +
+  geom_errorbarh(
+    aes(xmin = lower.CL, xmax = upper.CL),
+    height = 0.2
+  ) +
+  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
+  theme_minimal() +
+  labs(x = "Overall effect of temperature on log(ITD)", y = NULL)
+
 
 # ----------------------------
 # 2) Sex-specific temperature slopes per species
@@ -384,8 +368,6 @@ ggplot(temp_sex, aes(x = mean_preflight_temp.trend, y = species, color = sex)) +
     strip.text.y = element_text(angle = 0),
     legend.position = "bottom"
   )
-
-
 
 
 
