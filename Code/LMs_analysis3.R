@@ -253,149 +253,31 @@ aic_results
 
 
 
+# Sex-specific effects of temperature and year on log(ITD) using emtrends from interaction models
 
-
-
-
-
-
-
-
-# stop??
-
-
+# Ecology lookup
 species_eco <- bees_temps %>%
   distinct(full_name, ecology) %>%
   arrange(ecology, full_name)
 
 species_list <- species_eco$full_name
 
-# ----------------------------
-# Fit models
-# ----------------------------
-models_main <- list()
-models_interactions <- list()
-
-for (sp in species_list) {
-  df_sp <- bees_temps %>% filter(full_name == sp)
-  
-  models_main[[sp]] <- lm(
-    log_ITD ~ sex + mean_preflight_temp + year_rescaled + latitude,
-    data = df_sp
-  )
-  
-  models_interactions[[sp]] <- lm(
-    log_ITD ~ sex * mean_preflight_temp + sex * year_rescaled + latitude,
-    data = df_sp
-  )
-}
-
-# ----------------------------
-# Helper: extract emtrends slopes
-# ----------------------------
-extract_trends <- function(model_list, species_eco, species_list, specs_formula) {
-  imap_dfr(model_list, function(mod, sp) {
-    emtrends(mod, specs = specs_formula, var = "mean_preflight_temp", infer = c(TRUE, TRUE)) %>%
-      as.data.frame() %>%
-      mutate(species = sp)
-  }) %>%
-    left_join(species_eco, by = c("species" = "full_name")) %>%
-    mutate(
-      species = factor(species, levels = species_list),
-      ecology = factor(ecology)
-    )
-}
-
-# ----------------------------
-# 1) Pooled temperature slope per species
-#    (from the non-interaction model)
-# ----------------------------
-temp_main <- extract_trends(
-  model_list = models_main,
-  species_eco = species_eco,
-  species_list = species_list,
-  specs_formula = ~ 1
-)
-
-ggplot(temp_main, aes(x = mean_preflight_temp.trend, y = species)) +
-  geom_vline(xintercept = 0, linetype = 2, colour = "grey60") +
-  geom_point() +
-  geom_errorbarh(
-    aes(xmin = lower.CL, xmax = upper.CL),
-    height = 0.2
-  ) +
-  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
-  theme_minimal() +
-  labs(x = "Effect of temperature on log(ITD)", y = NULL)
-
-# ----------------------------
-# 2) Sex-specific temperature slopes per species
-#    (from the interaction model)
-# ----------------------------
-temp_sex <- extract_trends(
-  model_list = models_interactions,
-  species_eco = species_eco,
-  species_list = species_list,
-  specs_formula = ~ sex
-) %>%
-  mutate(sex = factor(sex, levels = c("female", "male")))
-
-ggplot(temp_sex, aes(x = mean_preflight_temp.trend, y = species, color = sex)) +
-  geom_vline(xintercept = 0, linetype = 2, linewidth = 0.5, colour = "grey60") +
-  geom_errorbarh(
-    aes(xmin = lower.CL, xmax = upper.CL),
-    position = position_dodge(width = 0.55),
-    height = 0.18,
-    linewidth = 0.7
-  ) +
-  geom_point(
-    position = position_dodge(width = 0.55),
-    size = 2.4
-  ) +
-  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
-  labs(
-    x = "Effect of temperature on log(ITD)",
-    y = NULL,
-    color = "Sex"
-  ) +
-  theme_minimal(base_size = 11) +
-  theme(
-    panel.grid.major.y = element_blank(),
-    strip.text.y = element_text(angle = 0),
-    legend.position = "bottom"
-  )
-
-
-
-
-
-
-
-
-
-
-
-# I think just from here?
-
-# Using emmeans to plot sex-specific effects of mean temperature on logITD
-
-# Ecology lookup table
-species_eco <- bees_temps %>%
-  distinct(full_name, ecology)
-
-extract_trends <- function(model_list, species_eco, species_list, specs_formula,
-                           weights = "proportional") {
-  imap_dfr(model_list, function(mod, sp) {
+# Helper to extract sex-specific slopes for any predictor
+extract_trends <- function(model_list, var_name, specs_formula = ~ sex) {
+  df <- do.call(rbind, lapply(names(model_list), function(sp) {
+    mod <- model_list[[sp]]
+    
     emtrends(
       mod,
       specs = specs_formula,
-      var = "mean_preflight_temp",
-      infer = c(TRUE, TRUE),
-      weights = weights
+      var = var_name,
+      infer = c(TRUE, TRUE)
     ) %>%
       as.data.frame() %>%
       mutate(species = sp)
-  }) %>%
+  }))
+  
+  df %>%
     left_join(species_eco, by = c("species" = "full_name")) %>%
     mutate(
       species = factor(species, levels = species_list),
@@ -404,293 +286,38 @@ extract_trends <- function(model_list, species_eco, species_list, specs_formula,
     )
 }
 
-temp_sex <- extract_trends(
-  model_list = models_interactions,
-  species_eco = species_eco,
-  species_list = species_list,
-  specs_formula = ~ sex
-)
-
-ggplot(temp_sex, aes(x = mean_preflight_temp.trend, y = species, color = sex)) +
-  geom_vline(xintercept = 0, linetype = 2, linewidth = 0.5, colour = "grey60") +
-  geom_errorbarh(
-    aes(xmin = lower.CL, xmax = upper.CL),
-    position = position_dodge(width = 0.55),
-    height = 0.18,
-    linewidth = 0.7
-  ) +
-  geom_point(
-    position = position_dodge(width = 0.55),
-    size = 2.4
-  ) +
-  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
-  labs(
-    x = "Effect of temperature on log(ITD)",
-    y = NULL,
-    color = "Sex"
-  ) +
-  theme_minimal(base_size = 11) +
-  theme(
-    panel.grid.major.y = element_blank(),
-    strip.text.y = element_text(angle = 0),
-    legend.position = "bottom"
-  )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Using emmeans to plot the effect of mean temperature on logITD
-
-
-species_eco <- bees_temps %>%
-  distinct(full_name, ecology) %>%
-  arrange(ecology, full_name)
-
-species_list <- species_eco$full_name
-
-# Helper: extract emtrends slopes
-extract_trends <- function(model_list, species_eco, species_list, specs_formula) {
-  imap_dfr(model_list, function(mod, sp) {
-    emtrends(mod, specs = specs_formula, var = "mean_preflight_temp", infer = c(TRUE, TRUE)) %>%
-      as.data.frame() %>%
-      mutate(species = sp)
-  }) %>%
-    left_join(species_eco, by = c("species" = "full_name")) %>%
-    mutate(
-      species = factor(species, levels = species_list),
-      ecology = factor(ecology)
+# Helper to plot the slopes
+plot_trends <- function(df, slope_col, xlab) {
+  ggplot(df, aes(x = .data[[slope_col]], y = species, color = sex)) +
+    geom_vline(xintercept = 0, linetype = 2, linewidth = 0.5, colour = "grey60") +
+    geom_errorbar(
+      aes(xmin = lower.CL, xmax = upper.CL),
+      orientation = "y",
+      position = position_dodge(width = 0.55),
+      width = 0.18,
+      linewidth = 0.7
+    ) +
+    geom_point(
+      position = position_dodge(width = 0.55),
+      size = 2.4
+    ) +
+    facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
+    labs(x = xlab, y = NULL, color = "Sex") +
+    theme_minimal(base_size = 11) +
+    theme(
+      panel.grid.major.y = element_blank(),
+      strip.text.y = element_text(angle = 0),
+      legend.position = "bottom"
     )
 }
 
-# 1) Pooled temperature slope per species
-#    (from the non-interaction model)
-temp_main <- extract_trends(
-  model_list = models_main,
-  species_eco = species_eco,
-  species_list = species_list,
-  specs_formula = ~ 1
-)
+# Sex-specific slopes for temperature
+temp_sex <- extract_trends(models_interactions, "mean_preflight_temp")
+plot_trends(temp_sex, "mean_preflight_temp.trend", "Effect of temperature on log(ITD)")
 
-ggplot(temp_main, aes(x = mean_preflight_temp.trend, y = species)) +
-  geom_vline(xintercept = 0, linetype = 2, colour = "grey60") +
-  geom_point() +
-  geom_errorbarh(
-    aes(xmin = lower.CL, xmax = upper.CL),
-    height = 0.2
-  ) +
-  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
-  theme_minimal() +
-  labs(x = "Effect of temperature on log(ITD)", y = NULL)
-
-
-# Helper: extract emtrends slopes
-extract_trends <- function(model_list, species_eco, species_list, specs_formula,
-                           weights = "proportional") {
-  imap_dfr(model_list, function(mod, sp) {
-    emtrends(
-      mod,
-      specs = specs_formula,
-      var = "mean_preflight_temp",
-      infer = c(TRUE, TRUE),
-      weights = weights
-    ) %>%
-      as.data.frame() %>%
-      mutate(species = sp)
-  }) %>%
-    left_join(species_eco, by = c("species" = "full_name")) %>%
-    mutate(
-      species = factor(species, levels = species_list),
-      ecology = factor(ecology)
-    )
-}
-
-# Overall temperature slope per species, but from the sex-dependent model
-temp_overall <- extract_trends(
-  model_list = models_interactions,
-  species_eco = species_eco,
-  species_list = species_list,
-  specs_formula = ~ 1,
-  weights = "proportional"   # or "equal" if you want female + male averaged equally
-)
-
-ggplot(temp_overall, aes(x = mean_preflight_temp.trend, y = species)) +
-  geom_vline(xintercept = 0, linetype = 2, colour = "grey60") +
-  geom_point() +
-  geom_errorbarh(
-    aes(xmin = lower.CL, xmax = upper.CL),
-    height = 0.2
-  ) +
-  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
-  theme_minimal() +
-  labs(x = "Overall effect of temperature on log(ITD)", y = NULL)
-
-
-# ----------------------------
-# 2) Sex-specific temperature slopes per species
-#    (from the interaction model)
-# ----------------------------
-temp_sex <- extract_trends(
-  model_list = models_interactions,
-  species_eco = species_eco,
-  species_list = species_list,
-  specs_formula = ~ sex
-) %>%
-  mutate(sex = factor(sex, levels = c("female", "male")))
-
-ggplot(temp_sex, aes(x = mean_preflight_temp.trend, y = species, color = sex)) +
-  geom_vline(xintercept = 0, linetype = 2, linewidth = 0.5, colour = "grey60") +
-  geom_errorbarh(
-    aes(xmin = lower.CL, xmax = upper.CL),
-    position = position_dodge(width = 0.55),
-    height = 0.18,
-    linewidth = 0.7
-  ) +
-  geom_point(
-    position = position_dodge(width = 0.55),
-    size = 2.4
-  ) +
-  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
-  labs(
-    x = "Effect of temperature on log(ITD)",
-    y = NULL,
-    color = "Sex"
-  ) +
-  theme_minimal(base_size = 11) +
-  theme(
-    panel.grid.major.y = element_blank(),
-    strip.text.y = element_text(angle = 0),
-    legend.position = "bottom"
-  )
-
-
-
-
-# Same but for year and logITD
-
-
-# ----------------------------
-# Helper: extract emtrends slopes
-# ----------------------------
-extract_trends_var <- function(model_list, species_eco, species_list, specs_formula, var_name) {
-  imap_dfr(model_list, function(mod, sp) {
-    emtrends(mod, specs = specs_formula, var = var_name, infer = c(TRUE, TRUE)) %>%
-      as.data.frame() %>%
-      mutate(species = sp)
-  }) %>%
-    left_join(species_eco, by = c("species" = "full_name")) %>%
-    mutate(
-      species = factor(species, levels = species_list),
-      ecology = factor(ecology)
-    )
-}
-
-# ----------------------------
-# 1) Pooled year slope per species
-# ----------------------------
-year_main <- extract_trends_var(
-  model_list = models_main,
-  species_eco = species_eco,
-  species_list = species_list,
-  specs_formula = ~ 1,
-  var_name = "year_rescaled"
-)
-
-ggplot(year_main, aes(x = year_rescaled.trend, y = species)) +
-  geom_vline(xintercept = 0, linetype = 2, colour = "grey60") +
-  geom_point() +
-  geom_errorbarh(
-    aes(xmin = lower.CL, xmax = upper.CL),
-    height = 0.2
-  ) +
-  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
-  theme_minimal() +
-  labs(x = "Effect of year on log(ITD)", y = NULL)
-
-# ----------------------------
-# 2) Sex-specific year slopes per species
-# ----------------------------
-year_sex <- extract_trends_var(
-  model_list = models_interactions,
-  species_eco = species_eco,
-  species_list = species_list,
-  specs_formula = ~ sex,
-  var_name = "year_rescaled"
-) %>%
-  mutate(sex = factor(sex, levels = c("female", "male")))
-
-ggplot(year_sex, aes(x = year_rescaled.trend, y = species, color = sex)) +
-  geom_vline(xintercept = 0, linetype = 2, linewidth = 0.5, colour = "grey60") +
-  geom_errorbarh(
-    aes(xmin = lower.CL, xmax = upper.CL),
-    position = position_dodge(width = 0.55),
-    height = 0.18,
-    linewidth = 0.7
-  ) +
-  geom_point(
-    position = position_dodge(width = 0.55),
-    size = 2.4
-  ) +
-  facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
-  labs(
-    x = "Effect of year on log(ITD)",
-    y = NULL,
-    color = "Sex"
-  ) +
-  theme_minimal(base_size = 11) +
-  theme(
-    panel.grid.major.y = element_blank(),
-    strip.text.y = element_text(angle = 0),
-    legend.position = "bottom"
-  )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Sex-specific slopes for year
+year_sex <- extract_trends(models_interactions, "year_rescaled")
+plot_trends(year_sex, "year_rescaled.trend", "Effect of year on log(ITD)")
 
 
 
