@@ -20,18 +20,18 @@ bees_explore <- bees_explore %>%
 
 # Set species order so they are organised by ecology and consistent across plots
 species_order <- c(
-  "Megachile centuncularis",
-  "Hylaeus hyalinatus",
-  "Hylaeus communis",
   "Anthidium manicatum",
-  "Lasioglossum fulvicorne",
-  "Colletes succintus",
-  "Andrena wilkella",
+  "Hylaeus communis",
+  "Hylaeus hyalinatus",
+  "Megachile centuncularis",
   "Andrena chrysosceles",
-  "Sphecodes geoffrellus",
-  "Nomada ruficornis",
+  "Andrena wilkella",
+  "Colletes succintus",
+  "Lasioglossum fulvicorne",
+  "Nomada flava",
   "Nomada goodeniana",
-  "Nomada flava"
+  "Nomada ruficornis",
+  "Sphecodes geoffrellus"
 )
 bees_explore$full_name <- factor(bees_explore$full_name, levels = species_order)
 
