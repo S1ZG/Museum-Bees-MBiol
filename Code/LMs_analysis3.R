@@ -331,6 +331,41 @@ plot_trends(year_sex, "year_rescaled.trend", "Effect of year on log(ITD)")
 
 
 
+models_HW_scale <- list()
+models_FW_scale <- list()
+models_tiba_scale <- list()
+
+for (sp in species_list) {
+  df_sp <- bees_temps %>% filter(full_name == sp)
+  
+  # Allometry model
+  a_HW <- lm(log_HW ~ log_ITD*mean_preflight_temp, 
+             data = df_sp)
+  
+  a_FW <- lm(log_FW ~ log_ITD*mean_preflight_temp, 
+                data = df_sp)
+  
+  a_tib <- lm(log_tibia ~ log_ITD*mean_preflight_temp, 
+           data = df_sp)
+  
+  models_HW_scale[[sp]] <- a_HW
+  models_FW_scale[[sp]] <- a_FW
+  models_tiba_scale[[sp]] <- a_tib
+}
+
+models_HW_scale
+models_FW_scale
+models_tiba_scale
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -396,4 +431,6 @@ m0 <- lm(log_ITD ~ log_HW, data = df_sp)
 df_sp$allom_resid <- resid(m0)
 
 lm(allom_resid ~ mean_preflight_temp, data = df_sp)
+
+
 
