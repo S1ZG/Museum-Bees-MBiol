@@ -48,6 +48,11 @@ ggplot(bees_explore, aes(x = full_name, fill = sex)) +
   )
 
 
+# Summary statistics - mean size and variation in size per species
+# Using ITD as proxy for body size
+
+
+
 
 
 

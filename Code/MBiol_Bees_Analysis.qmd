@@ -1,6 +1,10 @@
+---
+title: "MBiol_Bees_Analysis"
+format: html
+editor: visual
+---
 
-# This code is for running LMs and AIC analyses
-
+```{r}
 library(ggplot2)
 library(dplyr)
 #install.packages("ggh4x")
@@ -9,34 +13,34 @@ library(here)
 library(tidyverse)
 library(emmeans)
 library(forcats)
-
+```
 
 # Load in data
+
+```{r}
+# Load in data
 bees_temps <- read.csv(here("Data/14_04_26_bees_temps_5km.csv"))
+```
 
 # Set up
+
+```{r}
 # Log transform measurements
 bees_temps <- bees_temps %>%
   mutate(
-    log_ITD = log(intertegular_distance_mm),
-    log_HW  = log(HW_mm),
-    log_FW = log(FW_length_mm),
-    log_tibia = log(tibia_length_mm)
+    ITD = intertegular_distance_mm,
+    HW  = HW_mm,
+    FW = FW_length_mm,
+    tibia = tibia_length_mm,
+    log_ITD = log(ITD),
+    log_HW  = log(HW),
+    log_FW = log(FW),
+    log_tibia = log(tibia)
   )
 
 # Rescale year
 bees_temps$year_rescaled <- (bees_temps$year - 1800) / 100
 # Scaled to "centuries since 1800" to improve model stability
-
-
-# Check for collinearity between latitude and temp
-cor(bees_temps$latitude, bees_temps$mean_preflight_temp)
-# -0.01543477 - very weak
-
-
-
-# Plots
-# (AI assistance in producing this)
 
 # Set species order so they are organised by ecology and consistent across plots
 species_order <- c(
@@ -55,7 +59,40 @@ species_order <- c(
 )
 
 bees_temps$full_name <- factor(bees_temps$full_name, levels = species_order)
+```
 
+# Data Exploration
+
+## Plots for overall dataset
+
+```{r}
+# Plot the number of bee specimens measured from each year
+
+ggplot(bees_temps, aes(x = year)) + geom_bar() + ggtitle("Specimen Collection Year Coverage") + theme(plot.title = element_text(hjust = 0.5)) + xlab("Year Collected") + ylab("Number of Specimens")
+
+
+
+# Plot the number of specimens of each sex for each species
+ggplot(bees_temps, aes(x = full_name, fill = sex)) +
+  geom_bar(position = "dodge") +
+  labs(
+    title = "Number of Specimens by Sex per Species",
+    x = "Species",
+    y = "Number of Specimens",
+    fill = "Sex"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```
+
+## Per species plots
+
+##### Function for temp plot
+
+```{r}
 # Function for plots where I can set the window size:
 make_species_plot <- function(df, xvar, yvar, x_span, y_span) {
   species_levels <- levels(factor(df$full_name))
@@ -98,7 +135,11 @@ make_species_plot <- function(df, xvar, yvar, x_span, y_span) {
     ) +
     theme_minimal(base_size = 11)
 }
+```
 
+#### Mean temp and ITD plot
+
+```{r}
 # Mean temp and ITD
 make_species_plot(
   df = bees_temps,
@@ -112,19 +153,11 @@ make_species_plot(
     x = "Mean pre-flight temperature (°C)",
     y = "log(Intertegular distance)"
   )
+```
 
+##### Function for year plot
 
-# Max temp and ITD
-#make_species_plot(
-#  df = bees_temps,
-#  xvar = "max_preflight_temp",
-#  yvar = "log_ITD",
-#  x_span = 12,
-#  y_span = 0.8
-#)
-
-
-
+```{r}
 # Function for year plot (set scale for x-axis)
 make_species_plot_year_centered <- function(df, xvar, yvar, x_span, y_span, year_center = 1.5) {
   species_levels <- levels(factor(df$full_name))
@@ -190,7 +223,11 @@ make_species_plot_year_centered <- function(df, xvar, yvar, x_span, y_span, year
     ) +
     theme_minimal(base_size = 11)
 }
+```
 
+#### Year and ITD plot
+
+```{r}
 # Plot for Year and ITD
 make_species_plot_year_centered(
   df = bees_temps,
@@ -205,8 +242,119 @@ make_species_plot_year_centered(
     y = "log(Intertegular distance)"
   )
 
+```
+
+## Summary statistics
+
+```{r}
+# Calculate the mean and variation in size per species
+
+```
+
+#### Just log(ITD)
+
+```{r}
+size_summary <- bees_temps %>%
+  group_by(full_name) %>%
+  summarise(
+    mean_log_ITD = mean(log_ITD, na.rm = TRUE),
+    sd_log_ITD   = sd(log_ITD, na.rm = TRUE),
+    n = n()
+  )
+
+size_summary
+```
+
+#### All log(measured traits)
+
+```{r}
+size_summary_all <- bees_temps %>%
+  group_by(full_name) %>%
+  summarise(
+    across(
+      c(log_ITD, log_HW, log_FW, log_tibia),
+      list(mean = ~mean(.x, na.rm = TRUE),
+           sd   = ~sd(.x, na.rm = TRUE)),
+      .names = "{.col}_{.fn}"
+    ),
+    n = n()
+  )
+
+size_summary_all
+```
+
+#### Raw measurements
+
+#### ITD only
+```{r}
+size_summary <- bees_temps %>%
+  group_by(full_name) %>%
+  summarise(
+    mean_ITD = round(mean(ITD, na.rm = TRUE), 3),
+    sd_ITD   = round(sd(ITD, na.rm = TRUE), 3),
+    n = n()
+  )
+
+size_summary
+```
+
+#### All measurements
+
+```{r}
+size_summary_all <- bees_temps %>%
+  group_by(full_name) %>%
+  summarise(
+    across(
+      c(ITD, HW, FW, tibia),
+       list(mean = ~round(mean(.x, na.rm = TRUE), 3),
+           sd   = ~round(sd(.x, na.rm = TRUE), 3)),
+      .names = "{.col}_{.fn}"
+    ),
+    n = n()
+  )
+
+size_summary_all
+```
+
+```{r}
+size_summary <- bees_temps %>%
+  group_by(full_name, sex) %>%
+  summarise(
+    mean_ITD = round(mean(ITD, na.rm = TRUE), 3),
+    sd_ITD   = round(sd(ITD, na.rm = TRUE), 3),
+    n = n(),
+    .groups = "drop"
+  )
+
+size_summary
+```
 
 
+```{r}
+size_summary_all <- bees_temps %>%
+  group_by(full_name, sex) %>%
+  summarise(
+    across(
+      c(ITD, HW, FW, tibia),
+      list(mean = ~round(mean(.x, na.rm = TRUE), 3),
+           sd   = ~round(sd(.x, na.rm = TRUE), 3)),
+      .names = "{.col}_{.fn}"
+    ),
+    n = n(),
+    .groups = "drop"
+  )
+
+size_summary_all
+```
+
+
+
+
+# LMs analysis
+
+## Create non-interation and sex-interaction models
+
+```{r}
 # Separate LM for each species
 
 # Ensure variables are factors
@@ -235,8 +383,11 @@ for (sp in species_list) {
   models_main[[sp]] <- m1
   models_interactions[[sp]] <- m2
 }
+```
 
+## Compare models
 
+```{r}
 # Compare models to see if interaction is needed using AIC
 
 aic_results <- lapply(species_list, function(sp) {
@@ -245,12 +396,12 @@ aic_results <- lapply(species_list, function(sp) {
 
 names(aic_results) <- species_list
 aic_results
+```
 
+# Calculate and plot the sex-specific effects of temperature and year
 
-
-
-
-# Sex-specific effects of temperature and year on log(ITD) using emtrends from interaction models
+```{r}
+#Sex-specific effects of temperature and year on log(ITD) using emtrends from interaction models
 
 # Ecology lookup
 species_eco <- bees_temps %>%
@@ -307,33 +458,27 @@ plot_trends <- function(df, slope_col, xlab) {
       legend.position = "bottom"
     )
 }
+```
 
+### Plot for temperature
+
+```{r}
 # Sex-specific slopes for temperature
 temp_sex <- extract_trends(models_interactions, "mean_preflight_temp")
 plot_trends(temp_sex, "mean_preflight_temp.trend", "Effect of temperature on log(ITD)")
+```
 
+### Plot for year
+
+```{r}
 # Sex-specific slopes for year
 year_sex <- extract_trends(models_interactions, "year_rescaled")
 plot_trends(year_sex, "year_rescaled.trend", "Effect of year on log(ITD)")
+```
 
+# Allometry (refine)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```{r}
 library(dplyr)
 library(broom)
 library(ggplot2)
@@ -397,10 +542,4 @@ ggplot(coef_allometry, aes(x = estimate, y = species, colour = ecology)) +
 # 6. View effect sizes
 coef_allometry %>%
   select(species, ecology, trait, estimate, std.error, slope_change_2SD)
-
-
-
-
-
-
-
+```
