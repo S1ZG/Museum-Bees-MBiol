@@ -45,9 +45,9 @@ bees_temps$year_rescaled <- (bees_temps$year - 1800) / 100
 # Set species order so they are organised by ecology and consistent across plots
 species_order <- c(
   "Anthidium manicatum",
+  "Megachile centuncularis",
   "Hylaeus communis",
   "Hylaeus hyalinatus",
-  "Megachile centuncularis",
   "Andrena chrysosceles",
   "Andrena wilkella",
   "Colletes succintus",
@@ -89,71 +89,6 @@ ggplot(bees_temps, aes(x = full_name, fill = sex)) +
 ```
 
 ## Per species plots
-
-##### Function for temp plot
-
-```{r}
-# Function for plots where I can set the window size:
-make_species_plot <- function(df, xvar, yvar, x_span, y_span) {
-  species_levels <- levels(factor(df$full_name))
-  
-  x_scales <- lapply(species_levels, function(sp) {
-    d <- df %>% filter(full_name == sp)
-    xmid <- mean(d[[xvar]], na.rm = TRUE)
-    scale_x_continuous(limits = c(xmid - x_span / 2, xmid + x_span / 2))
-  })
-  
-  y_scales <- lapply(species_levels, function(sp) {
-    d <- df %>% filter(full_name == sp)
-    ymid <- mean(d[[yvar]], na.rm = TRUE)
-    
-    ymin <- ymid - y_span / 2
-    ymax <- ymid + y_span / 2
-    
-    scale_y_continuous(
-      limits = c(ymin, ymax),
-      breaks = seq(
-        floor(ymin / 0.2) * 0.2,
-        ceiling(ymax / 0.2) * 0.2,
-        by = 0.2
-      )
-    )
-  })
-  
-  ggplot(df, aes(x = .data[[xvar]], y = .data[[yvar]], colour = sex)) +
-    geom_point(alpha = 0.6, size = 1.5) +
-    geom_smooth(method = "lm", se = FALSE) +
-    facet_wrap(~ full_name, scales = "free") +
-    ggh4x::facetted_pos_scales(
-      x = x_scales,
-      y = y_scales
-    ) +
-    labs(
-      x = xvar,
-      y = yvar,
-      colour = "Sex"
-    ) +
-    theme_minimal(base_size = 11)
-}
-```
-
-#### Mean temp and ITD plot
-
-```{r}
-# Mean temp and ITD
-make_species_plot(
-  df = bees_temps,
-  xvar = "mean_preflight_temp",
-  yvar = "log_ITD",
-  x_span = 6,
-  y_span = 0.7
-)+
-  labs(
-    title = "Effect of temperature on body size",
-    x = "Mean pre-flight temperature (°C)",
-    y = "log(Intertegular distance)"
-  )
-```
 
 ##### Function for year plot
 
@@ -243,13 +178,75 @@ make_species_plot_year_centered(
   )
 
 ```
-
-## Summary statistics
+##### Function for temp plot
 
 ```{r}
-# Calculate the mean and variation in size per species
-
+# Function for plots where I can set the window size:
+make_species_plot <- function(df, xvar, yvar, x_span, y_span) {
+  species_levels <- levels(factor(df$full_name))
+  
+  x_scales <- lapply(species_levels, function(sp) {
+    d <- df %>% filter(full_name == sp)
+    xmid <- mean(d[[xvar]], na.rm = TRUE)
+    scale_x_continuous(limits = c(xmid - x_span / 2, xmid + x_span / 2))
+  })
+  
+  y_scales <- lapply(species_levels, function(sp) {
+    d <- df %>% filter(full_name == sp)
+    ymid <- mean(d[[yvar]], na.rm = TRUE)
+    
+    ymin <- ymid - y_span / 2
+    ymax <- ymid + y_span / 2
+    
+    scale_y_continuous(
+      limits = c(ymin, ymax),
+      breaks = seq(
+        floor(ymin / 0.2) * 0.2,
+        ceiling(ymax / 0.2) * 0.2,
+        by = 0.2
+      )
+    )
+  })
+  
+  ggplot(df, aes(x = .data[[xvar]], y = .data[[yvar]], colour = sex)) +
+    geom_point(alpha = 0.6, size = 1.5) +
+    geom_smooth(method = "lm", se = FALSE) +
+    facet_wrap(~ full_name, scales = "free") +
+    ggh4x::facetted_pos_scales(
+      x = x_scales,
+      y = y_scales
+    ) +
+    labs(
+      x = xvar,
+      y = yvar,
+      colour = "Sex"
+    ) +
+    theme_minimal(base_size = 11)
+}
 ```
+
+#### Mean temp and ITD plot
+
+```{r}
+# Mean temp and ITD
+make_species_plot(
+  df = bees_temps,
+  xvar = "mean_preflight_temp",
+  yvar = "log_ITD",
+  x_span = 6,
+  y_span = 0.7
+)+
+  labs(
+    title = "Effect of temperature on body size",
+    x = "Mean pre-flight temperature (°C)",
+    y = "log(Intertegular distance)"
+  )
+```
+
+
+
+## Summary statistics
+####### Calculate the mean and variation in size per species
 
 #### Just log(ITD)
 
