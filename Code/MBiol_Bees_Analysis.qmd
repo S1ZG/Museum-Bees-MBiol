@@ -174,9 +174,9 @@ make_species_plot_year_centered(
   y_span = 0.8
 ) +
   labs(
-    title = "Effect of year on body size",
+    title = "Effect of Year on Body Size",
     x = "Year",
-    y = "log(Intertegular distance)"
+    y = "log(ITD)"
   )
 
 ```
@@ -398,72 +398,10 @@ names(aic_results) <- species_list
 aic_results
 ```
 
+
+
 # Calculate and plot the sex-specific effects of temperature and year
 
-```{r}
-#Sex-specific effects of temperature and year on log(ITD) using emtrends from interaction models
-
-# Ecology lookup
-species_eco <- bees_temps %>%
-  distinct(full_name, ecology) %>%
-  arrange(ecology, full_name)
-
-species_list <- species_eco$full_name
-
-# Helper to extract sex-specific slopes for any predictor
-extract_trends <- function(model_list, var_name, specs_formula = ~ sex) {
-  df <- do.call(rbind, lapply(names(model_list), function(sp) {
-    mod <- model_list[[sp]]
-    
-    emtrends(
-      mod,
-      specs = specs_formula,
-      var = var_name,
-      infer = c(TRUE, TRUE)
-    ) %>%
-      as.data.frame() %>%
-      mutate(species = sp)
-  }))
-  
-  df %>%
-    left_join(species_eco, by = c("species" = "full_name")) %>%
-    mutate(
-      species = factor(species, levels = species_list),
-      ecology = factor(ecology),
-      sex = factor(sex, levels = c("female", "male"))
-    )
-}
-
-# Helper to plot the slopes
-plot_trends <- function(df, slope_col, xlab) {
-  ggplot(df, aes(x = .data[[slope_col]], y = species, color = sex)) +
-    geom_vline(xintercept = 0, linetype = 2, linewidth = 0.5, colour = "grey60") +
-    geom_errorbar(
-      aes(xmin = lower.CL, xmax = upper.CL),
-      orientation = "y",
-      position = position_dodge(width = 0.55),
-      width = 0.18,
-      linewidth = 0.7
-    ) +
-    geom_point(
-      position = position_dodge(width = 0.55),
-      size = 2.4
-    ) +
-    scale_y_discrete(limits = rev) +
-    facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
-    labs(x = xlab, y = NULL, color = "Sex") +
-    theme_minimal(base_size = 11) +
-    theme(
-      panel.grid.major.y = element_blank(),
-      strip.text.y = element_text(angle = 0),
-      legend.position = "bottom"
-    )
-}
-```
-
-
-
-# Test
 ```{r}
 #Sex-specific effects of temperature and year on log(ITD) using emtrends from interaction models
 
@@ -574,15 +512,12 @@ plot_trends <- function(df, slope_col, xlab) {
 
 ```
 
-
-
-
 ### Plot for year
 
 ```{r}
 # Sex-specific slopes for year
 year_sex <- extract_trends(models_interactions, "year_rescaled")
-plot_trends(year_sex, "year_rescaled.trend", "Estimated coefficient for collection year on log(ITD)") +
+plot_trends(year_sex, "year_rescaled.trend", "Estimated effect of collection year on log(ITD)") +
   labs(title = "Estimated Effect of Collection Year on Bee Body Size") +
   theme(plot.title = element_text(hjust = 0.5))
 ```
@@ -592,7 +527,7 @@ plot_trends(year_sex, "year_rescaled.trend", "Estimated coefficient for collecti
 ```{r}
 # Sex-specific slopes for temperature
 temp_sex <- extract_trends(models_interactions, "mean_preflight_temp")
-plot_trends(temp_sex, "mean_preflight_temp.trend", "Estimated coefficient for pre-flight temperature on log(ITD)") +
+plot_trends(temp_sex, "mean_preflight_temp.trend", "Estimated effect of pre-flight temperature on log(ITD)") +
   labs(title = "Estimated Effect of Increased Pre-flight Temperature on Bee Body Size") +
   theme(plot.title = element_text(hjust = 0.5))
 ```
