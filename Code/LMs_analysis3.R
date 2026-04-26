@@ -41,9 +41,9 @@ cor(bees_temps$latitude, bees_temps$mean_preflight_temp)
 # Set species order so they are organised by ecology and consistent across plots
 species_order <- c(
   "Anthidium manicatum",
+  "Megachile centuncularis",
   "Hylaeus communis",
   "Hylaeus hyalinatus",
-  "Megachile centuncularis",
   "Andrena chrysosceles",
   "Andrena wilkella",
   "Colletes succintus",
@@ -320,18 +320,7 @@ plot_trends(year_sex, "year_rescaled.trend", "Effect of year on log(ITD)")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+# Allometry (refine)
 
 
 library(dplyr)
@@ -385,22 +374,19 @@ ggplot(coef_allometry, aes(x = estimate, y = species, colour = ecology)) +
   geom_point(size = 2) +
   geom_errorbarh(aes(xmin = estimate - std.error,
                      xmax = estimate + std.error),
-                 height = 0.2) +
+                 width = 0.2) +
   facet_wrap(~ trait, scales = "free_x") +
   theme_minimal() +
   labs(
     x = "Change in allometric slope with temperature",
     y = "Species",
     colour = "Ecology"
-  )
+  ) +
+  scale_color_manual(values = c("#E7B800", "#a6754b", "#b275eb"))
 
 # 6. View effect sizes
 coef_allometry %>%
   select(species, ecology, trait, estimate, std.error, slope_change_2SD)
-
-
-
-
 
 
 

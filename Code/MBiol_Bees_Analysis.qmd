@@ -246,7 +246,7 @@ make_species_plot(
 
 
 ## Summary statistics
-####### Calculate the mean and variation in size per species
+###### Calculate the mean and variation in size per species
 
 #### Just log(ITD)
 
@@ -312,7 +312,7 @@ size_summary_all <- bees_temps %>%
 
 size_summary_all
 ```
-
+#### Just ITD measurements by sex
 ```{r}
 size_summary <- bees_temps %>%
   group_by(full_name, sex) %>%
@@ -326,7 +326,7 @@ size_summary <- bees_temps %>%
 size_summary
 ```
 
-
+#### All measurements by sex
 ```{r}
 size_summary_all <- bees_temps %>%
   group_by(full_name, sex) %>%
@@ -457,15 +457,8 @@ plot_trends <- function(df, slope_col, xlab) {
 }
 ```
 
-### Plot for temperature
 
-```{r}
-# Sex-specific slopes for temperature
-temp_sex <- extract_trends(models_interactions, "mean_preflight_temp")
-plot_trends(temp_sex, "mean_preflight_temp.trend", "Effect of temperature on log(ITD)")
-```
-
-### Plot for year
+### Plot for year (FIX ORDER)
 
 ```{r}
 # Sex-specific slopes for year
@@ -473,6 +466,13 @@ year_sex <- extract_trends(models_interactions, "year_rescaled")
 plot_trends(year_sex, "year_rescaled.trend", "Effect of year on log(ITD)")
 ```
 
+### Plot for temperature (FIX ORDER)
+
+```{r}
+# Sex-specific slopes for temperature
+temp_sex <- extract_trends(models_interactions, "mean_preflight_temp")
+plot_trends(temp_sex, "mean_preflight_temp.trend", "Effect of temperature on log(ITD)")
+```
 # Allometry (refine)
 
 ```{r}
@@ -527,14 +527,15 @@ ggplot(coef_allometry, aes(x = estimate, y = species, colour = ecology)) +
   geom_point(size = 2) +
   geom_errorbarh(aes(xmin = estimate - std.error,
                      xmax = estimate + std.error),
-                 height = 0.2) +
+                 width = 0.2) +
   facet_wrap(~ trait, scales = "free_x") +
   theme_minimal() +
   labs(
     x = "Change in allometric slope with temperature",
     y = "Species",
     colour = "Ecology"
-  )
+  ) +
+  scale_color_manual(values = c("#E7B800", "#a6754b", "#b275eb"))
 
 # 6. View effect sizes
 coef_allometry %>%
