@@ -5,7 +5,7 @@ library(dplyr)
 
 # Read in the dataset
 
-bees_explore <- read.csv("Data/14_04_26_bees_temps_5km.csv")
+bees_explore <- read.csv("Data/26_04_26_bees_temps_5km.csv")
 
 
 # Set species order so they are organised by ecology and consistent across plots

@@ -12,7 +12,7 @@ library(purrr)
 
 
 # Read in measurement data with geocoded locations
-bees <- read.csv("Data/25_02_26_data_with_coordinates.csv")
+bees <- read.csv("Data/26_04_26_data_with_coordinates.csv")
 # Create a column for full name by merging genus and species
 bees$full_name <- paste(bees$genus, bees$species)
 # Remove rows with "Nomada sp." as full name, 
@@ -175,7 +175,7 @@ bees_temps_5km <- bees %>%
 bees_temps_5km <- bees_temps_5km[bees_temps_5km$latitude <= 54, ]
 
 # Save as .csv
-#write.csv(bees_temps_5km, "Data/14_04_26_bees_temps_5km.csv", row.names = FALSE)
+#write.csv(bees_temps_5km, "Data/26_04_26_bees_temps_5km.csv", row.names = FALSE)
 
 
 # Test correlation of collection year (year) and temperature (mean_preflight_temp)
@@ -183,10 +183,12 @@ bees_temps_5km <- bees_temps_5km[bees_temps_5km$latitude <= 54, ]
 cor(bees_temps_5km$year, bees_temps_5km$mean_preflight_temp, use = "complete.obs")
 # 17/3/26 0.06492892
 # 14/4/26 0.08901542
+# 26/4/26 0.07558012
 # Max temp
 cor(bees_temps_5km$year, bees_temps_5km$max_preflight_temp, use = "complete.obs")
 # 17/3/26 -0.004652274
 # 14/4/26 0.04266989
+# 26/4/26 0.02815656
 
 
 #Plot collection year (year) against mean_preflight_temp (need to account for species / flight periods)
@@ -223,5 +225,6 @@ ggplot(bees_temps_5km, aes(x = year, y = max_preflight_temp, color = full_name))
 cor(bees_temps_5km$mean_preflight_temp, bees_temps_5km$max_preflight_temp, use = "complete.obs")
 # 17/3/26 0.7137533
 # 14/4/26 0.7116694
+# 26/4/26 0.7059955
 
 

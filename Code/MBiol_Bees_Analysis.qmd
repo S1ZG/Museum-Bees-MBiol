@@ -2,6 +2,8 @@
 title: "MBiol_Bees_Analysis"
 format: html
 editor: visual
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r}
@@ -19,7 +21,7 @@ library(forcats)
 
 ```{r}
 # Load in data
-bees_temps <- read.csv(here("Data/14_04_26_bees_temps_5km.csv"))
+bees_temps <- read.csv(here("Data/26_04_26_bees_temps_5km.csv"))
 ```
 
 # Set up
@@ -178,6 +180,7 @@ make_species_plot_year_centered(
   )
 
 ```
+
 ##### Function for temp plot
 
 ```{r}
@@ -243,9 +246,8 @@ make_species_plot(
   )
 ```
 
-
-
 ## Summary statistics
+
 ###### Calculate the mean and variation in size per species
 
 #### Just log(ITD)
@@ -283,6 +285,7 @@ size_summary_all
 #### Raw measurements
 
 #### ITD only
+
 ```{r}
 size_summary <- bees_temps %>%
   group_by(full_name) %>%
@@ -312,7 +315,9 @@ size_summary_all <- bees_temps %>%
 
 size_summary_all
 ```
+
 #### Just ITD measurements by sex
+
 ```{r}
 size_summary <- bees_temps %>%
   group_by(full_name, sex) %>%
@@ -327,6 +332,7 @@ size_summary
 ```
 
 #### All measurements by sex
+
 ```{r}
 size_summary_all <- bees_temps %>%
   group_by(full_name, sex) %>%
@@ -343,9 +349,6 @@ size_summary_all <- bees_temps %>%
 
 size_summary_all
 ```
-
-
-
 
 # LMs analysis
 
@@ -446,6 +449,7 @@ plot_trends <- function(df, slope_col, xlab) {
       position = position_dodge(width = 0.55),
       size = 2.4
     ) +
+    scale_y_discrete(limits = rev) +
     facet_grid(ecology ~ ., scales = "free_y", space = "free_y") +
     labs(x = xlab, y = NULL, color = "Sex") +
     theme_minimal(base_size = 11) +
@@ -458,21 +462,141 @@ plot_trends <- function(df, slope_col, xlab) {
 ```
 
 
-### Plot for year (FIX ORDER)
+
+# Test
+```{r}
+#Sex-specific effects of temperature and year on log(ITD) using emtrends from interaction models
+
+# Ecology lookup
+species_eco <- bees_temps %>%
+  distinct(full_name, ecology) %>%
+  arrange(ecology, full_name)
+
+species_list <- species_eco$full_name
+
+# Helper to extract sex-specific slopes for any predictor
+extract_trends <- function(model_list, var_name, specs_formula = ~ sex) {
+  df <- do.call(rbind, lapply(names(model_list), function(sp) {
+    mod <- model_list[[sp]]
+    
+    emtrends(
+      mod,
+      specs = specs_formula,
+      var = var_name,
+      infer = c(TRUE, TRUE)
+    ) %>%
+      as.data.frame() %>%
+      mutate(species = sp)
+  }))
+  
+  df %>%
+    left_join(species_eco, by = c("species" = "full_name")) %>%
+    mutate(
+      species = factor(species, levels = species_list),
+      ecology = factor(ecology),
+      sex = factor(sex, levels = c("female", "male"))
+    )
+}
+
+# Helper to plot the slopes
+
+plot_trends <- function(df, slope_col, xlab) {
+  
+  df <- df %>%
+    mutate(
+      # Capitalise ecology labels
+      ecology = recode(ecology,
+        "cavity nester" = "Cavity Nester",
+        "excavator" = "Excavator",
+        "kleptoparasite" = "Kleptoparasite"
+      ),
+      
+      # Capitalise sex labels
+      sex = recode(sex,
+        "female" = "Female",
+        "male"   = "Male"
+      ),
+      
+      # Italic species labels
+      species = factor(species, levels = levels(species))
+    )
+  
+  ggplot(df, aes(x = .data[[slope_col]], y = species, color = sex)) +
+    
+    geom_vline(xintercept = 0, linetype = 2, linewidth = 0.5, colour = "grey60") +
+    
+    geom_errorbar(
+      aes(xmin = lower.CL, xmax = upper.CL),
+      orientation = "y",
+      position = position_dodge(width = 0.55),
+      width = 0.18,
+      linewidth = 0.7
+    ) +
+    
+    geom_point(
+      position = position_dodge(width = 0.55),
+      size = 2.4
+    ) +
+    
+    scale_y_discrete(
+      limits = rev,
+      labels = function(x) parse(text = paste0("italic('", x, "')"))
+    ) +
+    
+    facet_grid2(
+      ecology ~ .,
+      scales = "free_y",
+      space = "free_y",
+      strip = strip_themed(
+        background_y = elem_list_rect(
+          fill = c("#fae8b2", "#cb8e73", "#ccb3d6"),
+          colour = c(NA, NA, NA),
+          linewidth = c(0, 0, 0)
+        )
+      )
+    ) +
+    
+    labs(x = xlab, y = NULL, color = "Sex") +
+    
+    theme_minimal(base_size = 11) +
+    theme(
+      panel.grid.major.y = element_blank(),
+      
+      # NOT bold anymore
+      strip.text.y = element_text(angle = 270, face = "plain"),
+      
+      legend.position = "bottom",
+      
+      panel.border = element_rect(colour = "#6b6b6b", fill = NA, linewidth = 0.5),
+      strip.background = element_blank()
+    )
+}
+
+```
+
+
+
+
+### Plot for year
 
 ```{r}
 # Sex-specific slopes for year
 year_sex <- extract_trends(models_interactions, "year_rescaled")
-plot_trends(year_sex, "year_rescaled.trend", "Effect of year on log(ITD)")
+plot_trends(year_sex, "year_rescaled.trend", "Estimated coefficient for collection year on log(ITD)") +
+  labs(title = "Estimated Effect of Collection Year on Bee Body Size") +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
-### Plot for temperature (FIX ORDER)
+### Plot for temperature
 
 ```{r}
 # Sex-specific slopes for temperature
 temp_sex <- extract_trends(models_interactions, "mean_preflight_temp")
-plot_trends(temp_sex, "mean_preflight_temp.trend", "Effect of temperature on log(ITD)")
+plot_trends(temp_sex, "mean_preflight_temp.trend", "Estimated coefficient for pre-flight temperature on log(ITD)") +
+  labs(title = "Estimated Effect of Increased Pre-flight Temperature on Bee Body Size") +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
+
 # Allometry (refine)
 
 ```{r}
@@ -535,7 +659,7 @@ ggplot(coef_allometry, aes(x = estimate, y = species, colour = ecology)) +
     y = "Species",
     colour = "Ecology"
   ) +
-  scale_color_manual(values = c("#E7B800", "#a6754b", "#b275eb"))
+  scale_color_manual(values = c("#fae8b2", "#cb8e73", "#ccb3d6"))
 
 # 6. View effect sizes
 coef_allometry %>%

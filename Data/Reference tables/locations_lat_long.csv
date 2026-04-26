@@ -1,4 +1,4 @@
-location_string,latitude,longitude
+"location_string","latitude","longitude"
 "Lizard, Cornwall, England",50.02964889,-5.195961501
 "The Lizard, Cornwall, England",50.02964889,-5.195961501
 "Coverack, Cornwall, England",50.0224895,-5.0971985
@@ -417,3 +417,8 @@ location_string,latitude,longitude
 "Stone Wood, Shadoxhurst, Kent, England",51.09681448,0.805585226
 "Whelford Pool, Fairford, Gloucestershire, England",51.69410753,-1.751117717
 "Wilden, Bedfordshire, England",52.18458484,-0.400442834
+"Longdown, Devon, England",50.7088219,-3.6086762
+"Cowley, Oxford, Oxfordshire, England",51.7326425,-1.2166354
+"Towyn, Conwy, Wales",53.3007383,-3.5421729
+"St Ervan, Cornwall, England",50.4938734,-4.9705429
+"Coventry, West Midlands, England",52.4081812,-1.510477

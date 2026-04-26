@@ -12,7 +12,7 @@ library(forcats)
 
 
 # Load in data
-bees_temps <- read.csv(here("Data/14_04_26_bees_temps_5km.csv"))
+bees_temps <- read.csv(here("Data/26_04_26_bees_temps_5km.csv"))
 
 # Set up
 # Log transform measurements

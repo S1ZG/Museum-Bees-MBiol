@@ -5,6 +5,8 @@ library(dplyr)
 library(tibble)
 library(sf)
 
+# Only run this first section when starting with raw data for the first time
+# Otherwise jump to line 71
 
 early_data <- read.csv("Data/24_11_25 UK solitary bee museum specimen measurements - raw data.csv")
 
@@ -65,10 +67,14 @@ early_data_coords <- early_data %>%
   left_join(locations_lat_long, by = "location_string")
 
 
+
 # Set up a workflow for when I have updated early_data 
 # To save processing I will add the lat long to the newest dataframe, then isolate the unique locations that do not have a lat long coordinate
 
-latest_data <- read.csv("Data/13_02_26_bees_raw.csv")
+# Upload latest data
+latest_data <- read.csv("Data/26_04_26_bees_raw.csv")
+
+locations_lat_long <- read.csv("Data/Reference tables/locations_lat_long.csv")
 
 # Remove empty rows based on label_no
 latest_data <- latest_data[!is.na(latest_data$label_no) & latest_data$label_no != "", ]
@@ -120,6 +126,6 @@ latest_data_coords <- latest_data %>%
 # This is for 29th November 2025
 #write.csv(latest_data_coords, "Data/_data_with_coordinates.csv", row.names = FALSE)
 
-#write.csv(latest_data_coords, "Data/__02_26_data_with_coordinates.csv", row.names = FALSE)
+#write.csv(latest_data_coords, "Data/26_04_26_data_with_coordinates.csv", row.names = FALSE)
 
 
