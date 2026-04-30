@@ -846,3 +846,175 @@ coef_allometry_sex %>%
          estimate, std.error, slope_change_2SD)
 
 ```
+
+
+
+```{r}
+
+
+
+# Create function to fit the allometry models separately by sex
+extract_allometry_by_sex <- function(response_var) {
+  models <- bees_temps %>%
+    split(list(.$full_name, .$sex), drop = TRUE) %>%
+    lapply(function(df_sp) {
+      formula <- as.formula(
+        paste(response_var,
+              "~ log_ITD*temp_c + log_ITD*year_rescaled + log_ITD*latitude")
+      )
+      lm(formula, data = df_sp)
+    })
+  bind_rows(lapply(names(models), function(name) {
+    
+    # Extract species and sex from name
+    parts <- strsplit(name, "\\.")[[1]]
+    sp <- parts[1]
+    sx <- parts[2]
+    tidy(models[[name]]) %>%
+      filter(term %in% c("log_ITD:temp_c", "log_ITD:year_rescaled", "log_ITD:latitude")) %>%
+      mutate(species = sp,
+             sex = sx)
+  })) %>%
+    mutate(trait = response_var)
+}
+
+
+# Run function for all traits
+coef_allometry_sex <- bind_rows(
+  extract_allometry_by_sex("log_HW"),
+  extract_allometry_by_sex("log_FW"),
+  extract_allometry_by_sex("log_tibia")
+)
+
+
+# Clean and label
+coef_allometry_sex <- coef_allometry_sex %>%
+  left_join(species_eco, by = c("species" = "full_name")) %>%
+  mutate(
+    ecology = factor(ecology),
+    species = factor(species, levels = rev(species_order)),
+    trait = factor(trait, levels = c("log_HW", "log_FW", "log_tibia")),
+    predictor = term,
+    sex = factor(sex, levels = c("Female", "Male"))
+  )
+
+
+# Create function to make plots for each sex
+make_plot <- function(df, predictor_name, title_text, xlab_text) {
+  ggplot(df %>% filter(predictor == predictor_name),
+         aes(x = estimate, y = species, colour = ecology)) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    geom_point(size = 2) +
+    geom_errorbar(
+      aes(xmin = estimate - std.error,
+          xmax = estimate + std.error),
+      orientation = "y",
+      width = 0.2,
+      colour = "black"
+    ) +
+    facet_grid2(
+      ecology ~ trait,
+      scales = "free_y",
+      space = "free_y",
+      labeller = labeller(
+        trait = c(
+          log_HW = "log(HW)",
+          log_FW = "log(FW)",
+          log_tibia = "log(Tibia)"
+        )
+      ),
+      strip = strip_themed(
+        background_y = elem_list_rect(
+          fill = c("#fae8b2", "#cb8e73", "#ccb3d6"),
+          colour = c(NA, NA, NA),
+          linewidth = c(0, 0, 0)
+        )
+      )
+    ) +
+    scale_y_discrete(
+      labels = function(x) parse(text = paste0("italic('", x, "')"))
+    ) +
+    theme_minimal() +
+    theme(
+      panel.border = element_rect(colour = "#6b6b6b", fill = NA),
+      strip.text.y = element_text(angle = 270),
+      legend.position = "none",
+      plot.title = element_text(hjust = 0.5)
+    ) +
+    labs(
+      title = title_text,
+      x = xlab_text,
+      y = "Species"
+    ) +
+    scale_color_manual(values = c("#ffcb30", "#cb8e73", "#b28fbf"))
+}
+
+
+# Split the data by sex
+coef_female <- coef_allometry_sex %>% filter(sex == "Female")
+coef_male   <- coef_allometry_sex %>% filter(sex == "Male")
+
+
+# Temperature plots
+plot_temp_female <- make_plot(
+  coef_female,
+  "log_ITD:temp_c",
+  "Effect of Temperature on Allometric Slope (Females)",
+  "Change in allometric slope with temperature"
+)
+
+plot_temp_male <- make_plot(
+  coef_male,
+  "log_ITD:temp_c",
+  "Effect of Temperature on Allometric Slope (Males)",
+  "Change in allometric slope with temperature"
+)
+
+
+# Year plots
+plot_year_female <- make_plot(
+  coef_female,
+  "log_ITD:year_rescaled",
+  "Effect of Collection Year on Allometric Slope (Females)",
+  "Change in allometric slope over time"
+)
+
+plot_year_male <- make_plot(
+  coef_male,
+  "log_ITD:year_rescaled",
+  "Effect of Collection Year on Allometric Slope (Males)",
+  "Change in allometric slope over time"
+)
+
+
+# View plots
+plot_temp_female
+plot_temp_male
+
+plot_year_female
+plot_year_male
+
+
+
+# latitude plots
+plot_lat_female <- make_plot(
+  coef_female,
+  "log_ITD:latitude",
+  "Effect of Latitude on Allometric Slope (Females)",
+  "Change in allometric slope with latitude"
+)
+
+plot_lat_male <- make_plot(
+  coef_male,
+  "log_ITD:latitude",
+  "Effect of Latitude on Allometric Slope (Males)",
+  "Change in allometric slope with latitude"
+)
+
+# View plots
+plot_lat_female
+plot_lat_male
+
+
+```
+
