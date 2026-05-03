@@ -34,11 +34,11 @@ bees_temps <- bees_temps %>%
     ITD = intertegular_distance_mm,
     HW  = HW_mm,
     FW = FW_length_mm,
-    tibia = tibia_length_mm,
+    TIB = tibia_length_mm,
     log_ITD = log(ITD),
     log_HW  = log(HW),
     log_FW = log(FW),
-    log_tibia = log(tibia),
+    log_TIB = log(TIB),
     # Sex
     sex = factor(sex),
     sex = fct_recode(sex,
@@ -113,11 +113,11 @@ species_labels <- c(
 ggplot(bees_temps, aes(x = year)) + 
   geom_bar() + 
   labs(
-    title = "Coverage of Specimen Collection Year",
+#    title = "Coverage of Specimen Collection Year",
     x = "Year Collected",
     y = "Number of Specimens Measured"
-  ) +
-  theme(plot.title = element_text(hjust = 0.5))
+  ) #+
+#  theme(plot.title = element_text(hjust = 0.5))
 
 
 # Plot the number of specimens of each sex for each species
@@ -125,7 +125,7 @@ ggplot(bees_temps, aes(x = full_name, fill = sex)) +
   geom_bar(position = "dodge") +
   scale_x_discrete(labels = italic_species) +
   labs(
-    title = "Number of Specimens by Sex per Species",
+#    title = "Number of Specimens by Sex per Species",
     x = "Species",
     y = "Number of Specimens Measured",
     fill = "Sex"
@@ -216,7 +216,7 @@ make_species_plot_year_centered(
   y_span = 0.8
 ) +
   labs(
-    title = "Effect of Year on Body Size",
+#    title = "Effect of Year on Body Size",
     x = "Year",
     y = "log(ITD)"
   )
@@ -279,7 +279,7 @@ make_species_plot(
   y_span = 0.7
 )+
   labs(
-    title = "Effect of temperature on body size",
+#    title = "Effect of temperature on body size",
     x = "Mean pre-flight temperature (°C)",
     y = "log(ITD)"
   )
@@ -310,7 +310,7 @@ size_summary_all <- bees_temps %>%
   group_by(full_name) %>%
   summarise(
     across(
-      c(log_ITD, log_HW, log_FW, log_tibia),
+      c(log_ITD, log_HW, log_FW, log_TIB),
       list(mean = ~mean(.x, na.rm = TRUE),
            sd   = ~sd(.x, na.rm = TRUE)),
       .names = "{.col}_{.fn}"
@@ -344,7 +344,7 @@ size_summary_all <- bees_temps %>%
   group_by(full_name) %>%
   summarise(
     across(
-      c(ITD, HW, FW, tibia),
+      c(ITD, HW, FW, TIB),
        list(mean = ~round(mean(.x, na.rm = TRUE), 3),
            sd   = ~round(sd(.x, na.rm = TRUE), 3)),
       .names = "{.col}_{.fn}"
@@ -377,7 +377,7 @@ size_summary_all <- bees_temps %>%
   group_by(full_name, sex) %>%
   summarise(
     across(
-      c(ITD, HW, FW, tibia),
+      c(ITD, HW, FW, TIB),
       list(mean = ~round(mean(.x, na.rm = TRUE), 3),
            sd   = ~round(sd(.x, na.rm = TRUE), 3)),
       .names = "{.col}_{.fn}"
@@ -526,9 +526,9 @@ plot_trends <- function(df, slope_col, xlab) {
 ```{r}
 # Sex-specific slopes for year
 year_sex <- extract_trends(models_interactions, "year_rescaled")
-plot_trends(year_sex, "year_rescaled.trend", "Estimated effect of collection year on log(ITD)") +
-  labs(title = "Estimated Effect of Collection Year on Bee Body Size") +
-  theme(plot.title = element_text(hjust = 0.5))
+plot_trends(year_sex, "year_rescaled.trend", "Estimated effect of collection year on log(ITD)") #+
+#  labs(title = "Estimated Effect of Collection Year on Bee Body Size") +
+#  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 ### Plot for temperature
@@ -536,160 +536,14 @@ plot_trends(year_sex, "year_rescaled.trend", "Estimated effect of collection yea
 ```{r}
 # Sex-specific slopes for temperature
 temp_sex <- extract_trends(models_interactions, "temp_c")
-plot_trends(temp_sex, "temp_c.trend", "Estimated effect of pre-flight temperature on log(ITD)") +
-  labs(title = "Estimated Effect of Increased Pre-flight Temperature on Bee Body Size") +
-  theme(plot.title = element_text(hjust = 0.5))
+plot_trends(temp_sex, "temp_c.trend", "Estimated effect of pre-flight temperature on log(ITD)") #+
+#  labs(title = "Estimated Effect of Increased Pre-flight Temperature on Bee Body Size") +
+#  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 # Allometry
-# Both year and temp in model
 
-```{r}
-
-# Create function to fit models and extract interaction terms
-extract_allometry_both <- function(response_var) {
-  models <- bees_temps %>%
-    split(.$full_name) %>%
-    lapply(function(df_sp) {
-      formula <- as.formula(
-        paste(response_var,
-              "~ log_ITD * temp_c + log_ITD * year_rescaled + sex + latitude")
-      )
-      lm(formula, data = df_sp)
-    })
-  bind_rows(lapply(names(models), function(sp) {
-    tidy(models[[sp]]) %>%
-      filter(term %in% c("log_ITD:temp_c", "log_ITD:year_rescaled")) %>%
-      mutate(species = sp)
-  })) %>%
-    mutate(trait = response_var)
-}
-
-
-# Run function for all traits
-coef_allometry_both <- bind_rows(
-  extract_allometry_both("log_HW"),
-  extract_allometry_both("log_FW"),
-  extract_allometry_both("log_tibia")
-)
-
-
-# Clean and label
-coef_allometry_both <- coef_allometry_both %>%
-  left_join(species_eco, by = c("species" = "full_name")) %>%
-  mutate(
-    ecology = factor(ecology),
-    species = factor(species, levels = rev(species_order)),
-    trait = factor(trait, levels = c("log_HW", "log_FW", "log_tibia")),
-    predictor = term 
-  )
-
-# Plot Temperature effect (controlling for year, sex, + latitude)
-plot_temp <- coef_allometry_both %>%
-  filter(predictor == "log_ITD:temp_c") %>%
-  ggplot(aes(x = estimate, y = species, colour = ecology)) +
-  geom_vline(xintercept = 0, linetype = "dashed") +
-  geom_point(size = 2) +
-  geom_errorbar(
-    aes(xmin = estimate - std.error,
-        xmax = estimate + std.error),
-    orientation = "y",
-    width = 0.2,
-    colour = "black"
-  ) +
-  facet_grid2(
-    ecology ~ trait,
-    scales = "free_y",
-    space = "free_y",
-    labeller = labeller(
-      trait = c(
-      log_HW = "log(HW)",
-      log_FW = "log(FW)",
-      log_tibia = "log(Tibia)"
-      )
-    ),
-    strip = strip_themed(
-      background_y = elem_list_rect(
-        fill = c("#fae8b2", "#cb8e73", "#ccb3d6"),
-        colour = c(NA, NA, NA),
-        linewidth = c(0, 0, 0)
-      )
-    )
-  ) +
-  scale_y_discrete(
-    labels = function(x) parse(text = paste0("italic('", x, "')"))
-  ) +
-  theme_minimal() +
-  theme(
-    panel.border = element_rect(colour = "#6b6b6b", fill = NA),
-    strip.text.y = element_text(angle = 270),
-    legend.position = "none",
-    plot.title = element_text(hjust = 0.5)
-  ) +
-  labs(
-    title = "Effect of Temperature on Allometric Slope",
-    x = "Change in allometric slope with temperature",
-    y = "Species"
-  ) +
-  scale_color_manual(values = c("#ffcb30", "#cb8e73", "#b28fbf"))
-
-
-# Plot Year effect (controlling for temperature, sex, + latitude)
-plot_year <- coef_allometry_both %>%
-  filter(predictor == "log_ITD:year_rescaled") %>%
-  ggplot(aes(x = estimate, y = species, colour = ecology)) +
-  geom_vline(xintercept = 0, linetype = "dashed") +
-  geom_point(size = 2) +
-  geom_errorbar(
-    aes(xmin = estimate - std.error,
-        xmax = estimate + std.error),
-    orientation = "y",
-    width = 0.2,
-    colour = "black"
-  ) +
-  facet_grid2(
-    ecology ~ trait,
-    scales = "free_y",
-    space = "free_y",
-    labeller = labeller(
-      trait = c(
-      log_HW = "log(HW)",
-      log_FW = "log(FW)",
-      log_tibia = "log(Tibia)"
-      )
-    ),
-    strip = strip_themed(
-      background_y = elem_list_rect(
-        fill = c("#fae8b2", "#cb8e73", "#ccb3d6"),
-        colour = c(NA, NA, NA),
-        linewidth = c(0, 0, 0)
-      )
-    )
-  ) +
-  scale_y_discrete(
-    labels = function(x) parse(text = paste0("italic('", x, "')"))
-  ) +
-  theme_minimal() +
-  theme(
-    panel.border = element_rect(colour = "#6b6b6b", fill = NA),
-    strip.text.y = element_text(angle = 270),
-    legend.position = "none",
-    plot.title = element_text(hjust = 0.5)
-  ) +
-  labs(
-    title = "Effect of Collection Year on Allometric Slope",
-    x = "Change in allometric slope over time",
-    y = "Species"
-  ) +
-  scale_color_manual(values = c("#ffcb30", "#cb8e73", "#b28fbf"))
-
-
-# View plots
-plot_temp
-plot_year
-```
-
-# Allometry - male and female
+### Separate sexes
 
 ```{r}
 
@@ -723,7 +577,7 @@ extract_allometry_by_sex <- function(response_var) {
 coef_allometry_sex <- bind_rows(
   extract_allometry_by_sex("log_HW"),
   extract_allometry_by_sex("log_FW"),
-  extract_allometry_by_sex("log_tibia")
+  extract_allometry_by_sex("log_TIB")
 )
 
 
@@ -733,7 +587,7 @@ coef_allometry_sex <- coef_allometry_sex %>%
   mutate(
     ecology = factor(ecology),
     species = factor(species, levels = rev(species_order)),
-    trait = factor(trait, levels = c("log_HW", "log_FW", "log_tibia")),
+    trait = factor(trait, levels = c("log_HW", "log_FW", "log_TIB")),
     predictor = term,
     sex = factor(sex, levels = c("Female", "Male"))
   )
@@ -760,7 +614,7 @@ make_plot <- function(df, predictor_name, title_text, xlab_text) {
         trait = c(
           log_HW = "log(HW)",
           log_FW = "log(FW)",
-          log_tibia = "log(Tibia)"
+          log_TIB = "log(TIB)"
         )
       ),
       strip = strip_themed(
@@ -782,7 +636,7 @@ make_plot <- function(df, predictor_name, title_text, xlab_text) {
       plot.title = element_text(hjust = 0.5)
     ) +
     labs(
-      title = title_text,
+#      title = title_text,
       x = xlab_text,
       y = "Species"
     ) +
@@ -852,4 +706,195 @@ coef_allometry_sex %>%
 
 
 
+
+
+
+## set x axis
+
+```{r}
+library(dplyr)
+library(broom)
+library(ggplot2)
+library(ggh4x)
+
+# ----------------------------
+# Fit the allometry models separately by species and sex
+# ----------------------------
+extract_allometry_by_sex <- function(response_var) {
+  models <- bees_temps %>%
+    split(list(.$full_name, .$sex), drop = TRUE) %>%
+    lapply(function(df_sp) {
+      lm(
+        as.formula(
+          paste(response_var, "~ log_ITD * temp_c + log_ITD * year_rescaled + latitude")
+        ),
+        data = df_sp
+      )
+    })
+  
+  bind_rows(lapply(names(models), function(name) {
+    parts <- strsplit(name, "\\.")[[1]]
+    sp <- parts[1]
+    sx <- parts[2]
+    
+    tidy(models[[name]]) %>%
+      filter(term %in% c("log_ITD:temp_c", "log_ITD:year_rescaled")) %>%
+      mutate(
+        species = sp,
+        sex = sx
+      )
+  })) %>%
+    mutate(trait = response_var)
+}
+
+# ----------------------------
+# Run the function for all traits
+# ----------------------------
+coef_allometry_sex <- bind_rows(
+  extract_allometry_by_sex("log_HW"),
+  extract_allometry_by_sex("log_FW"),
+  extract_allometry_by_sex("log_TIB")
+)
+
+# ----------------------------
+# Clean and label
+# ----------------------------
+coef_allometry_sex <- coef_allometry_sex %>%
+  left_join(species_eco, by = c("species" = "full_name")) %>%
+  mutate(
+    ecology = factor(ecology),
+    species = factor(species, levels = rev(species_order)),
+    trait = factor(trait, levels = c("log_HW", "log_FW", "log_TIB")),
+    predictor = term,
+    sex = factor(sex, levels = c("Female", "Male"))
+  )
+
+# ----------------------------
+# Split into sex-specific data frames
+# ----------------------------
+coef_female <- coef_allometry_sex %>% filter(sex == "Female")
+coef_male   <- coef_allometry_sex %>% filter(sex == "Male")
+
+# ----------------------------
+# Manually set x-axis limits
+# Change these values yourself
+# ----------------------------
+
+
+
+# Both fitting but own ranges
+year_xmin <- -1.25
+year_xmax <-  2.42
+temp_xmin <- -0.40
+temp_xmax <-  0.8
+
+# Both same range but cut off some points
+#year_xmin <- -1
+#year_xmax <-  1
+#temp_xmin <- -1
+#temp_xmax <-  1
+
+# Both fit, same ranges but squished
+#year_xmin <- -1.25
+#year_xmax <-  2.42
+#temp_xmin <- -1.25
+#temp_xmax <-  2.42
+
+
+
+# ----------------------------
+# Plotting function
+# ----------------------------
+make_plot <- function(df, predictor_name, xlab_text, x_min, x_max) {
+  ggplot(
+    df %>% filter(predictor == predictor_name),
+    aes(x = estimate, y = species, colour = ecology)
+  ) +
+    geom_vline(xintercept = 0, linetype = "dashed") +
+    geom_point(size = 2) +
+    geom_errorbar(
+      aes(
+        xmin = estimate - std.error,
+        xmax = estimate + std.error
+      ),
+      orientation = "y",
+      width = 0.2,
+      colour = "black"
+    ) +
+    coord_cartesian(xlim = c(x_min, x_max)) +
+    facet_grid2(
+      ecology ~ trait,
+      scales = "free_y",
+      space = "free_y",
+      labeller = labeller(
+        trait = c(
+          log_HW = "log(HW)",
+          log_FW = "log(FW)",
+          log_TIB = "log(TIB)"
+        )
+      ),
+      strip = strip_themed(
+        background_y = elem_list_rect(
+          fill = c("#fae8b2", "#cb8e73", "#ccb3d6"),
+          colour = c(NA, NA, NA),
+          linewidth = c(0, 0, 0)
+        )
+      )
+    ) +
+    scale_y_discrete(
+      labels = function(x) parse(text = paste0("italic('", x, "')"))
+    ) +
+    theme_minimal() +
+    theme(
+      panel.border = element_rect(colour = "#6b6b6b", fill = NA),
+      strip.text.y = element_text(angle = 270),
+      legend.position = "none",
+      plot.title = element_text(hjust = 0.5)
+    ) +
+    labs(
+      x = xlab_text,
+      y = "Species"
+    ) +
+    scale_color_manual(values = c("#ffcb30", "#cb8e73", "#b28fbf"))
+}
+
+# ----------------------------
+# Create plots
+# ----------------------------
+plot_year_female <- make_plot(
+  coef_female,
+  "log_ITD:year_rescaled",
+  "Change in allometric slope over time",
+  year_xmin, year_xmax
+)
+
+plot_year_male <- make_plot(
+  coef_male,
+  "log_ITD:year_rescaled",
+  "Change in allometric slope over time",
+  year_xmin, year_xmax
+)
+
+plot_temp_female <- make_plot(
+  coef_female,
+  "log_ITD:temp_c",
+  "Change in allometric slope with temperature",
+  temp_xmin, temp_xmax
+)
+
+plot_temp_male <- make_plot(
+  coef_male,
+  "log_ITD:temp_c",
+  "Change in allometric slope with temperature",
+  temp_xmin, temp_xmax
+)
+
+# ----------------------------
+# View plots
+# ----------------------------
+plot_year_female
+plot_year_male
+plot_temp_female
+plot_temp_male
+```
 
