@@ -219,6 +219,9 @@ make_species_plot_year_centered(
 #    title = "Effect of Year on Body Size",
     x = "Year",
     y = "log(ITD)"
+  ) +
+  theme(
+    legend.position = "bottom"
   )
 
 ```
@@ -282,6 +285,9 @@ make_species_plot(
 #    title = "Effect of temperature on body size",
     x = "Mean pre-flight temperature (°C)",
     y = "log(ITD)"
+  )+
+  theme(
+    legend.position = "bottom"
   )
 ```
 
@@ -810,7 +816,7 @@ make_plot <- function(df, predictor_name, xlab_text, x_min, x_max) {
     df %>% filter(predictor == predictor_name),
     aes(x = estimate, y = species, colour = ecology)
   ) +
-    geom_vline(xintercept = 0, linetype = "dashed") +
+    geom_vline(xintercept = 0, linetype = "dashed", colour = "#94abb0") +
     geom_point(size = 2) +
     geom_errorbar(
       aes(
