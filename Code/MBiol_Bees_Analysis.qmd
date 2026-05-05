@@ -135,6 +135,14 @@ ggplot(bees_temps, aes(x = full_name, fill = sex)) +
     plot.title = element_text(hjust = 0.5),
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
+
+# Calculate the average number of specimens per species
+
+species_counts <- bees_temps %>%
+  count(full_name)
+
+mean(species_counts$n)
+
 ```
 
 ## Per species plots
@@ -221,7 +229,7 @@ make_species_plot_year_centered(
     y = "log(ITD)"
   ) +
   theme(
-    legend.position = "bottom"
+    legend.position = "right"
   )
 
 ```
@@ -287,50 +295,15 @@ make_species_plot(
     y = "log(ITD)"
   )+
   theme(
-    legend.position = "bottom"
+    legend.position = "right"
   )
 ```
 
 ## Summary statistics
 
-###### Calculate the mean and variation in size per species
-
-#### Just log(ITD)
-
-```{r}
-size_summary <- bees_temps %>%
-  group_by(full_name) %>%
-  summarise(
-    mean_log_ITD = mean(log_ITD, na.rm = TRUE),
-    sd_log_ITD   = sd(log_ITD, na.rm = TRUE),
-    n = n()
-  )
-
-size_summary
-```
-
-#### All log(traits)
-
-```{r}
-size_summary_all <- bees_temps %>%
-  group_by(full_name) %>%
-  summarise(
-    across(
-      c(log_ITD, log_HW, log_FW, log_TIB),
-      list(mean = ~mean(.x, na.rm = TRUE),
-           sd   = ~sd(.x, na.rm = TRUE)),
-      .names = "{.col}_{.fn}"
-    ),
-    n = n()
-  )
-
-size_summary_all
-```
-
-#### Raw measurements
+###Calculate the mean and variation in size per species
 
 #### ITD only
-
 ```{r}
 size_summary <- bees_temps %>%
   group_by(full_name) %>%
@@ -338,46 +311,12 @@ size_summary <- bees_temps %>%
     mean_ITD = round(mean(ITD, na.rm = TRUE), 3),
     sd_ITD   = round(sd(ITD, na.rm = TRUE), 3),
     n = n()
-  )
-
-size_summary
-```
-
-#### All measurements
-
-```{r}
-size_summary_all <- bees_temps %>%
-  group_by(full_name) %>%
-  summarise(
-    across(
-      c(ITD, HW, FW, TIB),
-       list(mean = ~round(mean(.x, na.rm = TRUE), 3),
-           sd   = ~round(sd(.x, na.rm = TRUE), 3)),
-      .names = "{.col}_{.fn}"
-    ),
-    n = n()
-  )
-
-size_summary_all
-```
-
-#### Just ITD measurements by sex
-
-```{r}
-size_summary <- bees_temps %>%
-  group_by(full_name, sex) %>%
-  summarise(
-    mean_ITD = round(mean(ITD, na.rm = TRUE), 3),
-    sd_ITD   = round(sd(ITD, na.rm = TRUE), 3),
-    n = n(),
-    .groups = "drop"
   )
 
 size_summary
 ```
 
 #### All measurements by sex
-
 ```{r}
 size_summary_all <- bees_temps %>%
   group_by(full_name, sex) %>%
@@ -514,12 +453,12 @@ plot_trends <- function(df, slope_col, xlab) {
         )
       )
     ) +
-    labs(x = xlab, y = NULL, color = "Sex") +
+    labs(x = xlab, y = NULL, color = "      Sex") +
     theme_minimal(base_size = 11) +
     theme(
       panel.grid.major.y = element_blank(),
       strip.text.y = element_text(angle = 270, face = "plain"),
-      legend.position = "bottom",
+      legend.position = "right",
       panel.border = element_rect(colour = "#6b6b6b", fill = NA, linewidth = 0.5),
       strip.background = element_blank()
     )
