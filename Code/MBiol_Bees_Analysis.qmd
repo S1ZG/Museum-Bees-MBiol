@@ -145,6 +145,118 @@ mean(species_counts$n)
 
 ```
 
+
+```{r}
+# Plot each species with temp against year 
+
+# Strip colours in the same order as the facets
+strip_cols <- bees_temps |>
+  distinct(full_name, ecology) |>
+  arrange(full_name) |>
+  mutate(
+    strip_colour = case_when(
+      ecology == "Cavity Nester" ~ "#fae8b2",
+      ecology == "Excavator" ~ "#cb8e73",
+      ecology == "Kleptoparasite" ~ "#ccb3d6"
+    )
+  ) |>
+  pull(strip_colour)
+
+
+# Dummy data used only to create the legend
+legend_data <- data.frame(
+  ecology = c("Cavity Nester", "Excavator", "Kleptoparasite"),
+  x = min(bees_temps$year, na.rm = TRUE),
+  y = min(bees_temps$mean_preflight_temp, na.rm = TRUE)
+)
+
+
+# Centre each panel on the species mean temperature
+sp_limits <- bees_temps %>%
+  group_by(full_name) %>%
+  summarise(
+    centre = mean(mean_preflight_temp, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(full_name)
+
+# 6 degrees total span = 3 degrees either side of the centre
+y_scales <- lapply(sp_limits$centre, function(cen) {
+  scale_y_continuous(limits = c(cen - 3, cen + 3))
+})
+
+ggplot(bees_temps, 
+       aes(x = year, 
+           y = mean_preflight_temp)) +
+  geom_point(alpha = 0.35, colour = "#797d80") +
+  geom_smooth(method = "lm", se = FALSE, colour = "#585b5e", linewidth = 0.7) +
+  geom_point(
+    data = legend_data,
+    aes(x = x, y = y, fill = ecology),
+    shape = 22,
+    size = 5,
+    colour = NA,
+    inherit.aes = FALSE,
+    na.rm = TRUE
+  ) +
+  guides(
+    fill = guide_legend(
+      override.aes = list(colour = NA)
+    )
+  ) +
+  facet_wrap2(
+    ~ full_name,
+    scales = "free_y",
+    strip = strip_themed(
+      background_x = elem_list_rect(fill = strip_cols, color = rep("transparent", 12)
+                                    )
+    )
+  ) +
+  facetted_pos_scales(y = y_scales) +
+  scale_fill_manual(
+    values = c(
+      "Cavity Nester" = "#fae8b2",
+      "Excavator" = "#cb8e73",
+      "Kleptoparasite" = "#ccb3d6"
+    ),
+    name = "Nesting Ecology"
+  ) +
+  labs(
+    x = "Collection year",
+    y = "Mean pre-flight temperature (ºC)"
+  ) +
+  theme_bw() +
+  theme(
+    panel.border = element_blank(),
+    strip.background = element_blank(),
+    strip.text = element_text(face = "italic"),
+    legend.position = "right"
+  )
+```
+
+
+
+```{r}
+# Correlation for year and temperature by species
+bees_temps %>%
+  group_by(full_name) %>%
+  summarise(
+    n = sum(complete.cases(year, mean_preflight_temp)),
+    cor_year_temp = cor(year, mean_preflight_temp, use = "complete.obs")
+  )
+
+# Correlation for latitude and temperature by species
+bees_temps %>%
+  group_by(full_name) %>%
+  summarise(
+    n = sum(complete.cases (latitude, mean_preflight_temp)),
+    cor_temp_lat = cor(latitude, mean_preflight_temp, use = "complete.obs")
+  )
+
+```
+
+
+
 ## Per species plots
 
 #### Function for year plot
@@ -304,6 +416,7 @@ make_species_plot(
 ###Calculate the mean and variation in size per species
 
 #### ITD only
+
 ```{r}
 size_summary <- bees_temps %>%
   group_by(full_name) %>%
@@ -317,6 +430,7 @@ size_summary
 ```
 
 #### All measurements by sex
+
 ```{r}
 size_summary_all <- bees_temps %>%
   group_by(full_name, sex) %>%
@@ -545,8 +659,8 @@ make_plot <- function(df, predictor_name, title_text, xlab_text) {
     geom_vline(xintercept = 0, linetype = "dashed") +
     geom_point(size = 2) +
     geom_errorbar(
-      aes(xmin = estimate - std.error,
-          xmax = estimate + std.error),
+      aes(xmin = estimate - 1.96 * std.error,
+          xmax = estimate + 1.96 * std.error),
       orientation = "y",
       width = 0.2,
       colour = "black"
@@ -649,22 +763,10 @@ coef_allometry_sex %>%
 
 ```
 
-
-
-
-
-
-## set x axis
+## set x axis version
 
 ```{r}
-library(dplyr)
-library(broom)
-library(ggplot2)
-library(ggh4x)
-
-# ----------------------------
 # Fit the allometry models separately by species and sex
-# ----------------------------
 extract_allometry_by_sex <- function(response_var) {
   models <- bees_temps %>%
     split(list(.$full_name, .$sex), drop = TRUE) %>%
@@ -692,18 +794,15 @@ extract_allometry_by_sex <- function(response_var) {
     mutate(trait = response_var)
 }
 
-# ----------------------------
 # Run the function for all traits
-# ----------------------------
 coef_allometry_sex <- bind_rows(
   extract_allometry_by_sex("log_HW"),
   extract_allometry_by_sex("log_FW"),
   extract_allometry_by_sex("log_TIB")
 )
 
-# ----------------------------
+
 # Clean and label
-# ----------------------------
 coef_allometry_sex <- coef_allometry_sex %>%
   left_join(species_eco, by = c("species" = "full_name")) %>%
   mutate(
@@ -714,24 +813,18 @@ coef_allometry_sex <- coef_allometry_sex %>%
     sex = factor(sex, levels = c("Female", "Male"))
   )
 
-# ----------------------------
+
 # Split into sex-specific data frames
-# ----------------------------
 coef_female <- coef_allometry_sex %>% filter(sex == "Female")
 coef_male   <- coef_allometry_sex %>% filter(sex == "Male")
 
-# ----------------------------
 # Manually set x-axis limits
-# Change these values yourself
-# ----------------------------
-
-
 
 # Both fitting but own ranges
-year_xmin <- -1.25
-year_xmax <-  2.42
-temp_xmin <- -0.40
-temp_xmax <-  0.8
+#year_xmin <- -1.25
+#year_xmax <-  2.42
+#temp_xmin <- -0.40
+#temp_xmax <-  0.8
 
 # Both same range but cut off some points
 #year_xmin <- -1
@@ -746,10 +839,22 @@ temp_xmax <-  0.8
 #temp_xmax <-  2.42
 
 
+# After changing to CI
+# fit all
+#year_xmin <- -1.9
+#year_xmax <-  4
+#temp_xmin <- -0.52
+#temp_xmax <-  1.2
 
-# ----------------------------
-# Plotting function
-# ----------------------------
+# Fit all points but not CIs
+year_xmin <- -1.9
+year_xmax <-  1.9
+temp_xmin <- -0.52
+temp_xmax <-  0.52
+
+
+
+# Create plotting function
 make_plot <- function(df, predictor_name, xlab_text, x_min, x_max) {
   ggplot(
     df %>% filter(predictor == predictor_name),
@@ -759,8 +864,8 @@ make_plot <- function(df, predictor_name, xlab_text, x_min, x_max) {
     geom_point(size = 2) +
     geom_errorbar(
       aes(
-        xmin = estimate - std.error,
-        xmax = estimate + std.error
+        xmin = estimate - 1.96 * std.error,
+        xmax = estimate + 1.96 * std.error
       ),
       orientation = "y",
       width = 0.2,
@@ -803,9 +908,8 @@ make_plot <- function(df, predictor_name, xlab_text, x_min, x_max) {
     scale_color_manual(values = c("#ffcb30", "#cb8e73", "#b28fbf"))
 }
 
-# ----------------------------
+
 # Create plots
-# ----------------------------
 plot_year_female <- make_plot(
   coef_female,
   "log_ITD:year_rescaled",
@@ -834,12 +938,9 @@ plot_temp_male <- make_plot(
   temp_xmin, temp_xmax
 )
 
-# ----------------------------
 # View plots
-# ----------------------------
 plot_year_female
 plot_year_male
 plot_temp_female
 plot_temp_male
 ```
-
