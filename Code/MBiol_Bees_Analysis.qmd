@@ -145,7 +145,6 @@ mean(species_counts$n)
 
 ```
 
-
 ```{r}
 # Plot each species with temp against year 
 
@@ -219,7 +218,7 @@ ggplot(bees_temps,
       "Excavator" = "#cb8e73",
       "Kleptoparasite" = "#ccb3d6"
     ),
-    name = "Nesting Ecology"
+    name = "Nesting Strategy"
   ) +
   labs(
     x = "Collection year",
@@ -233,8 +232,6 @@ ggplot(bees_temps,
     legend.position = "right"
   )
 ```
-
-
 
 ```{r}
 # Correlation for year and temperature by species
@@ -254,8 +251,6 @@ bees_temps %>%
   )
 
 ```
-
-
 
 ## Per species plots
 

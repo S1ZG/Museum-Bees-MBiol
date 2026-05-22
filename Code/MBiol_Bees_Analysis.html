@@ -120,10 +120,10 @@ Attaching package: 'dplyr'</code></pre>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ lubridate 1.9.4     ✔ tibble    3.2.1
-✔ purrr     1.0.4     ✔ tidyr     1.3.1
-✔ readr     2.1.5     </code></pre>
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ lubridate 1.9.5     ✔ tibble    3.3.1
+✔ purrr     1.2.2     ✔ tidyr     1.3.2
+✔ readr     2.2.0     </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -262,6 +262,158 @@ See '? untidy'</code></pre>
 <div class="cell-output-display">
 <p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
 </div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the average number of specimens per species</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>species_counts <span class="ot">&lt;-</span> bees_temps <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(full_name)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(species_counts<span class="sc">$</span>n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 124.5833</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot each species with temp against year </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Strip colours in the same order as the facets</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>strip_cols <span class="ot">&lt;-</span> bees_temps <span class="sc">|&gt;</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(full_name, ecology) <span class="sc">|&gt;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(full_name) <span class="sc">|&gt;</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip_colour =</span> <span class="fu">case_when</span>(</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>      ecology <span class="sc">==</span> <span class="st">"Cavity Nester"</span> <span class="sc">~</span> <span class="st">"#fae8b2"</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>      ecology <span class="sc">==</span> <span class="st">"Excavator"</span> <span class="sc">~</span> <span class="st">"#cb8e73"</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>      ecology <span class="sc">==</span> <span class="st">"Kleptoparasite"</span> <span class="sc">~</span> <span class="st">"#ccb3d6"</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(strip_colour)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Dummy data used only to create the legend</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>legend_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">ecology =</span> <span class="fu">c</span>(<span class="st">"Cavity Nester"</span>, <span class="st">"Excavator"</span>, <span class="st">"Kleptoparasite"</span>),</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">min</span>(bees_temps<span class="sc">$</span>year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">min</span>(bees_temps<span class="sc">$</span>mean_preflight_temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Centre each panel on the species mean temperature</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>sp_limits <span class="ot">&lt;-</span> bees_temps <span class="sc">%&gt;%</span></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(full_name) <span class="sc">%&gt;%</span></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">centre =</span> <span class="fu">mean</span>(mean_preflight_temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(full_name)</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 6 degrees total span = 3 degrees either side of the centre</span></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>y_scales <span class="ot">&lt;-</span> <span class="fu">lapply</span>(sp_limits<span class="sc">$</span>centre, <span class="cf">function</span>(cen) {</span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(cen <span class="sc">-</span> <span class="dv">3</span>, cen <span class="sc">+</span> <span class="dv">3</span>))</span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bees_temps, </span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> year, </span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> mean_preflight_temp)) <span class="sc">+</span></span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">colour =</span> <span class="st">"#797d80"</span>) <span class="sc">+</span></span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">colour =</span> <span class="st">"#585b5e"</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> legend_data,</span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> ecology),</span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">22</span>,</span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">5</span>,</span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="cn">NA</span>,</span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(</span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="fu">guide_legend</span>(</span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>      <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">colour =</span> <span class="cn">NA</span>)</span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap2</span>(</span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span> full_name,</span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">scales =</span> <span class="st">"free_y"</span>,</span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip =</span> <span class="fu">strip_themed</span>(</span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a>      <span class="at">background_x =</span> <span class="fu">elem_list_rect</span>(<span class="at">fill =</span> strip_cols, <span class="at">color =</span> <span class="fu">rep</span>(<span class="st">"transparent"</span>, <span class="dv">12</span>)</span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a>                                    )</span>
+<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facetted_pos_scales</span>(<span class="at">y =</span> y_scales) <span class="sc">+</span></span>
+<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Cavity Nester"</span> <span class="ot">=</span> <span class="st">"#fae8b2"</span>,</span>
+<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Excavator"</span> <span class="ot">=</span> <span class="st">"#cb8e73"</span>,</span>
+<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Kleptoparasite"</span> <span class="ot">=</span> <span class="st">"#ccb3d6"</span></span>
+<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Nesting Strategy"</span></span>
+<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-76"><a href="#cb20-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Collection year"</span>,</span>
+<span id="cb20-77"><a href="#cb20-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean pre-flight temperature (ºC)"</span></span>
+<span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.border =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"italic"</span>),</span>
+<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span></span>
+<span id="cb20-85"><a href="#cb20-85" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation for year and temperature by species</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>bees_temps <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(full_name) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">sum</span>(<span class="fu">complete.cases</span>(year, mean_preflight_temp)),</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">cor_year_temp =</span> <span class="fu">cor</span>(year, mean_preflight_temp, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 3
+   full_name                   n cor_year_temp
+   &lt;fct&gt;                   &lt;int&gt;         &lt;dbl&gt;
+ 1 Anthidium manicatum       144        0.682 
+ 2 Megachile centuncularis   109        0.101 
+ 3 Hylaeus communis          132        0.209 
+ 4 Hylaeus hyalinatus        142        0.417 
+ 5 Andrena chrysosceles      137        0.0894
+ 6 Andrena wilkella           74        0.0506
+ 7 Colletes succintus         83       -0.110 
+ 8 Lasioglossum fulvicorne   133        0.280 
+ 9 Nomada flava              134       -0.374 
+10 Nomada goodeniana         140        0.0917
+11 Nomada ruficornis         137       -0.0446
+12 Sphecodes geoffrellus     130        0.303 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation for latitude and temperature by species</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>bees_temps <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(full_name) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">sum</span>(<span class="fu">complete.cases</span> (latitude, mean_preflight_temp)),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">cor_temp_lat =</span> <span class="fu">cor</span>(latitude, mean_preflight_temp, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 3
+   full_name                   n cor_temp_lat
+   &lt;fct&gt;                   &lt;int&gt;        &lt;dbl&gt;
+ 1 Anthidium manicatum       144       0.0797
+ 2 Megachile centuncularis   109      -0.0151
+ 3 Hylaeus communis          132       0.283 
+ 4 Hylaeus hyalinatus        142       0.327 
+ 5 Andrena chrysosceles      137      -0.0310
+ 6 Andrena wilkella           74      -0.247 
+ 7 Colletes succintus         83       0.0968
+ 8 Lasioglossum fulvicorne   133      -0.0483
+ 9 Nomada flava              134       0.0424
+10 Nomada goodeniana         140      -0.131 
+11 Nomada ruficornis         137      -0.0685
+12 Sphecodes geoffrellus     130      -0.0258</code></pre>
+</div>
 </div>
 </section>
 <section id="per-species-plots" class="level2">
@@ -269,152 +421,87 @@ See '? untidy'</code></pre>
 <section id="function-for-year-plot" class="level4">
 <h4 class="anchored" data-anchor-id="function-for-year-plot">Function for year plot</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for year plot (set scale for x-axis)</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>make_species_plot_year_centered <span class="ot">&lt;-</span> <span class="cf">function</span>(df, xvar, yvar, x_span, y_span, <span class="at">year_center =</span> <span class="fl">1.5</span>) {</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  species_levels <span class="ot">&lt;-</span> <span class="fu">levels</span>(<span class="fu">factor</span>(df<span class="sc">$</span>full_name))</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  x_scales <span class="ot">&lt;-</span> <span class="fu">lapply</span>(species_levels, <span class="cf">function</span>(sp) {</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    d <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(full_name <span class="sc">==</span> sp)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (xvar <span class="sc">==</span> <span class="st">"year_rescaled"</span>) {</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>      xmid <span class="ot">&lt;-</span> year_center</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>      xmid <span class="ot">&lt;-</span> <span class="fu">mean</span>(d[[xvar]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    xmin <span class="ot">&lt;-</span> xmid <span class="sc">-</span> x_span <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    xmax <span class="ot">&lt;-</span> xmid <span class="sc">+</span> x_span <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (xvar <span class="sc">==</span> <span class="st">"year_rescaled"</span>) {</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits =</span> <span class="fu">c</span>(xmin, xmax),</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> <span class="fu">seq</span>(</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>          <span class="fu">floor</span>(xmin <span class="sc">/</span> <span class="fl">0.5</span>) <span class="sc">*</span> <span class="fl">0.5</span>,</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ceiling</span>(xmax <span class="sc">/</span> <span class="fl">0.5</span>) <span class="sc">*</span> <span class="fl">0.5</span>,</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fl">0.5</span></span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">round</span>(x <span class="sc">*</span> <span class="dv">100</span> <span class="sc">+</span> <span class="dv">1800</span>)</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits =</span> <span class="fu">c</span>(xmin, xmax)</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>  y_scales <span class="ot">&lt;-</span> <span class="fu">lapply</span>(species_levels, <span class="cf">function</span>(sp) {</span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>    d <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(full_name <span class="sc">==</span> sp)</span>
-<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    ymid <span class="ot">&lt;-</span> <span class="fu">mean</span>(d[[yvar]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>    ymin <span class="ot">&lt;-</span> ymid <span class="sc">-</span> y_span <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    ymax <span class="ot">&lt;-</span> ymid <span class="sc">+</span> y_span <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">limits =</span> <span class="fu">c</span>(ymin, ymax),</span>
-<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">breaks =</span> <span class="fu">seq</span>(</span>
-<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>        <span class="fu">floor</span>(ymin <span class="sc">/</span> <span class="fl">0.2</span>) <span class="sc">*</span> <span class="fl">0.2</span>,</span>
-<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ceiling</span>(ymax <span class="sc">/</span> <span class="fl">0.2</span>) <span class="sc">*</span> <span class="fl">0.2</span>,</span>
-<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>        <span class="at">by =</span> <span class="fl">0.2</span></span>
-<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> .data[[xvar]], <span class="at">y =</span> .data[[yvar]], <span class="at">colour =</span> sex)) <span class="sc">+</span></span>
-<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> full_name,<span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">labeller =</span> <span class="fu">as_labeller</span>(species_labels, label_parsed)) <span class="sc">+</span></span>
-<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>    ggh4x<span class="sc">::</span><span class="fu">facetted_pos_scales</span>(</span>
-<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> x_scales,</span>
-<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> y_scales</span>
-<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> xvar,</span>
-<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> yvar,</span>
-<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">"Sex"</span></span>
-<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
-<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
-<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for year plot (set scale for x-axis)</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>make_species_plot_year_centered <span class="ot">&lt;-</span> <span class="cf">function</span>(df, xvar, yvar, x_span, y_span, <span class="at">year_center =</span> <span class="fl">1.5</span>) {</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  species_levels <span class="ot">&lt;-</span> <span class="fu">levels</span>(<span class="fu">factor</span>(df<span class="sc">$</span>full_name))</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  x_scales <span class="ot">&lt;-</span> <span class="fu">lapply</span>(species_levels, <span class="cf">function</span>(sp) {</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    d <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(full_name <span class="sc">==</span> sp)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (xvar <span class="sc">==</span> <span class="st">"year_rescaled"</span>) {</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>      xmid <span class="ot">&lt;-</span> year_center</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>      xmid <span class="ot">&lt;-</span> <span class="fu">mean</span>(d[[xvar]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    xmin <span class="ot">&lt;-</span> xmid <span class="sc">-</span> x_span <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    xmax <span class="ot">&lt;-</span> xmid <span class="sc">+</span> x_span <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (xvar <span class="sc">==</span> <span class="st">"year_rescaled"</span>) {</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits =</span> <span class="fu">c</span>(xmin, xmax),</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">breaks =</span> <span class="fu">seq</span>(</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>          <span class="fu">floor</span>(xmin <span class="sc">/</span> <span class="fl">0.5</span>) <span class="sc">*</span> <span class="fl">0.5</span>,</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ceiling</span>(xmax <span class="sc">/</span> <span class="fl">0.5</span>) <span class="sc">*</span> <span class="fl">0.5</span>,</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fl">0.5</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">round</span>(x <span class="sc">*</span> <span class="dv">100</span> <span class="sc">+</span> <span class="dv">1800</span>)</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">limits =</span> <span class="fu">c</span>(xmin, xmax)</span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>  y_scales <span class="ot">&lt;-</span> <span class="fu">lapply</span>(species_levels, <span class="cf">function</span>(sp) {</span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>    d <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(full_name <span class="sc">==</span> sp)</span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>    ymid <span class="ot">&lt;-</span> <span class="fu">mean</span>(d[[yvar]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>    ymin <span class="ot">&lt;-</span> ymid <span class="sc">-</span> y_span <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>    ymax <span class="ot">&lt;-</span> ymid <span class="sc">+</span> y_span <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">limits =</span> <span class="fu">c</span>(ymin, ymax),</span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">breaks =</span> <span class="fu">seq</span>(</span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>        <span class="fu">floor</span>(ymin <span class="sc">/</span> <span class="fl">0.2</span>) <span class="sc">*</span> <span class="fl">0.2</span>,</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ceiling</span>(ymax <span class="sc">/</span> <span class="fl">0.2</span>) <span class="sc">*</span> <span class="fl">0.2</span>,</span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a>        <span class="at">by =</span> <span class="fl">0.2</span></span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> .data[[xvar]], <span class="at">y =</span> .data[[yvar]], <span class="at">colour =</span> sex)) <span class="sc">+</span></span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> full_name,<span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">labeller =</span> <span class="fu">as_labeller</span>(species_labels, label_parsed)) <span class="sc">+</span></span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a>    ggh4x<span class="sc">::</span><span class="fu">facetted_pos_scales</span>(</span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> x_scales,</span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> y_scales</span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> xvar,</span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> yvar,</span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">"Sex"</span></span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
+<span id="cb26-60"><a href="#cb26-60" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="year-and-itd-plot" class="level4">
 <h4 class="anchored" data-anchor-id="year-and-itd-plot">Year and ITD plot</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot for Year and ITD</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make_species_plot_year_centered</span>(</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">df =</span> bees_temps,</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xvar =</span> <span class="st">"year_rescaled"</span>,</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">yvar =</span> <span class="st">"log_ITD"</span>,</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x_span =</span> <span class="fl">1.5</span>,</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_span =</span> <span class="fl">0.8</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">#    title = "Effect of Year on Body Size",</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"log(ITD)"</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="function-for-temp-plot" class="level4">
-<h4 class="anchored" data-anchor-id="function-for-temp-plot">Function for temp plot</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for plots where I can set the window size:</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>make_species_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, xvar, yvar, x_span, y_span) {</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  species_levels <span class="ot">&lt;-</span> <span class="fu">levels</span>(<span class="fu">factor</span>(df<span class="sc">$</span>full_name))</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  x_scales <span class="ot">&lt;-</span> <span class="fu">lapply</span>(species_levels, <span class="cf">function</span>(sp) {</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    d <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(full_name <span class="sc">==</span> sp)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    xmid <span class="ot">&lt;-</span> <span class="fu">mean</span>(d[[xvar]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(xmid <span class="sc">-</span> x_span <span class="sc">/</span> <span class="dv">2</span>, xmid <span class="sc">+</span> x_span <span class="sc">/</span> <span class="dv">2</span>))</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  y_scales <span class="ot">&lt;-</span> <span class="fu">lapply</span>(species_levels, <span class="cf">function</span>(sp) {</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    d <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(full_name <span class="sc">==</span> sp)</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    ymid <span class="ot">&lt;-</span> <span class="fu">mean</span>(d[[yvar]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    ymin <span class="ot">&lt;-</span> ymid <span class="sc">-</span> y_span <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    ymax <span class="ot">&lt;-</span> ymid <span class="sc">+</span> y_span <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">limits =</span> <span class="fu">c</span>(ymin, ymax),</span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">breaks =</span> <span class="fu">seq</span>(</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">floor</span>(ymin <span class="sc">/</span> <span class="fl">0.2</span>) <span class="sc">*</span> <span class="fl">0.2</span>,</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ceiling</span>(ymax <span class="sc">/</span> <span class="fl">0.2</span>) <span class="sc">*</span> <span class="fl">0.2</span>,</span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">by =</span> <span class="fl">0.2</span></span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> .data[[xvar]], <span class="at">y =</span> .data[[yvar]], <span class="at">colour =</span> sex)) <span class="sc">+</span></span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> full_name,<span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">labeller =</span> <span class="fu">as_labeller</span>(species_labels, label_parsed)) <span class="sc">+</span></span>
-<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>    ggh4x<span class="sc">::</span><span class="fu">facetted_pos_scales</span>(</span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> x_scales,</span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> y_scales</span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> xvar,</span>
-<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> yvar,</span>
-<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">"Sex"</span></span>
-<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
-<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
-<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="mean-temp-and-itd-plot" class="level4">
-<h4 class="anchored" data-anchor-id="mean-temp-and-itd-plot">Mean temp and ITD plot</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean temp and ITD</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make_species_plot</span>(</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">df =</span> bees_temps,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xvar =</span> <span class="st">"mean_preflight_temp"</span>,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">yvar =</span> <span class="st">"log_ITD"</span>,</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x_span =</span> <span class="dv">6</span>,</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_span =</span> <span class="fl">0.7</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">#    title = "Effect of temperature on body size",</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Mean pre-flight temperature (°C)"</span>,</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"log(ITD)"</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot for Year and ITD</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make_species_plot_year_centered</span>(</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">df =</span> bees_temps,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xvar =</span> <span class="st">"year_rescaled"</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">yvar =</span> <span class="st">"log_ITD"</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x_span =</span> <span class="fl">1.5</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_span =</span> <span class="fl">0.8</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co">#    title = "Effect of Year on Body Size",</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"log(ITD)"</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
@@ -423,94 +510,93 @@ See '? untidy'</code></pre>
 </div>
 </div>
 </section>
+<section id="function-for-temp-plot" class="level4">
+<h4 class="anchored" data-anchor-id="function-for-temp-plot">Function for temp plot</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for plots where I can set the window size:</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>make_species_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, xvar, yvar, x_span, y_span) {</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  species_levels <span class="ot">&lt;-</span> <span class="fu">levels</span>(<span class="fu">factor</span>(df<span class="sc">$</span>full_name))</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  x_scales <span class="ot">&lt;-</span> <span class="fu">lapply</span>(species_levels, <span class="cf">function</span>(sp) {</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    d <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(full_name <span class="sc">==</span> sp)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    xmid <span class="ot">&lt;-</span> <span class="fu">mean</span>(d[[xvar]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(xmid <span class="sc">-</span> x_span <span class="sc">/</span> <span class="dv">2</span>, xmid <span class="sc">+</span> x_span <span class="sc">/</span> <span class="dv">2</span>))</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  y_scales <span class="ot">&lt;-</span> <span class="fu">lapply</span>(species_levels, <span class="cf">function</span>(sp) {</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    d <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(full_name <span class="sc">==</span> sp)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    ymid <span class="ot">&lt;-</span> <span class="fu">mean</span>(d[[yvar]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    ymin <span class="ot">&lt;-</span> ymid <span class="sc">-</span> y_span <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    ymax <span class="ot">&lt;-</span> ymid <span class="sc">+</span> y_span <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">limits =</span> <span class="fu">c</span>(ymin, ymax),</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">breaks =</span> <span class="fu">seq</span>(</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">floor</span>(ymin <span class="sc">/</span> <span class="fl">0.2</span>) <span class="sc">*</span> <span class="fl">0.2</span>,</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ceiling</span>(ymax <span class="sc">/</span> <span class="fl">0.2</span>) <span class="sc">*</span> <span class="fl">0.2</span>,</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">by =</span> <span class="fl">0.2</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> .data[[xvar]], <span class="at">y =</span> .data[[yvar]], <span class="at">colour =</span> sex)) <span class="sc">+</span></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> full_name,<span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">labeller =</span> <span class="fu">as_labeller</span>(species_labels, label_parsed)) <span class="sc">+</span></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>    ggh4x<span class="sc">::</span><span class="fu">facetted_pos_scales</span>(</span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> x_scales,</span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> y_scales</span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> xvar,</span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> yvar,</span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">"Sex"</span></span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
+<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="mean-temp-and-itd-plot" class="level4">
+<h4 class="anchored" data-anchor-id="mean-temp-and-itd-plot">Mean temp and ITD plot</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean temp and ITD</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make_species_plot</span>(</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">df =</span> bees_temps,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xvar =</span> <span class="st">"mean_preflight_temp"</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">yvar =</span> <span class="st">"log_ITD"</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x_span =</span> <span class="dv">6</span>,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_span =</span> <span class="fl">0.7</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">#    title = "Effect of temperature on body size",</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Mean pre-flight temperature (°C)"</span>,</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"log(ITD)"</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
 </section>
 <section id="summary-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="summary-statistics">Summary statistics</h2>
-<section id="calculate-the-mean-and-variation-in-size-per-species" class="level6">
-<h6 class="anchored" data-anchor-id="calculate-the-mean-and-variation-in-size-per-species">Calculate the mean and variation in size per species</h6>
-</section>
-<section id="just-logitd" class="level4">
-<h4 class="anchored" data-anchor-id="just-logitd">Just log(ITD)</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>size_summary <span class="ot">&lt;-</span> bees_temps <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(full_name) <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_log_ITD =</span> <span class="fu">mean</span>(log_ITD, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_log_ITD   =</span> <span class="fu">sd</span>(log_ITD, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>size_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 4
-   full_name               mean_log_ITD sd_log_ITD     n
-   &lt;fct&gt;                          &lt;dbl&gt;      &lt;dbl&gt; &lt;int&gt;
- 1 Anthidium manicatum           1.28       0.0725   144
- 2 Megachile centuncularis       1.04       0.0937   109
- 3 Hylaeus communis              0.169      0.105    132
- 4 Hylaeus hyalinatus            0.192      0.0871   142
- 5 Andrena chrysosceles          0.453      0.135    137
- 6 Andrena wilkella              0.700      0.113     74
- 7 Colletes succintus            0.886      0.116     83
- 8 Lasioglossum fulvicorne       0.247      0.0686   133
- 9 Nomada flava                  0.536      0.128    134
-10 Nomada goodeniana             0.631      0.125    140
-11 Nomada ruficornis             0.532      0.115    137
-12 Sphecodes geoffrellus         0.0172     0.0943   130</code></pre>
-</div>
-</div>
-</section>
-<section id="all-logtraits" class="level4">
-<h4 class="anchored" data-anchor-id="all-logtraits">All log(traits)</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>size_summary_all <span class="ot">&lt;-</span> bees_temps <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(full_name) <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(log_ITD, log_HW, log_FW, log_TIB),</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">list</span>(<span class="at">mean =</span> <span class="sc">~</span><span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">sd   =</span> <span class="sc">~</span><span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">"{.col}_{.fn}"</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>size_summary_all</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 10
-   full_name log_ITD_mean log_ITD_sd log_HW_mean log_HW_sd log_FW_mean log_FW_sd
-   &lt;fct&gt;            &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
- 1 Anthidiu…       1.28       0.0725       1.44     0.0595        2.30    0.110 
- 2 Megachil…       1.04       0.0937       1.27     0.0574        2.08    0.0638
- 3 Hylaeus …       0.169      0.105        0.446    0.0727        1.50    0.0857
- 4 Hylaeus …       0.192      0.0871       0.480    0.0591        1.45    0.0797
- 5 Andrena …       0.453      0.135        0.976    0.0993        1.97    0.106 
- 6 Andrena …       0.700      0.113        1.15     0.0833        2.04    0.0716
- 7 Colletes…       0.886      0.116        1.15     0.0706        2.02    0.103 
- 8 Lasioglo…       0.247      0.0686       0.577    0.0462        1.67    0.0499
- 9 Nomada f…       0.536      0.128        0.933    0.0958        2.13    0.101 
-10 Nomada g…       0.631      0.125        1.05     0.0866        2.17    0.0862
-11 Nomada r…       0.532      0.115        0.939    0.0867        2.06    0.0871
-12 Sphecode…       0.0172     0.0943       0.438    0.0751        1.42    0.0739
-# ℹ 3 more variables: log_TIB_mean &lt;dbl&gt;, log_TIB_sd &lt;dbl&gt;, n &lt;int&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="raw-measurements" class="level4">
-<h4 class="anchored" data-anchor-id="raw-measurements">Raw measurements</h4>
-</section>
+<p>###Calculate the mean and variation in size per species</p>
 <section id="itd-only" class="level4">
 <h4 class="anchored" data-anchor-id="itd-only">ITD only</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>size_summary <span class="ot">&lt;-</span> bees_temps <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(full_name) <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_ITD =</span> <span class="fu">round</span>(<span class="fu">mean</span>(ITD, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>),</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_ITD   =</span> <span class="fu">round</span>(<span class="fu">sd</span>(ITD, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>),</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>size_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>size_summary <span class="ot">&lt;-</span> bees_temps <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(full_name) <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_ITD =</span> <span class="fu">round</span>(<span class="fu">mean</span>(ITD, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>),</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_ITD   =</span> <span class="fu">round</span>(<span class="fu">sd</span>(ITD, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>),</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>size_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 4
    full_name               mean_ITD sd_ITD     n
@@ -527,72 +613,6 @@ See '? untidy'</code></pre>
 10 Nomada goodeniana           1.89  0.229   140
 11 Nomada ruficornis           1.71  0.184   137
 12 Sphecodes geoffrellus       1.02  0.095   130</code></pre>
-</div>
-</div>
-</section>
-<section id="all-measurements" class="level4">
-<h4 class="anchored" data-anchor-id="all-measurements">All measurements</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>size_summary_all <span class="ot">&lt;-</span> bees_temps <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(full_name) <span class="sc">%&gt;%</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(ITD, HW, FW, TIB),</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>       <span class="fu">list</span>(<span class="at">mean =</span> <span class="sc">~</span><span class="fu">round</span>(<span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>),</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">sd   =</span> <span class="sc">~</span><span class="fu">round</span>(<span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>)),</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">.names =</span> <span class="st">"{.col}_{.fn}"</span></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>size_summary_all</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 10
-   full_name   ITD_mean ITD_sd HW_mean HW_sd FW_mean FW_sd TIB_mean TIB_sd     n
-   &lt;fct&gt;          &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;
- 1 Anthidium …     3.60  0.259    4.21 0.249   10.0  1.11     3.14   0.411   144
- 2 Megachile …     2.85  0.264    3.58 0.202    8.04 0.505    2.23   0.15    109
- 3 Hylaeus co…     1.19  0.126    1.57 0.116    4.50 0.384    0.984  0.089   132
- 4 Hylaeus hy…     1.22  0.103    1.62 0.095    4.30 0.339    1.04   0.073   142
- 5 Andrena ch…     1.59  0.212    2.67 0.258    7.23 0.741    1.99   0.247   137
- 6 Andrena wi…     2.03  0.224    3.17 0.262    7.75 0.564    2.31   0.278    74
- 7 Colletes s…     2.44  0.281    3.15 0.222    7.57 0.778    2.01   0.214    83
- 8 Lasiogloss…     1.28  0.087    1.78 0.082    5.30 0.264    1.32   0.104   133
- 9 Nomada fla…     1.72  0.211    2.55 0.24     8.42 0.836    2.36   0.26    134
-10 Nomada goo…     1.89  0.229    2.88 0.243    8.82 0.745    2.50   0.226   140
-11 Nomada ruf…     1.71  0.184    2.57 0.211    7.90 0.664    2.16   0.207   137
-12 Sphecodes …     1.02  0.095    1.55 0.117    4.17 0.307    1.03   0.091   130</code></pre>
-</div>
-</div>
-</section>
-<section id="just-itd-measurements-by-sex" class="level4">
-<h4 class="anchored" data-anchor-id="just-itd-measurements-by-sex">Just ITD measurements by sex</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>size_summary <span class="ot">&lt;-</span> bees_temps <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(full_name, sex) <span class="sc">%&gt;%</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_ITD =</span> <span class="fu">round</span>(<span class="fu">mean</span>(ITD, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>),</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_ITD   =</span> <span class="fu">round</span>(<span class="fu">sd</span>(ITD, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">3</span>),</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>size_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 24 × 5
-   full_name               sex    mean_ITD sd_ITD     n
-   &lt;fct&gt;                   &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;
- 1 Anthidium manicatum     Female     3.44  0.165    61
- 2 Anthidium manicatum     Male       3.71  0.259    83
- 3 Megachile centuncularis Female     3.07  0.149    49
- 4 Megachile centuncularis Male       2.67  0.193    60
- 5 Hylaeus communis        Female     1.25  0.095    75
- 6 Hylaeus communis        Male       1.11  0.111    57
- 7 Hylaeus hyalinatus      Female     1.26  0.064    82
- 8 Hylaeus hyalinatus      Male       1.15  0.11     60
- 9 Andrena chrysosceles    Female     1.73  0.155    74
-10 Andrena chrysosceles    Male       1.42  0.127    63
-# ℹ 14 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -815,12 +835,12 @@ models_interactions[[sp]]  8 -237.6529</code></pre>
 <span id="cb39-60"><a href="#cb39-60" aria-hidden="true" tabindex="-1"></a>        )</span>
 <span id="cb39-61"><a href="#cb39-61" aria-hidden="true" tabindex="-1"></a>      )</span>
 <span id="cb39-62"><a href="#cb39-62" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb39-63"><a href="#cb39-63" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> xlab, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">color =</span> <span class="st">"Sex"</span>) <span class="sc">+</span></span>
+<span id="cb39-63"><a href="#cb39-63" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> xlab, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">color =</span> <span class="st">"      Sex"</span>) <span class="sc">+</span></span>
 <span id="cb39-64"><a href="#cb39-64" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
 <span id="cb39-65"><a href="#cb39-65" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
 <span id="cb39-66"><a href="#cb39-66" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.major.y =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb39-67"><a href="#cb39-67" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.text.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">270</span>, <span class="at">face =</span> <span class="st">"plain"</span>),</span>
-<span id="cb39-68"><a href="#cb39-68" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb39-68"><a href="#cb39-68" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
 <span id="cb39-69"><a href="#cb39-69" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"#6b6b6b"</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>),</span>
 <span id="cb39-70"><a href="#cb39-70" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.background =</span> <span class="fu">element_blank</span>()</span>
 <span id="cb39-71"><a href="#cb39-71" aria-hidden="true" tabindex="-1"></a>    )</span>
@@ -833,7 +853,7 @@ models_interactions[[sp]]  8 -237.6529</code></pre>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>year_sex <span class="ot">&lt;-</span> <span class="fu">extract_trends</span>(models_interactions, <span class="st">"year_rescaled"</span>)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_trends</span>(year_sex, <span class="st">"year_rescaled.trend"</span>, <span class="st">"Estimated effect of collection year on log(ITD)"</span>) <span class="co">#+</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  labs(title = "Estimated Effect of Collection Year on Bee Body Size") +</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  theme(plot.title = element_text(hjust = 0.5))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -846,7 +866,7 @@ models_interactions[[sp]]  8 -237.6529</code></pre>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>temp_sex <span class="ot">&lt;-</span> <span class="fu">extract_trends</span>(models_interactions, <span class="st">"temp_c"</span>)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_trends</span>(temp_sex, <span class="st">"temp_c.trend"</span>, <span class="st">"Estimated effect of pre-flight temperature on log(ITD)"</span>) <span class="co">#+</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  labs(title = "Estimated Effect of Increased Pre-flight Temperature on Bee Body Size") +</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  theme(plot.title = element_text(hjust = 0.5))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -855,387 +875,197 @@ models_interactions[[sp]]  8 -237.6529</code></pre>
 </section>
 <section id="allometry" class="level1">
 <h1>Allometry</h1>
-<section id="separate-sexes" class="level3">
-<h3 class="anchored" data-anchor-id="separate-sexes">Separate sexes</h3>
+<section id="separate-sexes-and-custom-x-axis" class="level3">
+<h3 class="anchored" data-anchor-id="separate-sexes-and-custom-x-axis">Separate sexes and custom x axis</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create function to fit the allometry models separately by sex</span></span>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the allometry models separately by species and sex</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>extract_allometry_by_sex <span class="ot">&lt;-</span> <span class="cf">function</span>(response_var) {</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  models <span class="ot">&lt;-</span> bees_temps <span class="sc">%&gt;%</span></span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">split</span>(<span class="fu">list</span>(.<span class="sc">$</span>full_name, .<span class="sc">$</span>sex), <span class="at">drop =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lapply</span>(<span class="cf">function</span>(df_sp) {</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>      formula <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">paste</span>(response_var,</span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">"~ log_ITD * temp_c + log_ITD * year_rescaled + latitude"</span>)</span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">lm</span>(formula, <span class="at">data =</span> df_sp)</span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="fu">lapply</span>(<span class="fu">names</span>(models), <span class="cf">function</span>(name) {</span>
-<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract species and sex from name</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">lm</span>(</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">as.formula</span>(</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">paste</span>(response_var, <span class="st">"~ log_ITD * temp_c + log_ITD * year_rescaled + latitude"</span>)</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> df_sp</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="fu">lapply</span>(<span class="fu">names</span>(models), <span class="cf">function</span>(name) {</span>
 <span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>    parts <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(name, <span class="st">"</span><span class="sc">\\</span><span class="st">."</span>)[[<span class="dv">1</span>]]</span>
 <span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>    sp <span class="ot">&lt;-</span> parts[<span class="dv">1</span>]</span>
 <span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>    sx <span class="ot">&lt;-</span> parts[<span class="dv">2</span>]</span>
-<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tidy</span>(models[[name]]) <span class="sc">%&gt;%</span></span>
-<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(term <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"log_ITD:temp_c"</span>, <span class="st">"log_ITD:year_rescaled"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">species =</span> sp,</span>
-<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>             <span class="at">sex =</span> sx)</span>
-<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>  })) <span class="sc">%&gt;%</span></span>
-<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">trait =</span> response_var)</span>
-<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Run function for all traits</span></span>
-<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a>coef_allometry_sex <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_allometry_by_sex</span>(<span class="st">"log_HW"</span>),</span>
-<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_allometry_by_sex</span>(<span class="st">"log_FW"</span>),</span>
-<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_allometry_by_sex</span>(<span class="st">"log_TIB"</span>)</span>
-<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean and label</span></span>
-<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a>coef_allometry_sex <span class="ot">&lt;-</span> coef_allometry_sex <span class="sc">%&gt;%</span></span>
-<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(species_eco, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"species"</span> <span class="ot">=</span> <span class="st">"full_name"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">ecology =</span> <span class="fu">factor</span>(ecology),</span>
-<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">factor</span>(species, <span class="at">levels =</span> <span class="fu">rev</span>(species_order)),</span>
-<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">trait =</span> <span class="fu">factor</span>(trait, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"log_HW"</span>, <span class="st">"log_FW"</span>, <span class="st">"log_TIB"</span>)),</span>
-<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">predictor =</span> term,</span>
-<span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"Male"</span>))</span>
-<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-46"><a href="#cb44-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-47"><a href="#cb44-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Create function to make plots for each sex</span></span>
-<span id="cb44-48"><a href="#cb44-48" aria-hidden="true" tabindex="-1"></a>make_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, predictor_name, title_text, xlab_text) {</span>
-<span id="cb44-49"><a href="#cb44-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(predictor <span class="sc">==</span> predictor_name),</span>
-<span id="cb44-50"><a href="#cb44-50" aria-hidden="true" tabindex="-1"></a>         <span class="fu">aes</span>(<span class="at">x =</span> estimate, <span class="at">y =</span> species, <span class="at">colour =</span> ecology)) <span class="sc">+</span></span>
-<span id="cb44-51"><a href="#cb44-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb44-52"><a href="#cb44-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb44-53"><a href="#cb44-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(</span>
-<span id="cb44-54"><a href="#cb44-54" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">xmin =</span> estimate <span class="sc">-</span> std.error,</span>
-<span id="cb44-55"><a href="#cb44-55" aria-hidden="true" tabindex="-1"></a>          <span class="at">xmax =</span> estimate <span class="sc">+</span> std.error),</span>
-<span id="cb44-56"><a href="#cb44-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">orientation =</span> <span class="st">"y"</span>,</span>
-<span id="cb44-57"><a href="#cb44-57" aria-hidden="true" tabindex="-1"></a>      <span class="at">width =</span> <span class="fl">0.2</span>,</span>
-<span id="cb44-58"><a href="#cb44-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">"black"</span></span>
-<span id="cb44-59"><a href="#cb44-59" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb44-60"><a href="#cb44-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid2</span>(</span>
-<span id="cb44-61"><a href="#cb44-61" aria-hidden="true" tabindex="-1"></a>      ecology <span class="sc">~</span> trait,</span>
-<span id="cb44-62"><a href="#cb44-62" aria-hidden="true" tabindex="-1"></a>      <span class="at">scales =</span> <span class="st">"free_y"</span>,</span>
-<span id="cb44-63"><a href="#cb44-63" aria-hidden="true" tabindex="-1"></a>      <span class="at">space =</span> <span class="st">"free_y"</span>,</span>
-<span id="cb44-64"><a href="#cb44-64" aria-hidden="true" tabindex="-1"></a>      <span class="at">labeller =</span> <span class="fu">labeller</span>(</span>
-<span id="cb44-65"><a href="#cb44-65" aria-hidden="true" tabindex="-1"></a>        <span class="at">trait =</span> <span class="fu">c</span>(</span>
-<span id="cb44-66"><a href="#cb44-66" aria-hidden="true" tabindex="-1"></a>          <span class="at">log_HW =</span> <span class="st">"log(HW)"</span>,</span>
-<span id="cb44-67"><a href="#cb44-67" aria-hidden="true" tabindex="-1"></a>          <span class="at">log_FW =</span> <span class="st">"log(FW)"</span>,</span>
-<span id="cb44-68"><a href="#cb44-68" aria-hidden="true" tabindex="-1"></a>          <span class="at">log_TIB =</span> <span class="st">"log(TIB)"</span></span>
-<span id="cb44-69"><a href="#cb44-69" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb44-70"><a href="#cb44-70" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb44-71"><a href="#cb44-71" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip =</span> <span class="fu">strip_themed</span>(</span>
-<span id="cb44-72"><a href="#cb44-72" aria-hidden="true" tabindex="-1"></a>        <span class="at">background_y =</span> <span class="fu">elem_list_rect</span>(</span>
-<span id="cb44-73"><a href="#cb44-73" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#fae8b2"</span>, <span class="st">"#cb8e73"</span>, <span class="st">"#ccb3d6"</span>),</span>
-<span id="cb44-74"><a href="#cb44-74" aria-hidden="true" tabindex="-1"></a>          <span class="at">colour =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
-<span id="cb44-75"><a href="#cb44-75" aria-hidden="true" tabindex="-1"></a>          <span class="at">linewidth =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb44-76"><a href="#cb44-76" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb44-77"><a href="#cb44-77" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb44-78"><a href="#cb44-78" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb44-79"><a href="#cb44-79" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_discrete</span>(</span>
-<span id="cb44-80"><a href="#cb44-80" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">parse</span>(<span class="at">text =</span> <span class="fu">paste0</span>(<span class="st">"italic('"</span>, x, <span class="st">"')"</span>))</span>
-<span id="cb44-81"><a href="#cb44-81" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb44-82"><a href="#cb44-82" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb44-83"><a href="#cb44-83" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
-<span id="cb44-84"><a href="#cb44-84" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"#6b6b6b"</span>, <span class="at">fill =</span> <span class="cn">NA</span>),</span>
-<span id="cb44-85"><a href="#cb44-85" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.text.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">270</span>),</span>
-<span id="cb44-86"><a href="#cb44-86" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb44-87"><a href="#cb44-87" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb44-88"><a href="#cb44-88" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb44-89"><a href="#cb44-89" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb44-90"><a href="#cb44-90" aria-hidden="true" tabindex="-1"></a><span class="co">#      title = title_text,</span></span>
-<span id="cb44-91"><a href="#cb44-91" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> xlab_text,</span>
-<span id="cb44-92"><a href="#cb44-92" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Species"</span></span>
-<span id="cb44-93"><a href="#cb44-93" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb44-94"><a href="#cb44-94" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#ffcb30"</span>, <span class="st">"#cb8e73"</span>, <span class="st">"#b28fbf"</span>))</span>
-<span id="cb44-95"><a href="#cb44-95" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-96"><a href="#cb44-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-97"><a href="#cb44-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-98"><a href="#cb44-98" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data by sex</span></span>
-<span id="cb44-99"><a href="#cb44-99" aria-hidden="true" tabindex="-1"></a>coef_female <span class="ot">&lt;-</span> coef_allometry_sex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Female"</span>)</span>
-<span id="cb44-100"><a href="#cb44-100" aria-hidden="true" tabindex="-1"></a>coef_male   <span class="ot">&lt;-</span> coef_allometry_sex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Male"</span>)</span>
-<span id="cb44-101"><a href="#cb44-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-102"><a href="#cb44-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-103"><a href="#cb44-103" aria-hidden="true" tabindex="-1"></a><span class="co"># Year plots</span></span>
-<span id="cb44-104"><a href="#cb44-104" aria-hidden="true" tabindex="-1"></a>plot_year_female <span class="ot">&lt;-</span> <span class="fu">make_plot</span>(</span>
-<span id="cb44-105"><a href="#cb44-105" aria-hidden="true" tabindex="-1"></a>  coef_female,</span>
-<span id="cb44-106"><a href="#cb44-106" aria-hidden="true" tabindex="-1"></a>  <span class="st">"log_ITD:year_rescaled"</span>,</span>
-<span id="cb44-107"><a href="#cb44-107" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Effect of Collection Year on Allometric Slope (Females)"</span>,</span>
-<span id="cb44-108"><a href="#cb44-108" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Change in allometric slope over time"</span></span>
-<span id="cb44-109"><a href="#cb44-109" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb44-110"><a href="#cb44-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-111"><a href="#cb44-111" aria-hidden="true" tabindex="-1"></a>plot_year_male <span class="ot">&lt;-</span> <span class="fu">make_plot</span>(</span>
-<span id="cb44-112"><a href="#cb44-112" aria-hidden="true" tabindex="-1"></a>  coef_male,</span>
-<span id="cb44-113"><a href="#cb44-113" aria-hidden="true" tabindex="-1"></a>  <span class="st">"log_ITD:year_rescaled"</span>,</span>
-<span id="cb44-114"><a href="#cb44-114" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Effect of Collection Year on Allometric Slope (Males)"</span>,</span>
-<span id="cb44-115"><a href="#cb44-115" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Change in allometric slope over time"</span></span>
-<span id="cb44-116"><a href="#cb44-116" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb44-117"><a href="#cb44-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-118"><a href="#cb44-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-119"><a href="#cb44-119" aria-hidden="true" tabindex="-1"></a><span class="co"># Temperature plots</span></span>
-<span id="cb44-120"><a href="#cb44-120" aria-hidden="true" tabindex="-1"></a>plot_temp_female <span class="ot">&lt;-</span> <span class="fu">make_plot</span>(</span>
-<span id="cb44-121"><a href="#cb44-121" aria-hidden="true" tabindex="-1"></a>  coef_female,</span>
-<span id="cb44-122"><a href="#cb44-122" aria-hidden="true" tabindex="-1"></a>  <span class="st">"log_ITD:temp_c"</span>,</span>
-<span id="cb44-123"><a href="#cb44-123" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Effect of Temperature on Allometric Slope (Females)"</span>,</span>
-<span id="cb44-124"><a href="#cb44-124" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Change in allometric slope with temperature"</span></span>
-<span id="cb44-125"><a href="#cb44-125" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb44-126"><a href="#cb44-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-127"><a href="#cb44-127" aria-hidden="true" tabindex="-1"></a>plot_temp_male <span class="ot">&lt;-</span> <span class="fu">make_plot</span>(</span>
-<span id="cb44-128"><a href="#cb44-128" aria-hidden="true" tabindex="-1"></a>  coef_male,</span>
-<span id="cb44-129"><a href="#cb44-129" aria-hidden="true" tabindex="-1"></a>  <span class="st">"log_ITD:temp_c"</span>,</span>
-<span id="cb44-130"><a href="#cb44-130" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Effect of Temperature on Allometric Slope (Males)"</span>,</span>
-<span id="cb44-131"><a href="#cb44-131" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Change in allometric slope with temperature"</span></span>
-<span id="cb44-132"><a href="#cb44-132" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb44-133"><a href="#cb44-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-134"><a href="#cb44-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-135"><a href="#cb44-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-136"><a href="#cb44-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-137"><a href="#cb44-137" aria-hidden="true" tabindex="-1"></a><span class="co"># View plots</span></span>
-<span id="cb44-138"><a href="#cb44-138" aria-hidden="true" tabindex="-1"></a>plot_year_female</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tidy</span>(models[[name]]) <span class="sc">%&gt;%</span></span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(term <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"log_ITD:temp_c"</span>, <span class="st">"log_ITD:year_rescaled"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(</span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">species =</span> sp,</span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">sex =</span> sx</span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>  })) <span class="sc">%&gt;%</span></span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">trait =</span> response_var)</span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the function for all traits</span></span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>coef_allometry_sex <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_allometry_by_sex</span>(<span class="st">"log_HW"</span>),</span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_allometry_by_sex</span>(<span class="st">"log_FW"</span>),</span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_allometry_by_sex</span>(<span class="st">"log_TIB"</span>)</span>
+<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean and label</span></span>
+<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>coef_allometry_sex <span class="ot">&lt;-</span> coef_allometry_sex <span class="sc">%&gt;%</span></span>
+<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(species_eco, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"species"</span> <span class="ot">=</span> <span class="st">"full_name"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">ecology =</span> <span class="fu">factor</span>(ecology),</span>
+<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">factor</span>(species, <span class="at">levels =</span> <span class="fu">rev</span>(species_order)),</span>
+<span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">trait =</span> <span class="fu">factor</span>(trait, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"log_HW"</span>, <span class="st">"log_FW"</span>, <span class="st">"log_TIB"</span>)),</span>
+<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">predictor =</span> term,</span>
+<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"Male"</span>))</span>
+<span id="cb44-46"><a href="#cb44-46" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb44-47"><a href="#cb44-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-48"><a href="#cb44-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-49"><a href="#cb44-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Split into sex-specific data frames</span></span>
+<span id="cb44-50"><a href="#cb44-50" aria-hidden="true" tabindex="-1"></a>coef_female <span class="ot">&lt;-</span> coef_allometry_sex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Female"</span>)</span>
+<span id="cb44-51"><a href="#cb44-51" aria-hidden="true" tabindex="-1"></a>coef_male   <span class="ot">&lt;-</span> coef_allometry_sex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Male"</span>)</span>
+<span id="cb44-52"><a href="#cb44-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-53"><a href="#cb44-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Manually set x-axis limits</span></span>
+<span id="cb44-54"><a href="#cb44-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-55"><a href="#cb44-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Both fitting but own ranges</span></span>
+<span id="cb44-56"><a href="#cb44-56" aria-hidden="true" tabindex="-1"></a><span class="co">#year_xmin &lt;- -1.25</span></span>
+<span id="cb44-57"><a href="#cb44-57" aria-hidden="true" tabindex="-1"></a><span class="co">#year_xmax &lt;-  2.42</span></span>
+<span id="cb44-58"><a href="#cb44-58" aria-hidden="true" tabindex="-1"></a><span class="co">#temp_xmin &lt;- -0.40</span></span>
+<span id="cb44-59"><a href="#cb44-59" aria-hidden="true" tabindex="-1"></a><span class="co">#temp_xmax &lt;-  0.8</span></span>
+<span id="cb44-60"><a href="#cb44-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-61"><a href="#cb44-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Both same range but cut off some points</span></span>
+<span id="cb44-62"><a href="#cb44-62" aria-hidden="true" tabindex="-1"></a><span class="co">#year_xmin &lt;- -1</span></span>
+<span id="cb44-63"><a href="#cb44-63" aria-hidden="true" tabindex="-1"></a><span class="co">#year_xmax &lt;-  1</span></span>
+<span id="cb44-64"><a href="#cb44-64" aria-hidden="true" tabindex="-1"></a><span class="co">#temp_xmin &lt;- -1</span></span>
+<span id="cb44-65"><a href="#cb44-65" aria-hidden="true" tabindex="-1"></a><span class="co">#temp_xmax &lt;-  1</span></span>
+<span id="cb44-66"><a href="#cb44-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-67"><a href="#cb44-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Both fit, same ranges but squished</span></span>
+<span id="cb44-68"><a href="#cb44-68" aria-hidden="true" tabindex="-1"></a><span class="co">#year_xmin &lt;- -1.25</span></span>
+<span id="cb44-69"><a href="#cb44-69" aria-hidden="true" tabindex="-1"></a><span class="co">#year_xmax &lt;-  2.42</span></span>
+<span id="cb44-70"><a href="#cb44-70" aria-hidden="true" tabindex="-1"></a><span class="co">#temp_xmin &lt;- -1.25</span></span>
+<span id="cb44-71"><a href="#cb44-71" aria-hidden="true" tabindex="-1"></a><span class="co">#temp_xmax &lt;-  2.42</span></span>
+<span id="cb44-72"><a href="#cb44-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-73"><a href="#cb44-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-74"><a href="#cb44-74" aria-hidden="true" tabindex="-1"></a><span class="co"># After changing to CI</span></span>
+<span id="cb44-75"><a href="#cb44-75" aria-hidden="true" tabindex="-1"></a><span class="co"># fit all</span></span>
+<span id="cb44-76"><a href="#cb44-76" aria-hidden="true" tabindex="-1"></a><span class="co">#year_xmin &lt;- -1.9</span></span>
+<span id="cb44-77"><a href="#cb44-77" aria-hidden="true" tabindex="-1"></a><span class="co">#year_xmax &lt;-  4</span></span>
+<span id="cb44-78"><a href="#cb44-78" aria-hidden="true" tabindex="-1"></a><span class="co">#temp_xmin &lt;- -0.52</span></span>
+<span id="cb44-79"><a href="#cb44-79" aria-hidden="true" tabindex="-1"></a><span class="co">#temp_xmax &lt;-  1.2</span></span>
+<span id="cb44-80"><a href="#cb44-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-81"><a href="#cb44-81" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit all points but not CIs</span></span>
+<span id="cb44-82"><a href="#cb44-82" aria-hidden="true" tabindex="-1"></a>year_xmin <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">1.9</span></span>
+<span id="cb44-83"><a href="#cb44-83" aria-hidden="true" tabindex="-1"></a>year_xmax <span class="ot">&lt;-</span>  <span class="fl">1.9</span></span>
+<span id="cb44-84"><a href="#cb44-84" aria-hidden="true" tabindex="-1"></a>temp_xmin <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.52</span></span>
+<span id="cb44-85"><a href="#cb44-85" aria-hidden="true" tabindex="-1"></a>temp_xmax <span class="ot">&lt;-</span>  <span class="fl">0.52</span></span>
+<span id="cb44-86"><a href="#cb44-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-87"><a href="#cb44-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-88"><a href="#cb44-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-89"><a href="#cb44-89" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plotting function</span></span>
+<span id="cb44-90"><a href="#cb44-90" aria-hidden="true" tabindex="-1"></a>make_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, predictor_name, xlab_text, x_min, x_max) {</span>
+<span id="cb44-91"><a href="#cb44-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb44-92"><a href="#cb44-92" aria-hidden="true" tabindex="-1"></a>    df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(predictor <span class="sc">==</span> predictor_name),</span>
+<span id="cb44-93"><a href="#cb44-93" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> estimate, <span class="at">y =</span> species, <span class="at">colour =</span> ecology)</span>
+<span id="cb44-94"><a href="#cb44-94" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb44-95"><a href="#cb44-95" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">colour =</span> <span class="st">"#94abb0"</span>) <span class="sc">+</span></span>
+<span id="cb44-96"><a href="#cb44-96" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb44-97"><a href="#cb44-97" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(</span>
+<span id="cb44-98"><a href="#cb44-98" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
+<span id="cb44-99"><a href="#cb44-99" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmin =</span> estimate <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> std.error,</span>
+<span id="cb44-100"><a href="#cb44-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmax =</span> estimate <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> std.error</span>
+<span id="cb44-101"><a href="#cb44-101" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb44-102"><a href="#cb44-102" aria-hidden="true" tabindex="-1"></a>      <span class="at">orientation =</span> <span class="st">"y"</span>,</span>
+<span id="cb44-103"><a href="#cb44-103" aria-hidden="true" tabindex="-1"></a>      <span class="at">width =</span> <span class="fl">0.2</span>,</span>
+<span id="cb44-104"><a href="#cb44-104" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">"black"</span></span>
+<span id="cb44-105"><a href="#cb44-105" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb44-106"><a href="#cb44-106" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(x_min, x_max)) <span class="sc">+</span></span>
+<span id="cb44-107"><a href="#cb44-107" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid2</span>(</span>
+<span id="cb44-108"><a href="#cb44-108" aria-hidden="true" tabindex="-1"></a>      ecology <span class="sc">~</span> trait,</span>
+<span id="cb44-109"><a href="#cb44-109" aria-hidden="true" tabindex="-1"></a>      <span class="at">scales =</span> <span class="st">"free_y"</span>,</span>
+<span id="cb44-110"><a href="#cb44-110" aria-hidden="true" tabindex="-1"></a>      <span class="at">space =</span> <span class="st">"free_y"</span>,</span>
+<span id="cb44-111"><a href="#cb44-111" aria-hidden="true" tabindex="-1"></a>      <span class="at">labeller =</span> <span class="fu">labeller</span>(</span>
+<span id="cb44-112"><a href="#cb44-112" aria-hidden="true" tabindex="-1"></a>        <span class="at">trait =</span> <span class="fu">c</span>(</span>
+<span id="cb44-113"><a href="#cb44-113" aria-hidden="true" tabindex="-1"></a>          <span class="at">log_HW =</span> <span class="st">"log(HW)"</span>,</span>
+<span id="cb44-114"><a href="#cb44-114" aria-hidden="true" tabindex="-1"></a>          <span class="at">log_FW =</span> <span class="st">"log(FW)"</span>,</span>
+<span id="cb44-115"><a href="#cb44-115" aria-hidden="true" tabindex="-1"></a>          <span class="at">log_TIB =</span> <span class="st">"log(TIB)"</span></span>
+<span id="cb44-116"><a href="#cb44-116" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb44-117"><a href="#cb44-117" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb44-118"><a href="#cb44-118" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip =</span> <span class="fu">strip_themed</span>(</span>
+<span id="cb44-119"><a href="#cb44-119" aria-hidden="true" tabindex="-1"></a>        <span class="at">background_y =</span> <span class="fu">elem_list_rect</span>(</span>
+<span id="cb44-120"><a href="#cb44-120" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#fae8b2"</span>, <span class="st">"#cb8e73"</span>, <span class="st">"#ccb3d6"</span>),</span>
+<span id="cb44-121"><a href="#cb44-121" aria-hidden="true" tabindex="-1"></a>          <span class="at">colour =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
+<span id="cb44-122"><a href="#cb44-122" aria-hidden="true" tabindex="-1"></a>          <span class="at">linewidth =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb44-123"><a href="#cb44-123" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb44-124"><a href="#cb44-124" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb44-125"><a href="#cb44-125" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb44-126"><a href="#cb44-126" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_discrete</span>(</span>
+<span id="cb44-127"><a href="#cb44-127" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">parse</span>(<span class="at">text =</span> <span class="fu">paste0</span>(<span class="st">"italic('"</span>, x, <span class="st">"')"</span>))</span>
+<span id="cb44-128"><a href="#cb44-128" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb44-129"><a href="#cb44-129" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb44-130"><a href="#cb44-130" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb44-131"><a href="#cb44-131" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"#6b6b6b"</span>, <span class="at">fill =</span> <span class="cn">NA</span>),</span>
+<span id="cb44-132"><a href="#cb44-132" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.text.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">270</span>),</span>
+<span id="cb44-133"><a href="#cb44-133" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb44-134"><a href="#cb44-134" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb44-135"><a href="#cb44-135" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb44-136"><a href="#cb44-136" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb44-137"><a href="#cb44-137" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> xlab_text,</span>
+<span id="cb44-138"><a href="#cb44-138" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Species"</span></span>
+<span id="cb44-139"><a href="#cb44-139" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb44-140"><a href="#cb44-140" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#ffcb30"</span>, <span class="st">"#cb8e73"</span>, <span class="st">"#b28fbf"</span>))</span>
+<span id="cb44-141"><a href="#cb44-141" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-142"><a href="#cb44-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-143"><a href="#cb44-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-144"><a href="#cb44-144" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plots</span></span>
+<span id="cb44-145"><a href="#cb44-145" aria-hidden="true" tabindex="-1"></a>plot_year_female <span class="ot">&lt;-</span> <span class="fu">make_plot</span>(</span>
+<span id="cb44-146"><a href="#cb44-146" aria-hidden="true" tabindex="-1"></a>  coef_female,</span>
+<span id="cb44-147"><a href="#cb44-147" aria-hidden="true" tabindex="-1"></a>  <span class="st">"log_ITD:year_rescaled"</span>,</span>
+<span id="cb44-148"><a href="#cb44-148" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Change in allometric slope over time"</span>,</span>
+<span id="cb44-149"><a href="#cb44-149" aria-hidden="true" tabindex="-1"></a>  year_xmin, year_xmax</span>
+<span id="cb44-150"><a href="#cb44-150" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-151"><a href="#cb44-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-152"><a href="#cb44-152" aria-hidden="true" tabindex="-1"></a>plot_year_male <span class="ot">&lt;-</span> <span class="fu">make_plot</span>(</span>
+<span id="cb44-153"><a href="#cb44-153" aria-hidden="true" tabindex="-1"></a>  coef_male,</span>
+<span id="cb44-154"><a href="#cb44-154" aria-hidden="true" tabindex="-1"></a>  <span class="st">"log_ITD:year_rescaled"</span>,</span>
+<span id="cb44-155"><a href="#cb44-155" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Change in allometric slope over time"</span>,</span>
+<span id="cb44-156"><a href="#cb44-156" aria-hidden="true" tabindex="-1"></a>  year_xmin, year_xmax</span>
+<span id="cb44-157"><a href="#cb44-157" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-158"><a href="#cb44-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-159"><a href="#cb44-159" aria-hidden="true" tabindex="-1"></a>plot_temp_female <span class="ot">&lt;-</span> <span class="fu">make_plot</span>(</span>
+<span id="cb44-160"><a href="#cb44-160" aria-hidden="true" tabindex="-1"></a>  coef_female,</span>
+<span id="cb44-161"><a href="#cb44-161" aria-hidden="true" tabindex="-1"></a>  <span class="st">"log_ITD:temp_c"</span>,</span>
+<span id="cb44-162"><a href="#cb44-162" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Change in allometric slope with temperature"</span>,</span>
+<span id="cb44-163"><a href="#cb44-163" aria-hidden="true" tabindex="-1"></a>  temp_xmin, temp_xmax</span>
+<span id="cb44-164"><a href="#cb44-164" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-165"><a href="#cb44-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-166"><a href="#cb44-166" aria-hidden="true" tabindex="-1"></a>plot_temp_male <span class="ot">&lt;-</span> <span class="fu">make_plot</span>(</span>
+<span id="cb44-167"><a href="#cb44-167" aria-hidden="true" tabindex="-1"></a>  coef_male,</span>
+<span id="cb44-168"><a href="#cb44-168" aria-hidden="true" tabindex="-1"></a>  <span class="st">"log_ITD:temp_c"</span>,</span>
+<span id="cb44-169"><a href="#cb44-169" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Change in allometric slope with temperature"</span>,</span>
+<span id="cb44-170"><a href="#cb44-170" aria-hidden="true" tabindex="-1"></a>  temp_xmin, temp_xmax</span>
+<span id="cb44-171"><a href="#cb44-171" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-172"><a href="#cb44-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-173"><a href="#cb44-173" aria-hidden="true" tabindex="-1"></a><span class="co"># View plots</span></span>
+<span id="cb44-174"><a href="#cb44-174" aria-hidden="true" tabindex="-1"></a>plot_year_female</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>plot_year_male</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-21-2.png" class="img-fluid" width="672"></p>
+<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>plot_temp_female</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-21-3.png" class="img-fluid" width="672"></p>
+<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-19-3.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>plot_temp_male</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-21-4.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change this: </span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>coef_allometry_sex <span class="ot">&lt;-</span> coef_allometry_sex <span class="sc">%&gt;%</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">slope_change_2SD =</span> estimate <span class="sc">*</span> <span class="dv">2</span>   <span class="co"># same logic as before</span></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>coef_allometry_sex <span class="sc">%&gt;%</span></span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, sex, ecology, trait, predictor,</span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>         estimate, std.error, slope_change_2SD)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 144 × 8
-   species     sex   ecology trait predictor estimate std.error slope_change_2SD
-   &lt;fct&gt;       &lt;fct&gt; &lt;fct&gt;   &lt;fct&gt; &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt;
- 1 Anthidium … Fema… Cavity… log_… log_ITD:…  0.0602     0.0688          0.120  
- 2 Anthidium … Fema… Cavity… log_… log_ITD:… -0.242      0.295          -0.484  
- 3 Megachile … Fema… Cavity… log_… log_ITD:…  0.0103     0.0922          0.0206 
- 4 Megachile … Fema… Cavity… log_… log_ITD:… -0.228      0.265          -0.455  
- 5 Hylaeus co… Fema… Cavity… log_… log_ITD:… -0.00371    0.0412         -0.00743
- 6 Hylaeus co… Fema… Cavity… log_… log_ITD:…  0.109      0.116           0.219  
- 7 Hylaeus hy… Fema… Cavity… log_… log_ITD:…  0.0368     0.0536          0.0736 
- 8 Hylaeus hy… Fema… Cavity… log_… log_ITD:… -0.138      0.188          -0.276  
- 9 Andrena ch… Fema… Excava… log_… log_ITD:… -0.231      0.0838         -0.462  
-10 Andrena ch… Fema… Excava… log_… log_ITD:…  0.102      0.127           0.203  
-# ℹ 134 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="set-x-axis" class="level2">
-<h2 class="anchored" data-anchor-id="set-x-axis">set x axis</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggh4x)</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the allometry models separately by species and sex</span></span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>extract_allometry_by_sex <span class="ot">&lt;-</span> <span class="cf">function</span>(response_var) {</span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  models <span class="ot">&lt;-</span> bees_temps <span class="sc">%&gt;%</span></span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">split</span>(<span class="fu">list</span>(.<span class="sc">$</span>full_name, .<span class="sc">$</span>sex), <span class="at">drop =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lapply</span>(<span class="cf">function</span>(df_sp) {</span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">lm</span>(</span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">as.formula</span>(</span>
-<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>          <span class="fu">paste</span>(response_var, <span class="st">"~ log_ITD * temp_c + log_ITD * year_rescaled + latitude"</span>)</span>
-<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> df_sp</span>
-<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="fu">lapply</span>(<span class="fu">names</span>(models), <span class="cf">function</span>(name) {</span>
-<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>    parts <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(name, <span class="st">"</span><span class="sc">\\</span><span class="st">."</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>    sp <span class="ot">&lt;-</span> parts[<span class="dv">1</span>]</span>
-<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a>    sx <span class="ot">&lt;-</span> parts[<span class="dv">2</span>]</span>
-<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tidy</span>(models[[name]]) <span class="sc">%&gt;%</span></span>
-<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(term <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"log_ITD:temp_c"</span>, <span class="st">"log_ITD:year_rescaled"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(</span>
-<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">species =</span> sp,</span>
-<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">sex =</span> sx</span>
-<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a>  })) <span class="sc">%&gt;%</span></span>
-<span id="cb50-33"><a href="#cb50-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">trait =</span> response_var)</span>
-<span id="cb50-34"><a href="#cb50-34" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb50-35"><a href="#cb50-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-36"><a href="#cb50-36" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-37"><a href="#cb50-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the function for all traits</span></span>
-<span id="cb50-38"><a href="#cb50-38" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-39"><a href="#cb50-39" aria-hidden="true" tabindex="-1"></a>coef_allometry_sex <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb50-40"><a href="#cb50-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_allometry_by_sex</span>(<span class="st">"log_HW"</span>),</span>
-<span id="cb50-41"><a href="#cb50-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_allometry_by_sex</span>(<span class="st">"log_FW"</span>),</span>
-<span id="cb50-42"><a href="#cb50-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">extract_allometry_by_sex</span>(<span class="st">"log_TIB"</span>)</span>
-<span id="cb50-43"><a href="#cb50-43" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb50-44"><a href="#cb50-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-45"><a href="#cb50-45" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-46"><a href="#cb50-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean and label</span></span>
-<span id="cb50-47"><a href="#cb50-47" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-48"><a href="#cb50-48" aria-hidden="true" tabindex="-1"></a>coef_allometry_sex <span class="ot">&lt;-</span> coef_allometry_sex <span class="sc">%&gt;%</span></span>
-<span id="cb50-49"><a href="#cb50-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(species_eco, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"species"</span> <span class="ot">=</span> <span class="st">"full_name"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb50-50"><a href="#cb50-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb50-51"><a href="#cb50-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">ecology =</span> <span class="fu">factor</span>(ecology),</span>
-<span id="cb50-52"><a href="#cb50-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">factor</span>(species, <span class="at">levels =</span> <span class="fu">rev</span>(species_order)),</span>
-<span id="cb50-53"><a href="#cb50-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">trait =</span> <span class="fu">factor</span>(trait, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"log_HW"</span>, <span class="st">"log_FW"</span>, <span class="st">"log_TIB"</span>)),</span>
-<span id="cb50-54"><a href="#cb50-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">predictor =</span> term,</span>
-<span id="cb50-55"><a href="#cb50-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"Male"</span>))</span>
-<span id="cb50-56"><a href="#cb50-56" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb50-57"><a href="#cb50-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-58"><a href="#cb50-58" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-59"><a href="#cb50-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Split into sex-specific data frames</span></span>
-<span id="cb50-60"><a href="#cb50-60" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-61"><a href="#cb50-61" aria-hidden="true" tabindex="-1"></a>coef_female <span class="ot">&lt;-</span> coef_allometry_sex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Female"</span>)</span>
-<span id="cb50-62"><a href="#cb50-62" aria-hidden="true" tabindex="-1"></a>coef_male   <span class="ot">&lt;-</span> coef_allometry_sex <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"Male"</span>)</span>
-<span id="cb50-63"><a href="#cb50-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-64"><a href="#cb50-64" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-65"><a href="#cb50-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Manually set x-axis limits</span></span>
-<span id="cb50-66"><a href="#cb50-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Change these values yourself</span></span>
-<span id="cb50-67"><a href="#cb50-67" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-68"><a href="#cb50-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-69"><a href="#cb50-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-70"><a href="#cb50-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-71"><a href="#cb50-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Both fitting but own ranges</span></span>
-<span id="cb50-72"><a href="#cb50-72" aria-hidden="true" tabindex="-1"></a>year_xmin <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">1.25</span></span>
-<span id="cb50-73"><a href="#cb50-73" aria-hidden="true" tabindex="-1"></a>year_xmax <span class="ot">&lt;-</span>  <span class="fl">2.42</span></span>
-<span id="cb50-74"><a href="#cb50-74" aria-hidden="true" tabindex="-1"></a>temp_xmin <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.40</span></span>
-<span id="cb50-75"><a href="#cb50-75" aria-hidden="true" tabindex="-1"></a>temp_xmax <span class="ot">&lt;-</span>  <span class="fl">0.8</span></span>
-<span id="cb50-76"><a href="#cb50-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-77"><a href="#cb50-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Both same range but cut off some points</span></span>
-<span id="cb50-78"><a href="#cb50-78" aria-hidden="true" tabindex="-1"></a><span class="co">#year_xmin &lt;- -1</span></span>
-<span id="cb50-79"><a href="#cb50-79" aria-hidden="true" tabindex="-1"></a><span class="co">#year_xmax &lt;-  1</span></span>
-<span id="cb50-80"><a href="#cb50-80" aria-hidden="true" tabindex="-1"></a><span class="co">#temp_xmin &lt;- -1</span></span>
-<span id="cb50-81"><a href="#cb50-81" aria-hidden="true" tabindex="-1"></a><span class="co">#temp_xmax &lt;-  1</span></span>
-<span id="cb50-82"><a href="#cb50-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-83"><a href="#cb50-83" aria-hidden="true" tabindex="-1"></a><span class="co"># Both fit, same ranges but squished</span></span>
-<span id="cb50-84"><a href="#cb50-84" aria-hidden="true" tabindex="-1"></a><span class="co">#year_xmin &lt;- -1.25</span></span>
-<span id="cb50-85"><a href="#cb50-85" aria-hidden="true" tabindex="-1"></a><span class="co">#year_xmax &lt;-  2.42</span></span>
-<span id="cb50-86"><a href="#cb50-86" aria-hidden="true" tabindex="-1"></a><span class="co">#temp_xmin &lt;- -1.25</span></span>
-<span id="cb50-87"><a href="#cb50-87" aria-hidden="true" tabindex="-1"></a><span class="co">#temp_xmax &lt;-  2.42</span></span>
-<span id="cb50-88"><a href="#cb50-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-89"><a href="#cb50-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-90"><a href="#cb50-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-91"><a href="#cb50-91" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-92"><a href="#cb50-92" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting function</span></span>
-<span id="cb50-93"><a href="#cb50-93" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-94"><a href="#cb50-94" aria-hidden="true" tabindex="-1"></a>make_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, predictor_name, xlab_text, x_min, x_max) {</span>
-<span id="cb50-95"><a href="#cb50-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb50-96"><a href="#cb50-96" aria-hidden="true" tabindex="-1"></a>    df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(predictor <span class="sc">==</span> predictor_name),</span>
-<span id="cb50-97"><a href="#cb50-97" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> estimate, <span class="at">y =</span> species, <span class="at">colour =</span> ecology)</span>
-<span id="cb50-98"><a href="#cb50-98" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb50-99"><a href="#cb50-99" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb50-100"><a href="#cb50-100" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb50-101"><a href="#cb50-101" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(</span>
-<span id="cb50-102"><a href="#cb50-102" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(</span>
-<span id="cb50-103"><a href="#cb50-103" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmin =</span> estimate <span class="sc">-</span> std.error,</span>
-<span id="cb50-104"><a href="#cb50-104" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmax =</span> estimate <span class="sc">+</span> std.error</span>
-<span id="cb50-105"><a href="#cb50-105" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb50-106"><a href="#cb50-106" aria-hidden="true" tabindex="-1"></a>      <span class="at">orientation =</span> <span class="st">"y"</span>,</span>
-<span id="cb50-107"><a href="#cb50-107" aria-hidden="true" tabindex="-1"></a>      <span class="at">width =</span> <span class="fl">0.2</span>,</span>
-<span id="cb50-108"><a href="#cb50-108" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">"black"</span></span>
-<span id="cb50-109"><a href="#cb50-109" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb50-110"><a href="#cb50-110" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(x_min, x_max)) <span class="sc">+</span></span>
-<span id="cb50-111"><a href="#cb50-111" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid2</span>(</span>
-<span id="cb50-112"><a href="#cb50-112" aria-hidden="true" tabindex="-1"></a>      ecology <span class="sc">~</span> trait,</span>
-<span id="cb50-113"><a href="#cb50-113" aria-hidden="true" tabindex="-1"></a>      <span class="at">scales =</span> <span class="st">"free_y"</span>,</span>
-<span id="cb50-114"><a href="#cb50-114" aria-hidden="true" tabindex="-1"></a>      <span class="at">space =</span> <span class="st">"free_y"</span>,</span>
-<span id="cb50-115"><a href="#cb50-115" aria-hidden="true" tabindex="-1"></a>      <span class="at">labeller =</span> <span class="fu">labeller</span>(</span>
-<span id="cb50-116"><a href="#cb50-116" aria-hidden="true" tabindex="-1"></a>        <span class="at">trait =</span> <span class="fu">c</span>(</span>
-<span id="cb50-117"><a href="#cb50-117" aria-hidden="true" tabindex="-1"></a>          <span class="at">log_HW =</span> <span class="st">"log(HW)"</span>,</span>
-<span id="cb50-118"><a href="#cb50-118" aria-hidden="true" tabindex="-1"></a>          <span class="at">log_FW =</span> <span class="st">"log(FW)"</span>,</span>
-<span id="cb50-119"><a href="#cb50-119" aria-hidden="true" tabindex="-1"></a>          <span class="at">log_TIB =</span> <span class="st">"log(TIB)"</span></span>
-<span id="cb50-120"><a href="#cb50-120" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb50-121"><a href="#cb50-121" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb50-122"><a href="#cb50-122" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip =</span> <span class="fu">strip_themed</span>(</span>
-<span id="cb50-123"><a href="#cb50-123" aria-hidden="true" tabindex="-1"></a>        <span class="at">background_y =</span> <span class="fu">elem_list_rect</span>(</span>
-<span id="cb50-124"><a href="#cb50-124" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"#fae8b2"</span>, <span class="st">"#cb8e73"</span>, <span class="st">"#ccb3d6"</span>),</span>
-<span id="cb50-125"><a href="#cb50-125" aria-hidden="true" tabindex="-1"></a>          <span class="at">colour =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
-<span id="cb50-126"><a href="#cb50-126" aria-hidden="true" tabindex="-1"></a>          <span class="at">linewidth =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb50-127"><a href="#cb50-127" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb50-128"><a href="#cb50-128" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb50-129"><a href="#cb50-129" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb50-130"><a href="#cb50-130" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_discrete</span>(</span>
-<span id="cb50-131"><a href="#cb50-131" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="cf">function</span>(x) <span class="fu">parse</span>(<span class="at">text =</span> <span class="fu">paste0</span>(<span class="st">"italic('"</span>, x, <span class="st">"')"</span>))</span>
-<span id="cb50-132"><a href="#cb50-132" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb50-133"><a href="#cb50-133" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb50-134"><a href="#cb50-134" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
-<span id="cb50-135"><a href="#cb50-135" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"#6b6b6b"</span>, <span class="at">fill =</span> <span class="cn">NA</span>),</span>
-<span id="cb50-136"><a href="#cb50-136" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.text.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">270</span>),</span>
-<span id="cb50-137"><a href="#cb50-137" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb50-138"><a href="#cb50-138" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
-<span id="cb50-139"><a href="#cb50-139" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb50-140"><a href="#cb50-140" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb50-141"><a href="#cb50-141" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> xlab_text,</span>
-<span id="cb50-142"><a href="#cb50-142" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Species"</span></span>
-<span id="cb50-143"><a href="#cb50-143" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb50-144"><a href="#cb50-144" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#ffcb30"</span>, <span class="st">"#cb8e73"</span>, <span class="st">"#b28fbf"</span>))</span>
-<span id="cb50-145"><a href="#cb50-145" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb50-146"><a href="#cb50-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-147"><a href="#cb50-147" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-148"><a href="#cb50-148" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plots</span></span>
-<span id="cb50-149"><a href="#cb50-149" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-150"><a href="#cb50-150" aria-hidden="true" tabindex="-1"></a>plot_year_female <span class="ot">&lt;-</span> <span class="fu">make_plot</span>(</span>
-<span id="cb50-151"><a href="#cb50-151" aria-hidden="true" tabindex="-1"></a>  coef_female,</span>
-<span id="cb50-152"><a href="#cb50-152" aria-hidden="true" tabindex="-1"></a>  <span class="st">"log_ITD:year_rescaled"</span>,</span>
-<span id="cb50-153"><a href="#cb50-153" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Change in allometric slope over time"</span>,</span>
-<span id="cb50-154"><a href="#cb50-154" aria-hidden="true" tabindex="-1"></a>  year_xmin, year_xmax</span>
-<span id="cb50-155"><a href="#cb50-155" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb50-156"><a href="#cb50-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-157"><a href="#cb50-157" aria-hidden="true" tabindex="-1"></a>plot_year_male <span class="ot">&lt;-</span> <span class="fu">make_plot</span>(</span>
-<span id="cb50-158"><a href="#cb50-158" aria-hidden="true" tabindex="-1"></a>  coef_male,</span>
-<span id="cb50-159"><a href="#cb50-159" aria-hidden="true" tabindex="-1"></a>  <span class="st">"log_ITD:year_rescaled"</span>,</span>
-<span id="cb50-160"><a href="#cb50-160" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Change in allometric slope over time"</span>,</span>
-<span id="cb50-161"><a href="#cb50-161" aria-hidden="true" tabindex="-1"></a>  year_xmin, year_xmax</span>
-<span id="cb50-162"><a href="#cb50-162" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb50-163"><a href="#cb50-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-164"><a href="#cb50-164" aria-hidden="true" tabindex="-1"></a>plot_temp_female <span class="ot">&lt;-</span> <span class="fu">make_plot</span>(</span>
-<span id="cb50-165"><a href="#cb50-165" aria-hidden="true" tabindex="-1"></a>  coef_female,</span>
-<span id="cb50-166"><a href="#cb50-166" aria-hidden="true" tabindex="-1"></a>  <span class="st">"log_ITD:temp_c"</span>,</span>
-<span id="cb50-167"><a href="#cb50-167" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Change in allometric slope with temperature"</span>,</span>
-<span id="cb50-168"><a href="#cb50-168" aria-hidden="true" tabindex="-1"></a>  temp_xmin, temp_xmax</span>
-<span id="cb50-169"><a href="#cb50-169" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb50-170"><a href="#cb50-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-171"><a href="#cb50-171" aria-hidden="true" tabindex="-1"></a>plot_temp_male <span class="ot">&lt;-</span> <span class="fu">make_plot</span>(</span>
-<span id="cb50-172"><a href="#cb50-172" aria-hidden="true" tabindex="-1"></a>  coef_male,</span>
-<span id="cb50-173"><a href="#cb50-173" aria-hidden="true" tabindex="-1"></a>  <span class="st">"log_ITD:temp_c"</span>,</span>
-<span id="cb50-174"><a href="#cb50-174" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Change in allometric slope with temperature"</span>,</span>
-<span id="cb50-175"><a href="#cb50-175" aria-hidden="true" tabindex="-1"></a>  temp_xmin, temp_xmax</span>
-<span id="cb50-176"><a href="#cb50-176" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb50-177"><a href="#cb50-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-178"><a href="#cb50-178" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-179"><a href="#cb50-179" aria-hidden="true" tabindex="-1"></a><span class="co"># View plots</span></span>
-<span id="cb50-180"><a href="#cb50-180" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------</span></span>
-<span id="cb50-181"><a href="#cb50-181" aria-hidden="true" tabindex="-1"></a>plot_year_female</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>plot_year_male</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-22-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>plot_temp_female</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-22-3.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>plot_temp_male</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-22-4.png" class="img-fluid" width="672"></p>
+<p><img src="MBiol_Bees_Analysis_files/figure-html/unnamed-chunk-19-4.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
